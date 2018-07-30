@@ -19,6 +19,30 @@ namespace OK
     {
     }
 
+    OK::f32 Vec4::GetX() const
+    {
+        const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
+        return data[0];
+    }
+
+    OK::f32 Vec4::GetY() const
+    {
+        const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
+        return data[1];
+    }
+
+    OK::f32 Vec4::GetZ() const
+    {
+        const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
+        return data[2];
+    }
+
+    OK::f32 Vec4::GetW() const
+    {
+        const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
+        return data[3];
+    }
+
     Vec4& Vec4::operator=(const Vec4& other)
     {
         m_Data = other.m_Data;
@@ -79,9 +103,7 @@ namespace OK
 
     OK::Bool operator==(const Vec4& rhs, const Vec4& lhs)
     {
-        __m128i vcmp = _mm_castps_si128(_mm_cmpneq_ps(rhs.m_Data, lhs.m_Data));
-        OK::u16 test = _mm_movemask_epi8(vcmp);
-        return (test == 0);
+        return _mm_movemask_ps(_mm_cmpneq_ps(rhs.m_Data, lhs.m_Data)) == 0xff;
     }
 
     OK::Bool operator!=(const Vec4& rhs, const Vec4& lhs)
@@ -91,9 +113,7 @@ namespace OK
 
     OK::Bool operator> (const Vec4& rhs, const Vec4& lhs)
     {
-        __m128i vcmp = _mm_castps_si128(_mm_cmple_ps(rhs.m_Data, lhs.m_Data));
-        OK::u16 test = _mm_movemask_epi8(vcmp);
-        return (test == 0);
+        return (_mm_movemask_ps(_mm_cmpgt_ps(rhs.m_Data, lhs.m_Data)) == 0xff);
     }
 
     OK::Bool operator< (const Vec4& rhs, const Vec4& lhs)
@@ -103,12 +123,12 @@ namespace OK
 
     OK::Bool operator>=(const Vec4& rhs, const Vec4& lhs)
     {
-        return !(lhs < rhs);
+        return (_mm_movemask_ps(_mm_cmpge_ps(rhs.m_Data, lhs.m_Data)) == 0xff);
     }
 
     OK::Bool operator<=(const Vec4& rhs, const Vec4& lhs)
     {
-        return !(lhs > rhs);
+        return (rhs >= lhs);
     }
 
     Vec4 operator+(const Vec4& rhs, const Vec4& lhs)

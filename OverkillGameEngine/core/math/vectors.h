@@ -3,12 +3,17 @@
 
 namespace OK
 {
-    class Vec4
+    class alignas(16) Vec4
     {
     public:
         Vec4();
         Vec4(const Vec4& other);
         Vec4(OK::f32 x, OK::f32 y = 0.0f, OK::f32 z = 0.0f, OK::f32 w = 0.0f);
+
+        OK::f32 GetX() const;
+        OK::f32 GetY() const;
+        OK::f32 GetZ() const;
+        OK::f32 GetW() const;
 
         Vec4& operator=(const Vec4& other);
 
@@ -24,6 +29,7 @@ namespace OK
 
         friend OK::Bool operator==(const Vec4& rhs, const Vec4& lhs);
         friend OK::Bool operator> (const Vec4& rhs, const Vec4& lhs);
+        friend OK::Bool operator>=(const Vec4& rhs, const Vec4& lhs);
 
     private:
         __m128 m_Data;
