@@ -27,5 +27,8 @@
     <ClInclude Include="core\containers\basearray.h">
       <Filter>core\containers</Filter>
     </ClInclude>
+    <ClInclude Include="core\asserts.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

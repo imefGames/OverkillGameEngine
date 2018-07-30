@@ -1,3 +1,4 @@
+#include <core\asserts.h>
 #include <core\types.h>
 
 namespace OK
@@ -90,14 +91,14 @@ namespace OK
     template<typename T>
     T& BaseArray<T>::operator[](OK::u32 index)
     {
-        //TODO: add assert
+        okAssert(index < m_Size, "Invalid index: Provided index is higher than array size.");
         return m_Data[index];
     }
 
     template<typename T>
     const T& BaseArray<T>::operator[](OK::u32 index) const
     {
-        //TODO: add assert
+        okAssert(index < m_Size, "Invalid index: Provided index is higher than array size.");
         return m_Data[index];
     }
 
