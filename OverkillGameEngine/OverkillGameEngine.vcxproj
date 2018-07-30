@@ -134,6 +134,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="core\containers\basearray.h" />
     <ClInclude Include="core\math\vectors.h" />
     <ClInclude Include="core\types.h" />
   </ItemGroup>

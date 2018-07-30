@@ -13,6 +13,9 @@
     <Filter Include="core\math">
       <UniqueIdentifier>{3e6e5492-dee4-49d9-99f3-8f9c52242421}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\containers">
+      <UniqueIdentifier>{8cac4970-6f61-4653-89d6-13f2d063e001}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\types.h">
@@ -20,6 +23,9 @@
     </ClInclude>
     <ClInclude Include="core\math\vectors.h">
       <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="core\containers\basearray.h">
+      <Filter>core\containers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
