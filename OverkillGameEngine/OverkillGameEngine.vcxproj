@@ -131,13 +131,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="engine\objectmodel\universe.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\asserts.h" />
-    <ClInclude Include="core\containers\basearray.h" />
+    <ClInclude Include="core\containers\basecontainer.h" />
     <ClInclude Include="core\math\vectors.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\objectmodel\universe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

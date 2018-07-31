@@ -5,6 +5,9 @@
     <ClCompile Include="core\math\vectors.cpp">
       <Filter>core\math</Filter>
     </ClCompile>
+    <ClCompile Include="engine\objectmodel\universe.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -16,6 +19,12 @@
     <Filter Include="core\containers">
       <UniqueIdentifier>{8cac4970-6f61-4653-89d6-13f2d063e001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{57b49971-e4b3-4a55-b18b-1d582c70a4d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\objectmodel">
+      <UniqueIdentifier>{a437112f-049e-4371-9139-6cc61b968040}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\types.h">
@@ -24,11 +33,14 @@
     <ClInclude Include="core\math\vectors.h">
       <Filter>core\math</Filter>
     </ClInclude>
-    <ClInclude Include="core\containers\basearray.h">
-      <Filter>core\containers</Filter>
-    </ClInclude>
     <ClInclude Include="core\asserts.h">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\universe.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\containers\basecontainer.h">
+      <Filter>core\containers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

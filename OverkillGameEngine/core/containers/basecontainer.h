@@ -4,15 +4,15 @@
 namespace OK
 {
     template<typename T>
-    class BaseArray
+    class BaseContainer
     {
     public:
-        BaseArray();
-        BaseArray(const BaseArray& other);
-        BaseArray(BaseArray&& other);
-        ~BaseArray();
-        BaseArray& operator=(const BaseArray& other);
-        BaseArray& operator=(BaseArray&& other);
+        BaseContainer();
+        BaseContainer(const BaseContainer& other);
+        BaseContainer(BaseContainer&& other);
+        ~BaseContainer();
+        BaseContainer& operator=(const BaseContainer& other);
+        BaseContainer& operator=(BaseContainer&& other);
 
         T& operator[](OK::u32 index);
         const T& operator[](OK::u32 index) const;
@@ -27,7 +27,7 @@ namespace OK
     };
 
     template<typename T>
-    BaseArray<T>::BaseArray()
+    BaseContainer<T>::BaseContainer()
         : m_Data{ nullptr }
         , m_Size{ 0 }
         , m_MaxSize{ 0 }
@@ -35,7 +35,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseArray<T>::BaseArray(const BaseArray& other)
+    BaseContainer<T>::BaseContainer(const BaseContainer& other)
         : m_Data{ new T[other.m_Size] }
         , m_Size{ other.m_Size }
         , m_MaxSize{ other.m_Size }
@@ -47,7 +47,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseArray<T>::BaseArray(BaseArray&& other)
+    BaseContainer<T>::BaseContainer(BaseContainer&& other)
         : m_Data{ other.m_Data }
         , m_Size{ other.m_Size }
         , m_MaxSize{ other.m_MaxSize }
@@ -58,13 +58,13 @@ namespace OK
     }
 
     template<typename T>
-    BaseArray<T>::~BaseArray()
+    BaseContainer<T>::~BaseContainer()
     {
         delete[] m_Data;
     }
 
     template<typename T>
-    BaseArray& BaseArray<T>::operator=(const BaseArray& other)
+    BaseContainer& BaseContainer<T>::operator=(const BaseContainer& other)
     {
         m_Data = new T[other.m_Size];
         m_Size = other.m_Size;
@@ -77,7 +77,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseArray& BaseArray<T>::operator=(BaseArray&& other)
+    BaseContainer& BaseContainer<T>::operator=(BaseContainer&& other)
     {
         m_Data = other.m_Data;
         m_Size = other.m_Size;
@@ -89,21 +89,21 @@ namespace OK
     }
 
     template<typename T>
-    T& BaseArray<T>::operator[](OK::u32 index)
+    T& BaseContainer<T>::operator[](OK::u32 index)
     {
         okAssert(index < m_Size, "Invalid index: Provided index is higher than array size.");
         return m_Data[index];
     }
 
     template<typename T>
-    const T& BaseArray<T>::operator[](OK::u32 index) const
+    const T& BaseContainer<T>::operator[](OK::u32 index) const
     {
         okAssert(index < m_Size, "Invalid index: Provided index is higher than array size.");
         return m_Data[index];
     }
 
     template<typename T>
-    void BaseArray<T>::Reserve(OK::u32 reservedSize)
+    void BaseContainer<T>::Reserve(OK::u32 reservedSize)
     {
         if (reservedSize > m_MaxSize)
         {
@@ -119,7 +119,7 @@ namespace OK
     }
 
     template<typename T>
-    void BaseArray<T>::Resize(OK::u32 newSize)
+    void BaseContainer<T>::Resize(OK::u32 newSize)
     {
         Reserve(newSize);
         m_Size = newSize;
