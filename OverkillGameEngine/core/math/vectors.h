@@ -1,3 +1,5 @@
+#pragma once
+
 #include <xmmintrin.h> 
 #include <core\types.h>
 

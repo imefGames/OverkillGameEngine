@@ -132,7 +132,11 @@
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="engine\objectmodel\system.cpp" />
     <ClCompile Include="engine\objectmodel\universe.cpp" />
+    <ClCompile Include="engine\objectmodel\universesystem.cpp" />
+    <ClCompile Include="engine\objectmodel\world.cpp" />
+    <ClCompile Include="engine\objectmodel\worldsystem.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,9 +146,15 @@
     <ClInclude Include="core\asserts.h" />
     <ClInclude Include="core\containers\array.h" />
     <ClInclude Include="core\containers\basecontainer.h" />
+    <ClInclude Include="core\containers\pointerarray.h" />
     <ClInclude Include="core\math\vectors.h" />
+    <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\objectmodel\system.h" />
     <ClInclude Include="engine\objectmodel\universe.h" />
+    <ClInclude Include="engine\objectmodel\universesystem.h" />
+    <ClInclude Include="engine\objectmodel\world.h" />
+    <ClInclude Include="engine\objectmodel\worldsystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

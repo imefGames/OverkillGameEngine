@@ -1,3 +1,5 @@
+#pragma once
+
 #include <core\algorithms.h>
 #include <core\asserts.h>
 #include <core\types.h>
@@ -72,7 +74,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseContainer& BaseContainer<T>::operator=(const BaseContainer& other)
+    BaseContainer<T>& BaseContainer<T>::operator=(const BaseContainer& other)
     {
         m_Data = new T[other.m_Size];
         m_Size = other.m_Size;
@@ -82,7 +84,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseContainer& BaseContainer<T>::operator=(BaseContainer&& other)
+    BaseContainer<T>& BaseContainer<T>::operator=(BaseContainer&& other)
     {
         m_Data = other.m_Data;
         m_Size = other.m_Size;

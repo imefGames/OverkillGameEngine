@@ -11,6 +11,18 @@
     <ClCompile Include="core\algorithms\algorithms_memory.cpp">
       <Filter>core\algorithms</Filter>
     </ClCompile>
+    <ClCompile Include="engine\objectmodel\world.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\objectmodel\system.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\objectmodel\worldsystem.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\objectmodel\universesystem.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -59,6 +71,24 @@
     </ClInclude>
     <ClInclude Include="core\algorithms\algorithms_searching.h">
       <Filter>core\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\world.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\system.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\worldsystem.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\universesystem.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="core\containers\pointerarray.h">
+      <Filter>core\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="core\traits.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

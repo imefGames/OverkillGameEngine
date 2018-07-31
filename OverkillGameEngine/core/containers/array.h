@@ -1,4 +1,5 @@
-#include <core\asserts.h>
+#pragma once
+
 #include <core\containers\basecontainer.h>
 
 namespace OK
@@ -70,25 +71,25 @@ namespace OK
     }
 
     template<typename T>
-    Array<T>::iterator Array<T>::begin()
+    typename Array<T>::iterator Array<T>::begin()
     {
         return GetRawData();
     }
 
     template<typename T>
-    Array<T>::const_iterator Array<T>::begin() const
+    typename Array<T>::const_iterator Array<T>::begin() const
     {
         return GetRawData();
     }
 
     template<typename T>
-    Array<T>::iterator Array<T>::end()
+    typename Array<T>::iterator Array<T>::end()
     {
         return GetRawData() + m_Size;
     }
 
     template<typename T>
-    Array<T>::const_iterator Array<T>::end() const
+    typename Array<T>::const_iterator Array<T>::end() const
     {
         return GetRawData() + m_Size;
     }
