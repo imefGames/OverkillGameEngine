@@ -150,6 +150,7 @@
     <ClInclude Include="core\containers\basecontainer.h" />
     <ClInclude Include="core\containers\pointerarray.h" />
     <ClInclude Include="core\math\vectors.h" />
+    <ClInclude Include="core\singleton.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
     <ClInclude Include="engine\objectmodel\component.h" />

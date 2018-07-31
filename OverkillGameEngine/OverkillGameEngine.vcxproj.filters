@@ -102,5 +102,8 @@
     <ClInclude Include="engine\objectmodel\component.h">
       <Filter>engine\objectmodel</Filter>
     </ClInclude>
+    <ClInclude Include="core\singleton.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
