@@ -132,6 +132,8 @@
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="engine\objectmodel\component.cpp" />
+    <ClCompile Include="engine\objectmodel\componentholder.cpp" />
     <ClCompile Include="engine\objectmodel\system.cpp" />
     <ClCompile Include="engine\objectmodel\universe.cpp" />
     <ClCompile Include="engine\objectmodel\universesystem.cpp" />
@@ -150,6 +152,8 @@
     <ClInclude Include="core\math\vectors.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\objectmodel\component.h" />
+    <ClInclude Include="engine\objectmodel\componentholder.h" />
     <ClInclude Include="engine\objectmodel\system.h" />
     <ClInclude Include="engine\objectmodel\universe.h" />
     <ClInclude Include="engine\objectmodel\universesystem.h" />

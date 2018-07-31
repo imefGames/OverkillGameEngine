@@ -23,6 +23,12 @@
     <ClCompile Include="engine\objectmodel\universesystem.cpp">
       <Filter>engine\objectmodel</Filter>
     </ClCompile>
+    <ClCompile Include="engine\objectmodel\componentholder.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\objectmodel\component.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -89,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="core\traits.h">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\componentholder.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\component.h">
+      <Filter>engine\objectmodel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

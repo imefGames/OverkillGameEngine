@@ -4,4 +4,8 @@
 
 namespace OK
 {
+    World::World()
+        : m_ComponentHolderID{ ComponentHolderHelper::GetNextComponentHolderID() }
+    {
+    }
 }
