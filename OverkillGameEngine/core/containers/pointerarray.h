@@ -16,7 +16,7 @@ namespace OK
     {
         for (T* currentPointer : *this)
         {
-            delete currentPointer;
+            okSafeDelete(currentPointer);
         }
         Clear();
     }

@@ -32,6 +32,21 @@
     <ClCompile Include="engine\objectmodel\componentfactory.cpp">
       <Filter>engine\objectmodel</Filter>
     </ClCompile>
+    <ClCompile Include="engine\gameloop.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\gameengine.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\window\gamewindowdata.cpp">
+      <Filter>engine\window</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\window\gamewindow.cpp">
+      <Filter>engine\window</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\window\gamewindoweventdata.cpp">
+      <Filter>engine\window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -51,6 +66,9 @@
     </Filter>
     <Filter Include="core\algorithms">
       <UniqueIdentifier>{3470eda7-f75a-4d64-8695-c9a7f42fa8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\window">
+      <UniqueIdentifier>{e69ea9ba-ff32-409a-8aba-6ff2688111c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -112,5 +130,26 @@
       <Filter>engine\objectmodel</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="engine\gameloop.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\gameengine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="core\allocation.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\operationstatus.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\window\gamewindowdata.h">
+      <Filter>engine\window</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\window\gamewindow.h">
+      <Filter>engine\window</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\window\gamewindoweventdata.h">
+      <Filter>engine\window</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

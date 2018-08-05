@@ -66,7 +66,7 @@ namespace OK
     template<typename T>
     BaseContainer<T>::~BaseContainer()
     {
-        delete[] m_Data;
+        okSafeDeleteArray(m_Data);
     }
 
     template<typename T>
@@ -112,7 +112,7 @@ namespace OK
         {
             newData = new T[reservedSize];
             OK::MemCopy(newData, m_Data, m_Size);
-            delete[] m_Data;
+            okSafeDeleteArray(m_Data);
             m_Data = newData;
             m_MaxSize = reservedSize;
         }

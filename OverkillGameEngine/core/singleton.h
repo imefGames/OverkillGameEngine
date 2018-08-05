@@ -16,7 +16,7 @@ namespace OK
         static void DeleteSingleton()
         {
             okAssert(ms_Instance != nullptr, "Singleton does not exist or has already been destroyed.");
-            return ms_Instance;
+            okSafeDelete(ms_Instance);
         }
 
         static SingletonType* Get()
@@ -26,6 +26,9 @@ namespace OK
         }
 
     private:
-        static SingletonType* ms_Instance = nullptr;
+        static SingletonType* ms_Instance;
     };
+
+    template <typename SingletonType>
+    SingletonType* Singleton<SingletonType>::ms_Instance = nullptr;
 }

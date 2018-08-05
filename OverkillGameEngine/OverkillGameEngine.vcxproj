@@ -136,6 +136,8 @@
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="engine\gameengine.cpp" />
+    <ClCompile Include="engine\gameloop.cpp" />
     <ClCompile Include="engine\objectmodel\component.cpp" />
     <ClCompile Include="engine\objectmodel\componentfactory.cpp" />
     <ClCompile Include="engine\objectmodel\componentholder.cpp" />
@@ -144,20 +146,27 @@
     <ClCompile Include="engine\objectmodel\universesystem.cpp" />
     <ClCompile Include="engine\objectmodel\world.cpp" />
     <ClCompile Include="engine\objectmodel\worldsystem.cpp" />
+    <ClCompile Include="engine\window\gamewindow.cpp" />
+    <ClCompile Include="engine\window\gamewindowdata.cpp" />
+    <ClCompile Include="engine\window\gamewindoweventdata.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\algorithms.h" />
     <ClInclude Include="core\algorithms\algorithms_memory.h" />
     <ClInclude Include="core\algorithms\algorithms_searching.h" />
+    <ClInclude Include="core\allocation.h" />
     <ClInclude Include="core\asserts.h" />
     <ClInclude Include="core\containers\array.h" />
     <ClInclude Include="core\containers\basecontainer.h" />
     <ClInclude Include="core\containers\pointerarray.h" />
     <ClInclude Include="core\math\vectors.h" />
+    <ClInclude Include="core\operationstatus.h" />
     <ClInclude Include="core\singleton.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\gameengine.h" />
+    <ClInclude Include="engine\gameloop.h" />
     <ClInclude Include="engine\objectmodel\component.h" />
     <ClInclude Include="engine\objectmodel\componentfactory.h" />
     <ClInclude Include="engine\objectmodel\componentholder.h" />
@@ -166,6 +175,9 @@
     <ClInclude Include="engine\objectmodel\universesystem.h" />
     <ClInclude Include="engine\objectmodel\world.h" />
     <ClInclude Include="engine\objectmodel\worldsystem.h" />
+    <ClInclude Include="engine\window\gamewindow.h" />
+    <ClInclude Include="engine\window\gamewindowdata.h" />
+    <ClInclude Include="engine\window\gamewindoweventdata.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
