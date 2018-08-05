@@ -1,7 +1,5 @@
 #pragma once
 
-#include <core\types.h>
-
 namespace OK
 {
     using ComponentHolderID = OK::u64;

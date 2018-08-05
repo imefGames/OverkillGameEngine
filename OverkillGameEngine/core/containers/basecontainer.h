@@ -1,9 +1,5 @@
 #pragma once
 
-#include <core\algorithms.h>
-#include <core\asserts.h>
-#include <core\types.h>
-
 namespace OK
 {
     template<typename T>

@@ -1,3 +1,4 @@
+#include <stdafx.h>
 #include <engine\objectmodel\worldsystem.h>
 
 namespace OK

@@ -8,8 +8,9 @@ namespace OK
     class Array : public BaseContainer<T>
     {
     public:
-        void Add(T&& newElement);
-        void Insert(T&& newElement, OK::u32 elementIndex);
+        T& Add(T&& newElement);
+        T& Insert(T&& newElement, OK::u32 elementIndex);
+        T& Grow();
         void RemoveAt(OK::u32 elementIndex);
         void Remove(const T& removedElement);
 
@@ -23,19 +24,15 @@ namespace OK
     };
 
     template<typename T>
-    void Array<T>::Add(T&& newElement)
+    T& Array<T>::Add(T&& newElement)
     {
-        if (m_Size >= m_MaxSize)
-        {
-            Reserve(m_Size * 2);
-        }
-        iterator lastIterator = end();
-        *lastIterator = std::forward<T>(newElement);
-        ++m_Size;
+        T& addedElement = Grow();
+        addedElement = std::forward<T>(newElement);
+        return addedElement;
     }
 
     template<typename T>
-    void Array<T>::Insert(T&& newElement, OK::u32 elementIndex)
+    T& Array<T>::Insert(T&& newElement, OK::u32 elementIndex)
     {
         okAssert(elementIndex <= m_Size, "Invalid index: Can't insert outside of array.");
         if (m_Size >= m_MaxSize)
@@ -46,7 +43,21 @@ namespace OK
         OK::MemCopy(insertIterator, insertIterator + 1, m_Size - elementIndex);
         *lastIterator = std::forward<T>(newElement);
         ++m_Size;
+        return *lastIterator;
     }
+
+    template<typename T>
+    T& Array<T>::Grow()
+    {
+        if (m_Size >= m_MaxSize)
+        {
+            Reserve(m_Size * 2);
+        }
+        iterator lastIterator = end();
+        ++m_Size;
+        return *lastIterator;
+    }
+
 
     template<typename T>
     void Array<T>::RemoveAt(OK::u32 elementIndex)

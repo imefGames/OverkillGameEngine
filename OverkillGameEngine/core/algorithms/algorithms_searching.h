@@ -1,7 +1,5 @@
 #pragma once
 
-#include <core\types.h>
-
 namespace OK
 {
     template<typename InIterator, typename OutIterator, typename SearchedItemType>

@@ -1,3 +1,4 @@
+#include <stdafx.h>
 #include <core\math\vectors.h>
 
 #include <emmintrin.h>

@@ -1,3 +1,4 @@
+#include <stdafx.h>
 #include <core\algorithms\algorithms_memory.h>
 
 #include <cstring>

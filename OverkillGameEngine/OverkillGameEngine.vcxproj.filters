@@ -29,6 +29,9 @@
     <ClCompile Include="engine\objectmodel\component.cpp">
       <Filter>engine\objectmodel</Filter>
     </ClCompile>
+    <ClCompile Include="engine\objectmodel\componentfactory.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -105,5 +108,9 @@
     <ClInclude Include="core\singleton.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="engine\objectmodel\componentfactory.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 #pragma once
 
-#include <xmmintrin.h> 
-#include <core\types.h>
+#include <xmmintrin.h>
 
 namespace OK
 {

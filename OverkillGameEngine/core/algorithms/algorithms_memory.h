@@ -1,7 +1,5 @@
 #pragma once
 
-#include <core\types.h>
-
 namespace OK
 {
     void MemCopy(void* source, void* destination, OK::u32 byteCount);

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <core\asserts.h>
-
 namespace OK
 {
     template <typename SingletonType>
