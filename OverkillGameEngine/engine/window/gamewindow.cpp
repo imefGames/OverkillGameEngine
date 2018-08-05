@@ -4,15 +4,17 @@
 #include <tchar.h>
 #include <windows.h>
 #include <engine\window\gamewindowdata.h>
+#include <engine\window\gamewindoweventdata.h>
 
 namespace OK
 {
+    OK::Bool g_PressedQuit{ false };
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 
     const OK::u32 GameWindow::K_WINDOW_WIDTH = 640;
     const OK::u32 GameWindow::K_WINDOW_HEIGHT = 480;
 
-    EResult GameWindow::Init(const GameWindowData& windowData)
+    EResult GameWindow::Init(GameWindowData& windowData)
     {
         EResult initResult{ EResult::Success };
 
@@ -36,11 +38,13 @@ namespace OK
         if (RegisterClassEx(&windowsClassData))
         {
             m_InstanceHandle = windowData.m_InstanceHandle;
-            HWND windowHandle = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, K_WINDOW_WIDTH, K_WINDOW_HEIGHT, NULL, NULL, windowData.m_InstanceHandle, NULL);
-            if (windowHandle)
+            windowData.m_WindowHandle = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, K_WINDOW_WIDTH, K_WINDOW_HEIGHT, NULL, NULL, windowData.m_InstanceHandle, NULL);
+            windowData.m_WindowWidth = K_WINDOW_WIDTH;
+            windowData.m_WindowHeight = K_WINDOW_HEIGHT;
+            if (windowData.m_WindowHandle)
             {
-                ShowWindow(windowHandle, windowData.m_CommandCount);
-                UpdateWindow(windowHandle);
+                ShowWindow(windowData.m_WindowHandle, windowData.m_CommandCount);
+                UpdateWindow(windowData.m_WindowHandle);
             }
             else
             {
@@ -62,23 +66,14 @@ namespace OK
 
     void GameWindow::PollEvents(GameWindowEventData& eventData)
     {
-        //TODO: fill eventData
-
         MSG message;
-        BOOL messageReturnVal;
-        while ((messageReturnVal = GetMessage(&message, NULL, 0, 0)) != 0)
+        if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
         {
-            if (messageReturnVal == -1)
-            {
-                // handle the error and possibly exit
-                break;
-            }
-            else
-            {
-                TranslateMessage(&message);
-                DispatchMessage(&message);
-            }
+            TranslateMessage(&message);
+            DispatchMessage(&message);
         }
+
+        eventData.m_QuitGame = g_PressedQuit;
     }
 
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam)
@@ -89,6 +84,7 @@ namespace OK
         case WM_DESTROY:
         {
             PostQuitMessage(0);
+            g_PressedQuit = true;
             break;
         }
 

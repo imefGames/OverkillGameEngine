@@ -4,25 +4,31 @@
 #include <engine\gameloop.h>
 #include <engine\window\gamewindow.h>
 #include <engine\window\gamewindoweventdata.h>
+#include <graphics\graphicswrapper.h>
 
 namespace OK
 {
-    void GameEngine::Init(const GameWindowData& windowData)
+    void GameEngine::Init(GameWindowData& windowData)
     {
+        GraphicsWrapper::CreateSingleton();
         m_GameLoop = new GameLoop;
         m_GameWindow = new GameWindow;
 
         m_GameLoop->Init();
         m_GameWindow->Init(windowData);
+        GraphicsWrapper::Get()->Init(windowData);
     }
 
     void GameEngine::Shutdown()
     {
+        GraphicsWrapper::Get()->Shutdown();
+
         m_GameWindow->Shutdown();
         m_GameLoop->Shutdown();
 
         okSafeDelete(m_GameLoop);
         okSafeDelete(m_GameWindow);
+        GraphicsWrapper::DeleteSingleton();
     }
 
     void GameEngine::RunEngineUntilEnd()
@@ -34,7 +40,11 @@ namespace OK
         {
             m_GameWindow->PollEvents(eventData);
             m_GameLoop->Tick(eventData, deltaTime);
-            keepRunning = false;
+
+            if (eventData.m_QuitGame)
+            {
+                keepRunning = false;
+            }
         }
     }
 }

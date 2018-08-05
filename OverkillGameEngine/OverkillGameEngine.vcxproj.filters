@@ -47,6 +47,15 @@
     <ClCompile Include="engine\window\gamewindoweventdata.cpp">
       <Filter>engine\window</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\graphicswrapper.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\d3d\d3dcontext.cpp">
+      <Filter>graphics\d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\graphicssystem.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -69,6 +78,12 @@
     </Filter>
     <Filter Include="engine\window">
       <UniqueIdentifier>{e69ea9ba-ff32-409a-8aba-6ff2688111c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{0956b7e5-a653-4a79-be46-c9d67555e7ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\d3d">
+      <UniqueIdentifier>{e2fcfd69-5691-476c-879e-5694d365377b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +165,15 @@
     </ClInclude>
     <ClInclude Include="engine\window\gamewindoweventdata.h">
       <Filter>engine\window</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\graphicswrapper.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\d3d\d3dcontext.h">
+      <Filter>graphics\d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\graphicssystem.h">
+      <Filter>graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,7 +37,12 @@ namespace OK
         okAssert(elementIndex <= m_Size, "Invalid index: Can't insert outside of array.");
         if (m_Size >= m_MaxSize)
         {
-            Reserve(m_Size * 2);
+            OK::u32 newSize = m_Size * 2;
+            if (newSize == 0)
+            {
+                newSize = 4;
+            }
+            Reserve(newSize);
         }
         iterator insertIterator = begin() + elementIndex;
         OK::MemCopy(insertIterator, insertIterator + 1, m_Size - elementIndex);
@@ -51,7 +56,12 @@ namespace OK
     {
         if (m_Size >= m_MaxSize)
         {
-            Reserve(m_Size * 2);
+            OK::u32 newSize = m_Size * 2;
+            if (newSize == 0)
+            {
+                newSize = 4;
+            }
+            Reserve(newSize);
         }
         iterator lastIterator = end();
         ++m_Size;

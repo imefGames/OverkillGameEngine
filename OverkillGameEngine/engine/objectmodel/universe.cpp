@@ -2,6 +2,7 @@
 #include <engine\objectmodel\universe.h>
 
 #include <engine\objectmodel\universesystem.h>
+#include <graphics\graphicssystem.h>
 
 namespace OK
 {
@@ -14,6 +15,8 @@ namespace OK
 
     void Universe::Init()
     {
+        m_UniverseSystems.Add(new GraphicsSystem);
+
         for (UniverseSystem* system : m_UniverseSystems)
         {
             system->Init();
@@ -46,7 +49,8 @@ namespace OK
             system->Update(dt);
         }
 
-        okAssert(m_CurrentWorld != nullptr, "Universe has no current world.");
+        //TODO: re-use assert once we have worlds
+        //okAssert(m_CurrentWorld != nullptr, "Universe has no current world.");
         if (m_CurrentWorld != nullptr)
         {
             m_CurrentWorld->Update(dt);

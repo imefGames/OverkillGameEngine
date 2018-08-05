@@ -8,7 +8,7 @@ namespace OK
     class GameWindow
     {
     public:
-        EResult Init(const GameWindowData& windowData);
+        EResult Init(GameWindowData& windowData);
         void Shutdown();
         void PollEvents(GameWindowEventData& eventData);
 

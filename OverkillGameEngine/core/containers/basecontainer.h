@@ -110,9 +110,12 @@ namespace OK
     {
         if (reservedSize > m_MaxSize)
         {
-            newData = new T[reservedSize];
-            OK::MemCopy(newData, m_Data, m_Size);
-            okSafeDeleteArray(m_Data);
+            T* newData = new T[reservedSize];
+            if (m_Data != nullptr)
+            {
+                OK::MemCopy(newData, m_Data, m_Size);
+                okSafeDeleteArray(m_Data);
+            }
             m_Data = newData;
             m_MaxSize = reservedSize;
         }

@@ -9,7 +9,7 @@ namespace OK
     class GameEngine
     {
     public:
-        void Init(const GameWindowData& windowData);
+        void Init(GameWindowData& windowData);
         void Shutdown();
         void RunEngineUntilEnd();
     private:
