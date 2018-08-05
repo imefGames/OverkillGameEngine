@@ -3,8 +3,13 @@
 
 namespace OK
 {
+    BaseComponentFactory::BaseComponentFactory(ComponentFactoryID factoryID)
+        : m_FactoryID{ factoryID }
+    {
+    }
+
     template<typename ComponentType>
-    Component& ComponentFactory<ComponentType>::InstanciateComponent()
+    BaseComponent& ComponentFactory<ComponentType>::InstanciateComponent()
     {
         ComponentType& newComponent = m_ComponentPool.Grow();
         return newComponent;

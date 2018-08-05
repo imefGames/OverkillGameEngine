@@ -3,12 +3,9 @@
 
 namespace OK
 {
-    namespace ComponentHolderHelper
+    ComponentHolderID ComponentHolder::GetNextComponentHolderID()
     {
-        ComponentHolderID GetNextComponentHolderID()
-        {
-            static ComponentHolderID currentComponentHolderID;
-            return ++currentComponentHolderID;
-        }
+        static ComponentHolderID currentComponentHolderID;
+        return ++currentComponentHolderID;
     }
 }

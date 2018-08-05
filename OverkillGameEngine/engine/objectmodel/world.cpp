@@ -6,7 +6,7 @@
 namespace OK
 {
     World::World()
-        : m_ComponentHolderID{ ComponentHolderHelper::GetNextComponentHolderID() }
+        : m_ComponentHolderID{ ComponentHolder::GetNextComponentHolderID() }
     {
     }
 }

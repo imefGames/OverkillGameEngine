@@ -7,7 +7,7 @@
 namespace OK
 {
     Universe::Universe()
-        : m_ComponentHolderID{ ComponentHolderHelper::GetNextComponentHolderID() }
+        : m_ComponentHolderID{ ComponentHolder::GetNextComponentHolderID() }
     {
     }
 }
