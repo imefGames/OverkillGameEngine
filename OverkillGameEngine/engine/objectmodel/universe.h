@@ -22,7 +22,8 @@ namespace OK
         void Update(OK::f32 dt);
 
         ComponentHolderID m_ComponentHolderID;
-        Array<World> m_World;
+        Array<World> m_Worlds;
+        World* m_CurrentWorld;
         PointerArray<UniverseSystem> m_UniverseSystems;
 
         friend OK::GameLoop;

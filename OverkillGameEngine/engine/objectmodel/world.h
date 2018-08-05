@@ -12,6 +12,10 @@ namespace OK
     public:
         World();
 
+        void Init();
+        void Shutdown();
+        void Update(OK::f32 dt);
+
     private:
         ComponentHolderID m_ComponentHolderID;
         PointerArray<WorldSystem> m_WorldSystems;
