@@ -223,5 +223,8 @@
     <ClInclude Include="core\string.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="core\containers\basestringview.h">
+      <Filter>core\containers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

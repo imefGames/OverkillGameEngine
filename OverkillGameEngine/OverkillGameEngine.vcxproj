@@ -173,6 +173,7 @@
     <ClInclude Include="core\containers\basecontainer.h" />
     <ClInclude Include="core\containers\pointerarray.h" />
     <ClInclude Include="core\containers\basestring.h" />
+    <ClInclude Include="core\containers\basestringview.h" />
     <ClInclude Include="core\io\filereader.h" />
     <ClInclude Include="core\io\parsers\jsonparser.h" />
     <ClInclude Include="core\math\vectors.h" />
