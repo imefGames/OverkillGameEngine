@@ -5,8 +5,8 @@
 
 namespace OK
 {
-    void MemCopy(void* source, void* destination, OK::u32 byteCount)
+    void MemCopy(const void* source, void* destination, OK::u32 byteCount)
     {
-        std::memcpy(source, destination, byteCount);
+        std::memcpy(destination, source, byteCount);
     }
 }

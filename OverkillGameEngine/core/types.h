@@ -12,7 +12,7 @@ namespace OK
     using s16 = signed short;
     using s8  = signed char;
 
-    using char8  = s8;
+    using char8  = char;
     using char16 = s16;
 
     using f32 = float;

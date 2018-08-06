@@ -2,7 +2,7 @@
 
 namespace OK
 {
-    void MemCopy(void* source, void* destination, OK::u32 byteCount);
+    void MemCopy(const void* source, void* destination, OK::u32 byteCount);
 
     template<typename ContainerType, typename PointerType>
     PointerType* Begin(ContainerType& container)
