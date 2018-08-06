@@ -7,7 +7,7 @@ namespace OK
     {
     public:
         BaseStringView();
-        BaseStringView(const T* stringStart, OK::u32 stringLength);
+        BaseStringView(T* stringStart, OK::u32 stringLength);
 
         OK::u32 GetLength() const;
 
@@ -19,9 +19,12 @@ namespace OK
         iterator end();
         const_iterator end() const;
 
+        OK::Bool operator==(const T* lhs);
+        OK::Bool operator!=(const T* lhs);
+
     private:
-        const T* m_StringStart;
-        const T* m_StringEnd;
+        T* m_StringStart;
+        T* m_StringEnd;
     };
 
     template<typename T>
@@ -32,7 +35,7 @@ namespace OK
     }
 
     template<typename T>
-    BaseStringView<T>::BaseStringView(const T* stringStart, OK::u32 stringLength)
+    BaseStringView<T>::BaseStringView(T* stringStart, OK::u32 stringLength)
         : m_StringStart{ stringStart }
         , m_StringEnd{ stringStart + stringLength }
     {
@@ -66,5 +69,17 @@ namespace OK
     typename BaseStringView<T>::const_iterator BaseStringView<T>::end() const
     {
         return m_StringEnd;
+    }
+
+    template<typename T>
+    OK::Bool BaseStringView<T>::operator==(const T* lhs)
+    {
+        return MemEqual(m_StringStart, lhs, GetLength());
+    }
+
+    template<typename T>
+    OK::Bool BaseStringView<T>::operator!=(const T* lhs)
+    {
+        return !(*this == lhs);
     }
 }

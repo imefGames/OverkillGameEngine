@@ -74,6 +74,9 @@
     <ClCompile Include="core\io\parsers\json\jsonparser.cpp">
       <Filter>core\io\parsers\json</Filter>
     </ClCompile>
+    <ClCompile Include="core\io\parsers\parserutils.cpp">
+      <Filter>core\io\parsers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -234,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="core\io\parsers\json\jsonparser.h">
       <Filter>core\io\parsers\json</Filter>
+    </ClInclude>
+    <ClInclude Include="core\io\parsers\parserutils.h">
+      <Filter>core\io\parsers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
