@@ -16,7 +16,7 @@ namespace OK
         const OK::char8* sourceBChar = reinterpret_cast<const OK::char8*>(sourceB);
         for(OK::u32 i = 0; i < byteCount; ++i)
         {
-            if (sourceAChar[i] != sourceAChar[i])
+            if (sourceAChar[i] != sourceBChar[i])
             {
                 return false;
             }

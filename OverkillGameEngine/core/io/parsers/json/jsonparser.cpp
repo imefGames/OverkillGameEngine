@@ -28,6 +28,7 @@ namespace OK
                 StringView nodeKey;
                 StringView nodeData{ m_FileText.begin(), m_FileText.GetSize() };
                 m_RootNode = new JSONNode(nodeKey, nodeData);
+                parseResult = m_RootNode->ComputeSubNodes();
             }
         }
         return parseResult;

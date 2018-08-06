@@ -7,12 +7,13 @@ namespace OK
     {
     public:
         BaseStringView();
+        BaseStringView(T* stringStart, T* stringEnd);
         BaseStringView(T* stringStart, OK::u32 stringLength);
 
         OK::u32 GetLength() const;
 
         using iterator = T*;
-        using const_iterator = const T*;
+        using const_iterator = T* const;
 
         iterator begin();
         const_iterator begin() const;
@@ -31,6 +32,13 @@ namespace OK
     BaseStringView<T>::BaseStringView()
         : m_StringStart{ nullptr }
         , m_StringEnd{ nullptr }
+    {
+    }
+
+    template<typename T>
+    BaseStringView<T>::BaseStringView(T* stringStart, T* stringEnd)
+        : m_StringStart{ stringStart }
+        , m_StringEnd{ stringEnd }
     {
     }
 

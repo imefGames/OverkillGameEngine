@@ -5,7 +5,7 @@ namespace OK
     class JSONNode
     {
     public:
-        enum ENodeType
+        enum class ENodeType
         {
             Undefined,
             Object,
@@ -20,6 +20,7 @@ namespace OK
         const StringView& GetData() const { return m_NodeData; }
 
         EResult ComputeSubNodes();
+        JSONNode* GetNodeAtIndex(OK::u32 nodeIndex);
         JSONNode* GetNode(const OK::char8* nodeKey);
 
     private:
