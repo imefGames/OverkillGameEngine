@@ -14,7 +14,7 @@ namespace OK
     };
 
     template <typename ComponentType>
-    class Component
+    class Component : public BaseComponent
     {
     public:
         static void RegisterComponentFactory(ComponentFactoryID factoryID);

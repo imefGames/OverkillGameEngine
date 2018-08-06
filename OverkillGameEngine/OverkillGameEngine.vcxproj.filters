@@ -56,6 +56,15 @@
     <ClCompile Include="graphics\graphicssystem.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\components\cameracomponent.cpp">
+      <Filter>graphics\components</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\components\modelcomponent.cpp">
+      <Filter>graphics\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\components\transformcomponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -84,6 +93,12 @@
     </Filter>
     <Filter Include="graphics\d3d">
       <UniqueIdentifier>{e2fcfd69-5691-476c-879e-5694d365377b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\components">
+      <UniqueIdentifier>{a735af1c-ae82-4482-a629-d29993aa3a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\components">
+      <UniqueIdentifier>{4b50379a-f043-451d-a41c-b2f302ccccee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +189,15 @@
     </ClInclude>
     <ClInclude Include="graphics\graphicssystem.h">
       <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\components\cameracomponent.h">
+      <Filter>graphics\components</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\components\modelcomponent.h">
+      <Filter>graphics\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\components\transformcomponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

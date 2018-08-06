@@ -19,7 +19,7 @@ namespace OK
     };
 
     template <typename ComponentType>
-    class ComponentFactory
+    class ComponentFactory : public BaseComponentFactory
     {
         static_assert(OK::IsBaseOf<BaseComponent, ComponentType>::value, "ComponentFactory must instanciate classes of type Component.");
 
@@ -44,5 +44,12 @@ namespace OK
     ComponentFactory<ComponentType>::~ComponentFactory()
     {
         ComponentType::UnregisterComponentFactory();
+    }
+
+    template<typename ComponentType>
+    BaseComponent& ComponentFactory<ComponentType>::InstanciateComponent()
+    {
+        ComponentType& newComponent = m_ComponentPool.Grow();
+        return newComponent;
     }
 }

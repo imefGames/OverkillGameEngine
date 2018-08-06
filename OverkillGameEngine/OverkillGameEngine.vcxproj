@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
     <ClCompile Include="engine\gameloop.cpp" />
     <ClCompile Include="engine\objectmodel\component.cpp" />
@@ -153,6 +154,8 @@
     <ClCompile Include="engine\window\gamewindow.cpp" />
     <ClCompile Include="engine\window\gamewindowdata.cpp" />
     <ClCompile Include="engine\window\gamewindoweventdata.cpp" />
+    <ClCompile Include="graphics\components\cameracomponent.cpp" />
+    <ClCompile Include="graphics\components\modelcomponent.cpp" />
     <ClCompile Include="graphics\d3d\d3dcontext.cpp" />
     <ClCompile Include="graphics\graphicssystem.cpp" />
     <ClCompile Include="graphics\graphicswrapper.cpp" />
@@ -172,6 +175,7 @@
     <ClInclude Include="core\singleton.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\components\transformcomponent.h" />
     <ClInclude Include="engine\gameengine.h" />
     <ClInclude Include="engine\gameloop.h" />
     <ClInclude Include="engine\objectmodel\component.h" />
@@ -185,6 +189,8 @@
     <ClInclude Include="engine\window\gamewindow.h" />
     <ClInclude Include="engine\window\gamewindowdata.h" />
     <ClInclude Include="engine\window\gamewindoweventdata.h" />
+    <ClInclude Include="graphics\components\cameracomponent.h" />
+    <ClInclude Include="graphics\components\modelcomponent.h" />
     <ClInclude Include="graphics\d3d\d3dcontext.h" />
     <ClInclude Include="graphics\graphicssystem.h" />
     <ClInclude Include="graphics\graphicswrapper.h" />
