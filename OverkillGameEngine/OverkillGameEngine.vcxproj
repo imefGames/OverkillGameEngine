@@ -139,6 +139,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
+    <ClCompile Include="core\io\filereader.cpp" />
+    <ClCompile Include="core\io\parsers\jsonparser.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
     <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
@@ -170,9 +172,13 @@
     <ClInclude Include="core\containers\array.h" />
     <ClInclude Include="core\containers\basecontainer.h" />
     <ClInclude Include="core\containers\pointerarray.h" />
+    <ClInclude Include="core\containers\basestring.h" />
+    <ClInclude Include="core\io\filereader.h" />
+    <ClInclude Include="core\io\parsers\jsonparser.h" />
     <ClInclude Include="core\math\vectors.h" />
     <ClInclude Include="core\operationstatus.h" />
     <ClInclude Include="core\singleton.h" />
+    <ClInclude Include="core\string.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
     <ClInclude Include="engine\components\transformcomponent.h" />

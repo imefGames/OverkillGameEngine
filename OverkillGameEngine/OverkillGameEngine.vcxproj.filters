@@ -65,6 +65,12 @@
     <ClCompile Include="engine\components\transformcomponent.cpp">
       <Filter>engine\components</Filter>
     </ClCompile>
+    <ClCompile Include="core\io\parsers\jsonparser.cpp">
+      <Filter>core\io\parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="core\io\filereader.cpp">
+      <Filter>core\io</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -99,6 +105,12 @@
     </Filter>
     <Filter Include="engine\components">
       <UniqueIdentifier>{4b50379a-f043-451d-a41c-b2f302ccccee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\io">
+      <UniqueIdentifier>{7110cafd-1c90-4da8-87b7-5311c797c233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\io\parsers">
+      <UniqueIdentifier>{0d97ee4c-ad1f-4555-823c-610847276613}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +210,18 @@
     </ClInclude>
     <ClInclude Include="engine\components\transformcomponent.h">
       <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="core\io\filereader.h">
+      <Filter>core\io</Filter>
+    </ClInclude>
+    <ClInclude Include="core\io\parsers\jsonparser.h">
+      <Filter>core\io\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="core\containers\basestring.h">
+      <Filter>core\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="core\string.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
