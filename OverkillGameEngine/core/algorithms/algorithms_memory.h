@@ -3,6 +3,7 @@
 namespace OK
 {
     void MemCopy(const void* source, void* destination, OK::u32 byteCount);
+    OK::Bool MemEqual(const void* sourceA, const void* sourceB, OK::u32 byteCount);
 
     template<typename ContainerType, typename PointerType>
     PointerType* Begin(ContainerType& container)

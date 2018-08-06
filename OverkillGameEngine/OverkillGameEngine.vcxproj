@@ -140,7 +140,8 @@
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
     <ClCompile Include="core\io\filereader.cpp" />
-    <ClCompile Include="core\io\parsers\jsonparser.cpp" />
+    <ClCompile Include="core\io\parsers\json\jsonnode.cpp" />
+    <ClCompile Include="core\io\parsers\json\jsonparser.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
     <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
@@ -175,7 +176,8 @@
     <ClInclude Include="core\containers\basestring.h" />
     <ClInclude Include="core\containers\basestringview.h" />
     <ClInclude Include="core\io\filereader.h" />
-    <ClInclude Include="core\io\parsers\jsonparser.h" />
+    <ClInclude Include="core\io\parsers\json\jsonnode.h" />
+    <ClInclude Include="core\io\parsers\json\jsonparser.h" />
     <ClInclude Include="core\math\vectors.h" />
     <ClInclude Include="core\operationstatus.h" />
     <ClInclude Include="core\singleton.h" />
