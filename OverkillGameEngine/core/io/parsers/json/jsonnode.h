@@ -18,6 +18,8 @@ namespace OK
 
         const StringView& GetKey() const { return m_NodeKey; }
         const StringView& GetData() const { return m_NodeData; }
+        ENodeType GetNodeType() const { return m_NodeType; }
+        OK::u32 GetArrayNodeSize() const { return m_SubNodes.GetSize(); }
 
         EResult ComputeSubNodes();
         JSONNode* GetNodeAtIndex(OK::u32 nodeIndex);

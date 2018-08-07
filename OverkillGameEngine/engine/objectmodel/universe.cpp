@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include <engine\objectmodel\universe.h>
 
+#include <core\io\parsers\json\jsonnode.h>
 #include <engine\objectmodel\universesystem.h>
 #include <graphics\graphicssystem.h>
 
@@ -12,6 +13,40 @@ namespace OK
     {
     }
 
+    EResult Universe::LoadGameData(JSONNode* universeNode)
+    {
+        okAssert(universeNode != nullptr, "Could not find Universe node in game data file.");
+        universeNode->ComputeSubNodes();
+        JSONNode* worldList = universeNode->GetNode("Worlds");
+        JSONNode* startupWorld = universeNode->GetNode("StartupWorld");
+        okAssert(worldList != nullptr, "Could not find World List node in game data file.");
+        okAssert(startupWorld != nullptr, "Could not find Startup World node in game data file.");
+
+        worldList->ComputeSubNodes();
+        startupWorld->ComputeSubNodes();
+        okAssert(worldList->GetNodeType() == JSONNode::ENodeType::Array, "World List node in must be of type Array.");
+        okAssert(startupWorld->GetNodeType() == JSONNode::ENodeType::Leaf, "Startup World node in must be of type Leaf.");
+
+        OK::u32 worldListSize = worldList->GetArrayNodeSize();
+        for (OK::u32 i = 0; i < worldListSize; ++i)
+        {
+            JSONNode* worldNode = worldList->GetNodeAtIndex(i);
+            World& newWorld = m_Worlds.Grow();
+            newWorld.LoadGameData(worldNode);
+        }
+
+        StringView startupWorldName = startupWorld->GetData();
+        auto findByName = [startupWorldName](const World& currentWorld)
+        {
+            return startupWorldName == currentWorld.GetWorldName().begin();
+        };
+        m_CurrentWorld = OK::FindIf(m_Worlds.begin(), m_Worlds.end(), findByName);
+        okAssert(m_CurrentWorld != m_Worlds.end(), "Could not find startup world.");
+
+        //TODO: load universe components
+
+        return EResult::Success;
+    }
 
     void Universe::Init()
     {
@@ -49,8 +84,7 @@ namespace OK
             system->Update(dt);
         }
 
-        //TODO: re-use assert once we have worlds
-        //okAssert(m_CurrentWorld != nullptr, "Universe has no current world.");
+        okAssert(m_CurrentWorld != nullptr, "Universe has no current world.");
         if (m_CurrentWorld != nullptr)
         {
             m_CurrentWorld->Update(dt);

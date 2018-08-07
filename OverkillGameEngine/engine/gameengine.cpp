@@ -1,13 +1,18 @@
 #include <stdafx.h>
 #include <engine\gameengine.h>
 
+#include <core\io\parsers\json\jsonnode.h>
+#include <core\io\parsers\json\jsonparser.h>
 #include <engine\gameloop.h>
+#include <engine\objectmodel\universe.h>
 #include <engine\window\gamewindow.h>
 #include <engine\window\gamewindoweventdata.h>
 #include <graphics\graphicswrapper.h>
 
 namespace OK
 {
+    const OK::char8* K_GAME_DATA_FILE_PATH = "GameData.json";
+
     void GameEngine::Init(GameWindowData& windowData)
     {
         GraphicsWrapper::CreateSingleton();
@@ -17,6 +22,8 @@ namespace OK
         m_GameLoop->Init();
         m_GameWindow->Init(windowData);
         GraphicsWrapper::Get()->Init(windowData);
+
+        LoadGameData("GameData.json");
     }
 
     void GameEngine::Shutdown()
@@ -45,6 +52,22 @@ namespace OK
             {
                 keepRunning = false;
             }
+        }
+    }
+
+    void GameEngine::LoadGameData(const OK::char8* filePath)
+    {
+        EResult loadResult{ EResult::Failure };
+        JSONParser parser{ filePath };
+        if (parser.ParseRootNodes() == EResult::Success)
+        {
+            JSONNode* universeNode = parser.GetNode("Universe");
+            loadResult = Universe::Get()->LoadGameData(universeNode);
+        }
+
+        if (loadResult == EResult::Failure)
+        {
+            //TODO: Show error message in message box.
         }
     }
 }

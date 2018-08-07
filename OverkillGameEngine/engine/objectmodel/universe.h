@@ -8,6 +8,7 @@
 namespace OK
 {
     class GameLoop;
+    class JSONNode;
     class World;
     class UniverseSystem;
 
@@ -15,6 +16,8 @@ namespace OK
     {
     public:
         Universe();
+
+        EResult LoadGameData(JSONNode* universeNode);
 
     private:
         void Init();

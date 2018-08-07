@@ -48,13 +48,13 @@ namespace OK
             }
             else
             {
-                MessageBox(NULL, _T("Call to CreateWindow failed!"), _T("Win32 Guided Tour"), NULL);
+                MessageBox(NULL, _T("Call to CreateWindow failed!"), _T("Error"), NULL);
                 return EResult::Failure;
             }
         }
         else
         {
-            MessageBox(NULL, _T("Call to RegisterClassEx failed!"), _T("Win32 Guided Tour"), NULL);
+            MessageBox(NULL, _T("Call to RegisterClassEx failed!"), _T("Error"), NULL);
             initResult = EResult::Failure;
         }
         return initResult;

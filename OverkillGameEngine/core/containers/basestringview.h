@@ -90,4 +90,10 @@ namespace OK
     {
         return !(*this == lhs);
     }
+
+    template<typename T>
+    OK::Bool operator==(const BaseStringView<T>& rhs, const T* lhs)
+    {
+        return MemEqual(rhs.begin(), lhs, rhs.GetLength());
+    }
 }
