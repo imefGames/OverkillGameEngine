@@ -6,6 +6,7 @@
 namespace OK
 {
     class BaseComponentFactory;
+    class JSONNode;
 
     using ComponentHolderID = OK::u64;
     using ComponentFactoryID = OK::u64;
@@ -18,6 +19,7 @@ namespace OK
         ComponentHolder();
         ~ComponentHolder();
 
+        static EResult LoadEntity(ComponentHolderID entityID, JSONNode* entityNode);
         static ComponentHolderID GetNextComponentHolderID();
 
     private:

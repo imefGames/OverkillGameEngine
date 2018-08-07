@@ -24,6 +24,7 @@ namespace OK
     private:
         String m_WorldName;
         ComponentHolderID m_ComponentHolderID;
+        Array<ComponentHolderID> m_EntityIDs;
         PointerArray<WorldSystem> m_WorldSystems;
     };
 }

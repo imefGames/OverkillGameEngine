@@ -4,7 +4,7 @@
 
 namespace OK
 {
-    class TransformComponent : public Component<TransformComponent>
+    class ModelComponent : public Component<ModelComponent>
     {
     };
 }

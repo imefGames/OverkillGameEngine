@@ -15,6 +15,7 @@ namespace OK
 
     void GameEngine::Init(GameWindowData& windowData)
     {
+        ComponentHolder::CreateSingleton();
         GraphicsWrapper::CreateSingleton();
         m_GameLoop = new GameLoop;
         m_GameWindow = new GameWindow;
@@ -36,6 +37,7 @@ namespace OK
         okSafeDelete(m_GameLoop);
         okSafeDelete(m_GameWindow);
         GraphicsWrapper::DeleteSingleton();
+        ComponentHolder::DeleteSingleton();
     }
 
     void GameEngine::RunEngineUntilEnd()

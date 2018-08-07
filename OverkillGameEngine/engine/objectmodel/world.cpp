@@ -16,7 +16,9 @@ namespace OK
         okAssert(worldNode != nullptr, "Could not find World node in game data file.");
         worldNode->ComputeSubNodes();
         JSONNode* worldName = worldNode->GetNode("Name");
+        JSONNode* entityList = worldNode->GetNode("Entities");
         okAssert(worldName != nullptr, "Could not find World Name node in game data file.");
+        okAssert(entityList != nullptr, "Could not find Entity List node in game data file.");
 
         worldName->ComputeSubNodes();
         okAssert(worldName->GetNodeType() == JSONNode::ENodeType::Leaf, "World Name node in must be of type Leaf.");
@@ -24,8 +26,18 @@ namespace OK
         m_WorldName.Resize(worldNameView.GetLength());
         OK::MemCopy(worldNameView.begin(), m_WorldName.begin(), m_WorldName.GetSize());
 
+        entityList->ComputeSubNodes();
+        okAssert(entityList->GetNodeType() == JSONNode::ENodeType::Array, "Entity List node in must be of type Array.");
+        OK::u32 entityCount = entityList->GetArrayNodeSize();
+        m_EntityIDs.Clear();
+        m_EntityIDs.Reserve(entityList->GetArrayNodeSize());
+        for (OK::u32 i = 0; i < entityCount; ++i)
+        {
+            ComponentHolderID newEntity = m_EntityIDs.Add(ComponentHolder::GetNextComponentHolderID());
+            ComponentHolder::LoadEntity(newEntity, entityList->GetNodeAtIndex(i));
+        }
+
         //TODO: load world components
-        //TODO: instanciate entities
 
         return EResult::Success;
     }

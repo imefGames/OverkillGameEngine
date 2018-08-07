@@ -4,8 +4,14 @@
 
 namespace OK
 {
+    class JSONNode;
+
     class BaseComponent
     {
+    public:
+        virtual EResult LoadComponent(JSONNode* componentNode) { return EResult::Success; }
+        void SetHolderID(ComponentHolderID componentHolderID) { m_ComponentHolderID = m_ComponentHolderID; }
+
     protected:
         BaseComponent();
 
@@ -22,8 +28,6 @@ namespace OK
 
     private:
         static ComponentFactoryID ms_FactoryID;
-
-        ComponentHolderID m_ComponentHolderID;
     };
 
     template <typename ComponentType>

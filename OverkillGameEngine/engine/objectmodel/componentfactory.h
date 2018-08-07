@@ -11,10 +11,13 @@ namespace OK
     public:
         virtual BaseComponent& InstanciateComponent() = 0;
 
+        const String& GetName() const { return m_Name; }
+
     protected:
-        BaseComponentFactory(ComponentFactoryID factoryID);
+        BaseComponentFactory(ComponentFactoryID factoryID, const OK::char8* name);
 
     private:
+        String m_Name;
         ComponentFactoryID m_FactoryID;
     };
 
@@ -24,7 +27,7 @@ namespace OK
         static_assert(OK::IsBaseOf<BaseComponent, ComponentType>::value, "ComponentFactory must instanciate classes of type Component.");
 
     public:
-        ComponentFactory(ComponentFactoryID factoryID);
+        ComponentFactory(ComponentFactoryID factoryID, const OK::char8* name);
         ~ComponentFactory();
 
     private:
@@ -34,8 +37,8 @@ namespace OK
     };
 
     template<typename ComponentType>
-    ComponentFactory<ComponentType>::ComponentFactory(ComponentFactoryID factoryID)
-        : BaseComponentFactory{ factoryID }
+    ComponentFactory<ComponentType>::ComponentFactory(ComponentFactoryID factoryID, const OK::char8* name)
+        : BaseComponentFactory{ factoryID, name }
     {
         ComponentType::RegisterComponentFactory(factoryID);
     }
