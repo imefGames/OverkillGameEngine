@@ -1,6 +1,7 @@
 #pragma once
 
 #include <engine\objectmodel\componentholder.h>
+#include <malloc.h>
 
 namespace OK
 {
@@ -25,6 +26,26 @@ namespace OK
     public:
         static void RegisterComponentFactory(ComponentFactoryID factoryID);
         static void UnregisterComponentFactory();
+
+        static void* operator new(size_t size)
+        {
+            return _aligned_malloc(size, alignof(ComponentType));
+        }
+
+        static void* operator new[](size_t size)
+        {
+            return _aligned_malloc(size, alignof(ComponentType));
+        }
+
+        static void operator delete(void* pointer)
+        {
+            _aligned_free(pointer);
+        }
+
+        static void operator delete[](void* pointer)
+        {
+            _aligned_free(pointer);
+        }
 
     private:
         static ComponentFactoryID ms_FactoryID;
