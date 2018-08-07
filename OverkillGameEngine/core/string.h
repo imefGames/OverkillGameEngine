@@ -22,6 +22,6 @@ namespace OK
         str.Resize(length + 1);
         OK::MemCopy(string, str.begin(), length);
         str[length] = '\0';
-        return std::atof(str.begin());
+        return static_cast<OK::f32>(std::atof(str.begin()));
     }
 }
