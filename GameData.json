@@ -1,27 +1,49 @@
 {
-	"Entity_0x000000001" :
+	"Universe" :
 	{
-		"Transform" :
-		{
-			"x" = 10 ,
-			"y" = 20 ,
-			"z" = 30 ,
-		} ,
-		"Model" :
-		{
-			"Points" :
-			[
-				{
-					"x" = 11 ,
-					"y" = 12 ,
-					"z" = 13 ,
-				} ,
-				{
-					"x" = 21 ,
-					"y" = 22 ,
-					"z" = 23 ,
-				}
-			]
-		}
+		"Components" :
+		[
+		] ,
+		"StartupWorld" : "TestWorld",
+		"Worlds" :
+		[
+			{
+				"Name" : "TestWorld" ,
+				"Components" :
+				[
+				] ,
+				"Entities" :
+				[
+					{
+						"Components" :
+						[
+							{
+								"Name" : "Transform" ,
+								"x" : 0 ,
+								"y" : 0 ,
+								"z" : 0
+							} ,
+							{
+								"Name" : "Camera" ,
+							}
+						]
+					} ,
+					{
+						"Components" :
+						[
+							{
+								"Name" : "Transform" ,
+								"x" : 0 ,
+								"y" : 0 ,
+								"z" : 0
+							} ,
+							{
+								"Name" : "Model"
+							}
+						]
+					}
+				]
+			}
+		]
 	}
 }
