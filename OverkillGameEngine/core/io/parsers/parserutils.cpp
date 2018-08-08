@@ -39,7 +39,12 @@ namespace OK
                     {
                         case EParserTokenType::Operator:
                         {
-                            if (!std::ispunct(currentChar))
+                            if (std::isdigit(currentChar))
+                            {
+                                //HACK to handle negative numbers
+                                tokenType = EParserTokenType::Number;
+                            }
+                            else if (!std::ispunct(currentChar))
                             {
                                 //TODO: ReportError("Invalid character in symbol (%x). Expected an operator character.", currentChar);
                                 parseResult = EResult::Failure;

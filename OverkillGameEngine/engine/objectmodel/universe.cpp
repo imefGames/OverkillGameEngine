@@ -97,6 +97,7 @@ namespace OK
 
     void Universe::ResetActiveComponentHolderList()
     {
+        okAssert(m_CurrentWorld != nullptr, "Universe has no current world.");
         const Array<ComponentHolderID>& worldEntities = m_CurrentWorld->GetEntityIDs();
 
         m_ActiveComponentHolderIDs.Clear();

@@ -73,15 +73,15 @@ namespace OK
         VertexList vertexList;
         VertexData v;
         v.m_Position = OK::Vec4(-1.0f, -1.0f, 0.0f);  // Bottom left.
-        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
         vd.Add(v);
 
         v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f);  // Top middle.
-        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
         vd.Add(v);
 
         v.m_Position = OK::Vec4(1.0f, -1.0f, 0.0f);  // Bottom right.
-        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
         vd.Add(v);
         vertexList.SetVertexList(m_RenderingContext, vd);
 

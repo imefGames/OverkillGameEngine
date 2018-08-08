@@ -360,7 +360,7 @@ namespace OK
             const OK::Vec4& cameraPosition = cameraTransform->GetPosition();
 
             D3DXVECTOR3 up{ 0.0f, 1.0f, 0.0f };
-            D3DXVECTOR3 position{ 0.0f, 1.0f, 0.0f };
+            D3DXVECTOR3 position{ cameraPosition.GetX(), cameraPosition.GetY(), cameraPosition.GetZ() };
             D3DXVECTOR3 lookAt{ 0.0f, 0.0f, 1.0f };
 
             D3DXMATRIX rotationMatrix;
