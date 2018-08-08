@@ -10,6 +10,7 @@ namespace OK
     {
     public:
         virtual BaseComponent& InstanciateComponent() = 0;
+        virtual BaseComponent* FindComponentForID(ComponentHolderID holderID) = 0;
 
         const String& GetName() const { return m_Name; }
 
@@ -32,6 +33,7 @@ namespace OK
 
     private:
         BaseComponent& InstanciateComponent() override;
+        BaseComponent* FindComponentForID(ComponentHolderID holderID) override;
 
         Array<ComponentType> m_ComponentPool;
     };
@@ -54,5 +56,16 @@ namespace OK
     {
         ComponentType& newComponent = m_ComponentPool.Grow();
         return newComponent;
+    }
+
+    template<typename ComponentType>
+    BaseComponent* ComponentFactory<ComponentType>::FindComponentForID(ComponentHolderID holderID)
+    {
+        auto findByID = [holderID](const ComponentType& component)
+        {
+            return (component.GetHolderID() == holderID);
+        };
+        auto foundIt = OK::FindIf(m_ComponentPool.begin(), m_ComponentPool.end(), findByID);
+        return (foundIt != m_ComponentPool.end() ? foundIt : nullptr);
     }
 }

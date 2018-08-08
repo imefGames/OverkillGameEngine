@@ -150,6 +150,7 @@
     <ClCompile Include="engine\objectmodel\component.cpp" />
     <ClCompile Include="engine\objectmodel\componentfactory.cpp" />
     <ClCompile Include="engine\objectmodel\componentholder.cpp" />
+    <ClCompile Include="engine\objectmodel\componentutils.cpp" />
     <ClCompile Include="engine\objectmodel\system.cpp" />
     <ClCompile Include="engine\objectmodel\universe.cpp" />
     <ClCompile Include="engine\objectmodel\universesystem.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="engine\window\gamewindow.cpp" />
     <ClCompile Include="engine\window\gamewindowdata.cpp" />
     <ClCompile Include="engine\window\gamewindoweventdata.cpp" />
+    <ClCompile Include="graphics\camerasystem.cpp" />
     <ClCompile Include="graphics\components\cameracomponent.cpp" />
     <ClCompile Include="graphics\components\modelcomponent.cpp" />
     <ClCompile Include="graphics\d3d\d3dcontext.cpp" />
@@ -192,6 +194,7 @@
     <ClInclude Include="engine\objectmodel\component.h" />
     <ClInclude Include="engine\objectmodel\componentfactory.h" />
     <ClInclude Include="engine\objectmodel\componentholder.h" />
+    <ClInclude Include="engine\objectmodel\componentutils.h" />
     <ClInclude Include="engine\objectmodel\system.h" />
     <ClInclude Include="engine\objectmodel\universe.h" />
     <ClInclude Include="engine\objectmodel\universesystem.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="engine\window\gamewindow.h" />
     <ClInclude Include="engine\window\gamewindowdata.h" />
     <ClInclude Include="engine\window\gamewindoweventdata.h" />
+    <ClInclude Include="graphics\camerasystem.h" />
     <ClInclude Include="graphics\components\cameracomponent.h" />
     <ClInclude Include="graphics\components\modelcomponent.h" />
     <ClInclude Include="graphics\d3d\d3dcontext.h" />

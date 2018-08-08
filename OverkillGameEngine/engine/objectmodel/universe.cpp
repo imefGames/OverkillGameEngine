@@ -3,6 +3,7 @@
 
 #include <core\io\parsers\json\jsonnode.h>
 #include <engine\objectmodel\universesystem.h>
+#include <graphics\camerasystem.h>
 #include <graphics\graphicssystem.h>
 
 namespace OK
@@ -50,6 +51,7 @@ namespace OK
 
     void Universe::Init()
     {
+        m_UniverseSystems.Add(new CameraSystem);
         m_UniverseSystems.Add(new GraphicsSystem);
 
         for (UniverseSystem* system : m_UniverseSystems)
@@ -79,6 +81,8 @@ namespace OK
 
     void Universe::Update(OK::f32 dt)
     {
+        ResetActiveComponentHolderList();
+
         for (UniverseSystem* system : m_UniverseSystems)
         {
             system->Update(dt);
@@ -88,6 +92,22 @@ namespace OK
         if (m_CurrentWorld != nullptr)
         {
             m_CurrentWorld->Update(dt);
+        }
+    }
+
+    void Universe::ResetActiveComponentHolderList()
+    {
+        const Array<ComponentHolderID>& worldEntities = m_CurrentWorld->GetEntityIDs();
+
+        m_ActiveComponentHolderIDs.Clear();
+        m_ActiveComponentHolderIDs.Reserve(worldEntities.GetSize() + 2); // doing +2 for universe & world
+        m_ActiveComponentHolderIDs.Add(m_ComponentHolderID);
+        ComponentHolderID worldComponentHolderID = m_CurrentWorld->GetComponentHolderID();
+        m_ActiveComponentHolderIDs.Add(worldComponentHolderID);
+
+        for (const ComponentHolderID& entityHolderID : worldEntities)
+        {
+            m_ActiveComponentHolderIDs.Add(entityHolderID);
         }
     }
 }

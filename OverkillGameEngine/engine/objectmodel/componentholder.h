@@ -5,6 +5,7 @@
 
 namespace OK
 {
+    class BaseComponent;
     class BaseComponentFactory;
     class JSONNode;
 
@@ -19,7 +20,9 @@ namespace OK
         ComponentHolder();
         ~ComponentHolder();
 
+        //TODO: rename function. It really loads a component list.
         static EResult LoadEntity(ComponentHolderID entityID, JSONNode* entityNode);
+        static BaseComponent* FindComponentForID(ComponentHolderID holderID, ComponentFactoryID factoryID);
         static ComponentHolderID GetNextComponentHolderID();
 
     private:

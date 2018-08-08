@@ -11,7 +11,9 @@ namespace OK
     {
     public:
         virtual EResult LoadComponent(JSONNode* componentNode) { return EResult::Success; }
-        void SetHolderID(ComponentHolderID componentHolderID) { m_ComponentHolderID = m_ComponentHolderID; }
+
+        ComponentHolderID GetHolderID() const { return m_ComponentHolderID; }
+        void SetHolderID(ComponentHolderID componentHolderID) { m_ComponentHolderID = componentHolderID; }
 
     protected:
         BaseComponent();
@@ -26,6 +28,7 @@ namespace OK
     public:
         static void RegisterComponentFactory(ComponentFactoryID factoryID);
         static void UnregisterComponentFactory();
+        static ComponentFactoryID GetFactoryID() { return ms_FactoryID; };
 
         static void* operator new(size_t size)
         {

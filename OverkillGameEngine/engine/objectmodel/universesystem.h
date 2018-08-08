@@ -8,5 +8,7 @@ namespace OK
     {
     protected:
         UniverseSystem() = default;
+
+        const Array<ComponentHolderID>& GetActiveComponentHolders() const;
     };
 }

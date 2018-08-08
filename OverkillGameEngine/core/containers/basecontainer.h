@@ -131,7 +131,7 @@ namespace OK
     template<typename T>
     void BaseContainer<T>::Clear()
     {
-        m_Data = 0;
+        m_Size = 0;
         m_MaxSize = 0;
     }
 

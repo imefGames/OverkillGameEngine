@@ -77,6 +77,12 @@
     <ClCompile Include="core\io\parsers\parserutils.cpp">
       <Filter>core\io\parsers</Filter>
     </ClCompile>
+    <ClCompile Include="engine\objectmodel\componentutils.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\camerasystem.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -240,6 +246,12 @@
     </ClInclude>
     <ClInclude Include="core\io\parsers\parserutils.h">
       <Filter>core\io\parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\componentutils.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\camerasystem.h">
+      <Filter>graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

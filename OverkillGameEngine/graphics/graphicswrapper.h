@@ -5,6 +5,8 @@
 namespace OK
 {
     class D3DContext;
+    class ModelComponent;
+    class TransformComponent;
     struct GameWindowData;
 
     class GraphicsWrapper : public Singleton<GraphicsWrapper>
@@ -16,6 +18,9 @@ namespace OK
         void Shutdown();
         void BeginScene();
         void EndScene();
+
+        void RenderModel(const ModelComponent* model, const TransformComponent* transform);
+        void SetCameraTransform(const TransformComponent* transform);
 
     private:
         static const bool K_FULL_SCREEN;

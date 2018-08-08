@@ -66,6 +66,14 @@ namespace OK
         return loadResult;
     }
 
+    BaseComponent* ComponentHolder::FindComponentForID(ComponentHolderID holderID, ComponentFactoryID factoryID)
+    {
+        ComponentHolder* componentHolder = ComponentHolder::Get();
+        okAssert(factoryID < componentHolder->m_Factories.GetSize(), "Invalid Component factory ID.");
+        BaseComponentFactory* foundFactory = componentHolder->m_Factories[static_cast<u32>(factoryID)];
+        return foundFactory->FindComponentForID(holderID);
+    }
+
     ComponentHolderID ComponentHolder::GetNextComponentHolderID()
     {
         static ComponentHolderID currentComponentHolderID;

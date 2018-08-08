@@ -1,5 +1,7 @@
 #pragma once
 
+#include <engine\objectmodel\componentholder.h>
+
 namespace OK
 {
     class System

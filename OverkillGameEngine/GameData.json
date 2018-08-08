@@ -24,7 +24,8 @@
 								z : 0
 							} ,
 							{
-								Name : "Camera" ,
+                                Name : "Camera",
+                                IsActive : true
 							}
 						]
 					} ,

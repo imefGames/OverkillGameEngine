@@ -20,6 +20,8 @@ namespace OK
         void Update(OK::f32 dt);
 
         const String& GetWorldName() const { return m_WorldName; }
+        ComponentHolderID GetComponentHolderID() const { return m_ComponentHolderID; }
+        const Array<ComponentHolderID>& GetEntityIDs() const { return m_EntityIDs; }
 
     private:
         String m_WorldName;

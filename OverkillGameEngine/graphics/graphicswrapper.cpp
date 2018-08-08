@@ -1,7 +1,9 @@
 #include <stdafx.h>
 #include <graphics\graphicswrapper.h>
 
+#include <engine\components\transformcomponent.h>
 #include <engine\window\gamewindowdata.h>
+#include <graphics\components\modelcomponent.h>
 #include <graphics\d3d\d3dcontext.h>
 
 namespace OK
@@ -48,11 +50,29 @@ namespace OK
 
     void GraphicsWrapper::BeginScene()
     {
-        m_D3DContext->BeginScene(0.5f, 0.5f, 0.5f, 1.0f);
+        m_D3DContext->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
+
+        okAssert(false, "Get World & projection matrixes");
     }
 
     void GraphicsWrapper::EndScene()
     {
         m_D3DContext->EndScene();
+    }
+
+    void GraphicsWrapper::RenderModel(const ModelComponent* model, const TransformComponent* transform)
+    {
+        okAssert(false, "TODO");
+        /*
+        Prepare model for drawing
+        Find shader from library
+        Run shader
+        */
+    }
+
+    void GraphicsWrapper::SetCameraTransform(const TransformComponent* transform)
+    {
+        okAssert(false, "TODO");
+        //Compute view matrix
     }
 }

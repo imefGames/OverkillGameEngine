@@ -8,7 +8,7 @@ namespace OK
     class Array : public BaseContainer<T>
     {
     public:
-        T& Add(T&& newElement);
+        T& Add(const T& newElement);
         T& Insert(T&& newElement, OK::u32 elementIndex);
         T& Grow();
         void RemoveAt(OK::u32 elementIndex);
@@ -24,10 +24,10 @@ namespace OK
     };
 
     template<typename T>
-    T& Array<T>::Add(T&& newElement)
+    T& Array<T>::Add(const T& newElement)
     {
         T& addedElement = Grow();
-        addedElement = std::forward<T>(newElement);
+        addedElement = newElement;
         return addedElement;
     }
 
