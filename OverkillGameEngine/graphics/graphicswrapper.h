@@ -1,6 +1,8 @@
 #pragma once
 
 #include <core\singleton.h>
+#include <graphics\renderingcontext.h>
+#include <graphics\shaders\shaderlibrary.h>
 
 namespace OK
 {
@@ -16,11 +18,10 @@ namespace OK
 
         EResult Init(const GameWindowData& windowData);
         void Shutdown();
-        void BeginScene();
+        void BeginScene(const TransformComponent* cameraTransform);
         void EndScene();
 
         void RenderModel(const ModelComponent* model, const TransformComponent* transform);
-        void SetCameraTransform(const TransformComponent* transform);
 
     private:
         static const bool K_FULL_SCREEN;
@@ -29,5 +30,7 @@ namespace OK
         static const float K_SCREEN_NEAR;
 
         D3DContext* m_D3DContext;
+        RenderingContext m_RenderingContext;
+        ShaderLibrary m_ShaderLibrary;
     };
 }

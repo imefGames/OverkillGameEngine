@@ -5,6 +5,8 @@
 #include <engine\window\gamewindowdata.h>
 #include <graphics\components\modelcomponent.h>
 #include <graphics\d3d\d3dcontext.h>
+#include <graphics\model\vertexlist.h>
+#include <graphics\shaders\shader.h>
 
 namespace OK
 {
@@ -36,11 +38,16 @@ namespace OK
             result = EResult::Failure;
         }
 
+        m_D3DContext->ComputeRenderingContext(m_RenderingContext, nullptr);
+        m_ShaderLibrary.PopulateLibrary(m_RenderingContext);
+
         return result;
     }
 
     void GraphicsWrapper::Shutdown()
     {
+        m_ShaderLibrary.ClearLibrary();
+
         if (m_D3DContext != nullptr)
         {
             m_D3DContext->Shutdown();
@@ -48,11 +55,10 @@ namespace OK
         }
     }
 
-    void GraphicsWrapper::BeginScene()
+    void GraphicsWrapper::BeginScene(const TransformComponent* cameraTransform)
     {
         m_D3DContext->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
-
-        okAssert(false, "Get World & projection matrixes");
+        m_D3DContext->ComputeRenderingContext(m_RenderingContext, cameraTransform);
     }
 
     void GraphicsWrapper::EndScene()
@@ -62,17 +68,34 @@ namespace OK
 
     void GraphicsWrapper::RenderModel(const ModelComponent* model, const TransformComponent* transform)
     {
-        okAssert(false, "TODO");
-        /*
-        Prepare model for drawing
-        Find shader from library
-        Run shader
-        */
-    }
+        //TODO: get vertex list from component.
+        Array<VertexData> vd;
+        VertexList vertexList;
+        VertexData v;
+        v.m_Position = OK::Vec4(-1.0f, -1.0f, 0.0f);  // Bottom left.
+        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        vd.Add(v);
 
-    void GraphicsWrapper::SetCameraTransform(const TransformComponent* transform)
-    {
-        okAssert(false, "TODO");
-        //Compute view matrix
+        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f);  // Top middle.
+        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        vd.Add(v);
+
+        v.m_Position = OK::Vec4(1.0f, -1.0f, 0.0f);  // Bottom right.
+        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+        vd.Add(v);
+        vertexList.SetVertexList(m_RenderingContext, vd);
+
+        Array<OK::u32> id;
+        id.Add(0);
+        id.Add(1);
+        id.Add(2);
+        vertexList.SetIndexList(m_RenderingContext, id);
+
+        m_D3DContext->PrepareModelRendering(m_RenderingContext, vertexList);
+        Shader* foundShader = m_ShaderLibrary.FindShader(model->GetShaderName().begin());
+        if (foundShader != nullptr)
+        {
+            foundShader->RunShader(m_RenderingContext, vertexList.GetIndexCount());// v.GetIndexCount());
+        }
     }
 }

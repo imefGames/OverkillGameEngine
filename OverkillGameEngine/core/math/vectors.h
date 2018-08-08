@@ -9,7 +9,7 @@ namespace OK
     public:
         Vec4();
         Vec4(const Vec4& other);
-        Vec4(OK::f32 x, OK::f32 y = 0.0f, OK::f32 z = 0.0f, OK::f32 w = 0.0f);
+        Vec4(OK::f32 x, OK::f32 y = 0.0f, OK::f32 z = 0.0f, OK::f32 w = 1.0f);
 
         OK::f32 GetX() const;
         OK::f32 GetY() const;

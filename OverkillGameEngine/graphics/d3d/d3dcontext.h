@@ -17,6 +17,11 @@
 
 namespace OK
 {
+    class ModelComponent;
+    class TransformComponent;
+    struct RenderingContext;
+    struct VertexList;
+
     class D3DContext
     {
     public:
@@ -31,6 +36,9 @@ namespace OK
 
         ID3D11Device* GetDevice();
         ID3D11DeviceContext* GetDeviceContext();
+
+        void ComputeRenderingContext(RenderingContext& renderingContext, const TransformComponent* cameraTransform);
+        void PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList);
 
         void GetProjectionMatrix(D3DXMATRIX&);
         void GetWorldMatrix(D3DXMATRIX&);

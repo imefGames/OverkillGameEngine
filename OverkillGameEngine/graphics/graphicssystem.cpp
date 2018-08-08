@@ -26,21 +26,19 @@ namespace OK
 
     void GraphicsSystem::Update(OK::f32 dt)
     {
-        m_GraphicsWrapper->BeginScene();
-
         ComponentHolderID cameraHolderID{ CameraSystem::GetActiveCameraComponentHolderID() };
         TransformComponent* cameraTransform{ nullptr };
         ComponentUtils::FindComponents(cameraHolderID, cameraTransform);
-        m_GraphicsWrapper->SetCameraTransform(cameraTransform);
+        m_GraphicsWrapper->BeginScene(cameraTransform);
 
         const Array<ComponentHolderID>& activeHolderIDs{ GetActiveComponentHolders() };
         for (ComponentHolderID holderID : activeHolderIDs)
         {
-            ModelComponent* modelTransform{ nullptr };
-            TransformComponent* currentTransform{ nullptr };
-            if (ComponentUtils::FindComponents(cameraHolderID, modelTransform, currentTransform) == EResult::Success)
+            ModelComponent* model{ nullptr };
+            TransformComponent* transform{ nullptr };
+            if (ComponentUtils::FindComponents(holderID, model, transform) == EResult::Success)
             {
-                m_GraphicsWrapper->RenderModel(modelTransform, currentTransform);
+                m_GraphicsWrapper->RenderModel(model, transform);
             }
         }
 

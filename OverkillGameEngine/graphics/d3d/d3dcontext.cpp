@@ -1,6 +1,11 @@
 #include <stdafx.h>
 #include <graphics\d3d\d3dcontext.h>
 
+#include <engine\components\transformcomponent.h>
+#include <graphics\renderingcontext.h>
+#include <graphics\components\modelcomponent.h>
+#include <graphics\model\vertexlist.h>
+
 namespace OK
 {
     D3DContext::D3DContext()
@@ -346,6 +351,43 @@ namespace OK
     ID3D11DeviceContext* D3DContext::GetDeviceContext()
     {
 	    return m_deviceContext;
+    }
+
+    void D3DContext::ComputeRenderingContext(RenderingContext& renderingContext, const TransformComponent* cameraTransform)
+    {
+        if (cameraTransform != nullptr)
+        {
+            const OK::Vec4& cameraPosition = cameraTransform->GetPosition();
+
+            D3DXVECTOR3 up{ 0.0f, 1.0f, 0.0f };
+            D3DXVECTOR3 position{ 0.0f, 1.0f, 0.0f };
+            D3DXVECTOR3 lookAt{ 0.0f, 0.0f, 1.0f };
+
+            D3DXMATRIX rotationMatrix;
+            D3DXMatrixRotationYawPitchRoll(&rotationMatrix, 0 * 0.0174532925f, 0 * 0.0174532925f, 0 * 0.0174532925f);
+            D3DXVec3TransformCoord(&lookAt, &lookAt, &rotationMatrix);
+            D3DXVec3TransformCoord(&up, &up, &rotationMatrix);
+            lookAt = position + lookAt;
+
+            D3DXMATRIX viewMatrix;
+            D3DXMatrixLookAtLH(&renderingContext.m_ViewMatrix, &position, &lookAt, &up);
+        }
+
+        renderingContext.m_ProjectionMatrix = m_projectionMatrix;
+        renderingContext.m_WorldMatrix = m_worldMatrix;
+        renderingContext.m_DeviceContext = m_deviceContext;
+        renderingContext.m_Device = m_device;
+    }
+
+    void D3DContext::PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList)
+    {
+        OK::u32 stride{ sizeof(VertexData) };
+        OK::u32 offset{ 0 };
+
+        ID3D11Buffer * const vertexBuffer = vertexList.GetVertexBuffer();
+        renderingContext.m_DeviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+        renderingContext.m_DeviceContext->IASetIndexBuffer(vertexList.GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
+        renderingContext.m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     }
 
     void D3DContext::GetProjectionMatrix(D3DXMATRIX& projectionMatrix)

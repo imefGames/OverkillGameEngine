@@ -39,7 +39,9 @@
 								z : 0
 							} ,
 							{
-								Name : "Model"
+                                Name : "Model",
+                                ShaderName : "Color" ,
+                                ModelName : "Triangle"
 							}
 						]
 					}

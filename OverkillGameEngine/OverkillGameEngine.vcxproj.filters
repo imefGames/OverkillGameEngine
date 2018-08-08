@@ -83,6 +83,21 @@
     <ClCompile Include="graphics\camerasystem.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\renderingcontext.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaders\shaderlibrary.cpp">
+      <Filter>graphics\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaders\shader.cpp">
+      <Filter>graphics\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\model\vertexdata.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\model\vertexlist.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -126,6 +141,12 @@
     </Filter>
     <Filter Include="core\io\parsers\json">
       <UniqueIdentifier>{3e91c01a-437d-432b-944f-d72c975e0495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\shaders">
+      <UniqueIdentifier>{7db6efd4-c62b-4779-99ca-b864bded2be4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\model">
+      <UniqueIdentifier>{4e78ed36-9898-43fa-b9f4-d992c53120c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +273,21 @@
     </ClInclude>
     <ClInclude Include="graphics\camerasystem.h">
       <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\renderingcontext.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaders\shaderlibrary.h">
+      <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaders\shader.h">
+      <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\model\vertexdata.h">
+      <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\model\vertexlist.h">
+      <Filter>graphics\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
