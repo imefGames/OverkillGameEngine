@@ -22,6 +22,6 @@ namespace OK
             return OK::MemEqual(shader->GetName().begin(), shaderName, shader->GetName().GetSize());
         };
         auto foundIt = OK::FindIf(m_Shaders.begin(), m_Shaders.end(), findByName);
-        return(foundIt != m_Shaders.end() ? *foundIt : 0);
+        return(foundIt != m_Shaders.end() ? *foundIt : nullptr);
     }
 }

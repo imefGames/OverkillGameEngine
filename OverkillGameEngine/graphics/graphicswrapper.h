@@ -2,11 +2,13 @@
 
 #include <core\singleton.h>
 #include <graphics\renderingcontext.h>
+#include <graphics\model\modellibrary.h>
 #include <graphics\shaders\shaderlibrary.h>
 
 namespace OK
 {
     class D3DContext;
+    class JSONNode;
     class ModelComponent;
     class TransformComponent;
     struct GameWindowData;
@@ -21,6 +23,7 @@ namespace OK
         void BeginScene(const TransformComponent* cameraTransform);
         void EndScene();
 
+        EResult RegisterModels(JSONNode* modelListNode);
         void RenderModel(const ModelComponent* model, const TransformComponent* transform);
 
     private:
@@ -31,6 +34,7 @@ namespace OK
 
         D3DContext* m_D3DContext;
         RenderingContext m_RenderingContext;
+        ModelLibrary m_ModelLibrary;
         ShaderLibrary m_ShaderLibrary;
     };
 }

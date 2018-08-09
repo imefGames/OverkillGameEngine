@@ -98,6 +98,12 @@
     <ClCompile Include="graphics\model\vertexlist.cpp">
       <Filter>graphics\model</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\model\modellibrary.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\model\modellibrarycomponent.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -287,6 +293,12 @@
       <Filter>graphics\model</Filter>
     </ClInclude>
     <ClInclude Include="graphics\model\vertexlist.h">
+      <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\model\modellibrary.h">
+      <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\model\modellibrarycomponent.h">
       <Filter>graphics\model</Filter>
     </ClInclude>
   </ItemGroup>

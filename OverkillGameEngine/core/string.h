@@ -16,6 +16,16 @@ namespace OK
     }
 
     template<>
+    inline auto ConvertFromString<OK::u32>(const OK::char8* string, OK::u32 length) -> decltype(auto)
+    {
+        String str;
+        str.Resize(length + 1);
+        OK::MemCopy(string, str.begin(), length);
+        str[length] = '\0';
+        return static_cast<OK::u32>(std::atoi(str.begin()));
+    }
+
+    template<>
     inline auto ConvertFromString<OK::f32>(const OK::char8* string, OK::u32 length) -> decltype(auto)
     {
         String str;

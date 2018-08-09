@@ -66,36 +66,22 @@ namespace OK
         m_D3DContext->EndScene();
     }
 
+    EResult GraphicsWrapper::RegisterModels(JSONNode* modelListNode)
+    {
+        return m_ModelLibrary.RegisterModels(m_RenderingContext, modelListNode);
+    }
+
     void GraphicsWrapper::RenderModel(const ModelComponent* model, const TransformComponent* transform)
     {
-        //TODO: get vertex list from component.
-        Array<VertexData> vd;
-        VertexList vertexList;
-        VertexData v;
-        v.m_Position = OK::Vec4(-1.0f, -1.0f, 0.0f);  // Bottom left.
-        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
-        vd.Add(v);
-
-        v.m_Position = OK::Vec4(0.0f, 1.0f, 0.0f);  // Top middle.
-        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
-        vd.Add(v);
-
-        v.m_Position = OK::Vec4(1.0f, -1.0f, 0.0f);  // Bottom right.
-        v.m_Color = OK::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
-        vd.Add(v);
-        vertexList.SetVertexList(m_RenderingContext, vd);
-
-        Array<OK::u32> id;
-        id.Add(0);
-        id.Add(1);
-        id.Add(2);
-        vertexList.SetIndexList(m_RenderingContext, id);
-
-        m_D3DContext->PrepareModelRendering(m_RenderingContext, vertexList);
-        Shader* foundShader = m_ShaderLibrary.FindShader(model->GetShaderName().begin());
-        if (foundShader != nullptr)
+        VertexList* foundModel{ m_ModelLibrary.FindModel(model->GetModelName().begin()) };
+        if (foundModel != nullptr)
         {
-            foundShader->RunShader(m_RenderingContext, vertexList.GetIndexCount());
+            m_D3DContext->PrepareModelRendering(m_RenderingContext, *foundModel);
+            Shader* foundShader{ m_ShaderLibrary.FindShader(model->GetShaderName().begin()) };
+            if (foundShader != nullptr)
+            {
+                foundShader->RunShader(m_RenderingContext, foundModel->GetIndexCount());
+            }
         }
     }
 }

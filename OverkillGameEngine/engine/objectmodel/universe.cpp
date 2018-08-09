@@ -44,7 +44,7 @@ namespace OK
         m_CurrentWorld = OK::FindIf(m_Worlds.begin(), m_Worlds.end(), findByName);
         okAssert(m_CurrentWorld != m_Worlds.end(), "Could not find startup world.");
 
-        //TODO: load universe components
+        ComponentHolder::LoadComponentList(m_ComponentHolderID, universeNode);
 
         return EResult::Success;
     }

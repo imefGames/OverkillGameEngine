@@ -6,6 +6,7 @@
 
 namespace OK
 {
+    class JSONNode;
     struct RenderingContext;
 
     struct VertexList
@@ -13,6 +14,8 @@ namespace OK
     public:
         VertexList();
         ~VertexList();
+
+        EResult LoadVertexList(const RenderingContext& renderingContext, JSONNode* vertexListNode);
 
         void SetVertexList(const RenderingContext& renderingContext, const Array<VertexData>& vertexList);
         void SetIndexList(const RenderingContext& renderingContext, const Array<OK::u32>& indexList);

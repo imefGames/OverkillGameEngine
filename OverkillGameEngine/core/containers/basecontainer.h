@@ -49,7 +49,7 @@ namespace OK
         , m_Size{ other.m_Size }
         , m_MaxSize{ other.m_Size }
     {
-        OK::MemCopy(other.m_Data, m_Data, other.m_Size);
+        OK::MemCopy(other.m_Data, m_Data, other.m_Size * sizeof(T));
     }
 
     template<typename T>
@@ -75,7 +75,7 @@ namespace OK
         m_Data = new T[other.m_Size];
         m_Size = other.m_Size;
         m_MaxSize = other.m_Size;
-        OK::MemCopy(other.m_Data, m_Data, other.m_Size);
+        OK::MemCopy(other.m_Data, m_Data, other.m_Size * sizeof(T));
         return (*this);
     }
 
@@ -113,7 +113,7 @@ namespace OK
             T* newData = new T[reservedSize];
             if (m_Data != nullptr)
             {
-                OK::MemCopy(m_Data, newData, m_Size);
+                OK::MemCopy(m_Data, newData, m_Size * sizeof(T));
                 okSafeDeleteArray(m_Data);
             }
             m_Data = newData;

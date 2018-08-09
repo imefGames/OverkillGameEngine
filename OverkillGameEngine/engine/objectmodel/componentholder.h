@@ -21,7 +21,7 @@ namespace OK
         ~ComponentHolder();
 
         //TODO: rename function. It really loads a component list.
-        static EResult LoadEntity(ComponentHolderID entityID, JSONNode* entityNode);
+        static EResult LoadComponentList(ComponentHolderID entityID, JSONNode* componentListNode);
         static BaseComponent* FindComponentForID(ComponentHolderID holderID, ComponentFactoryID factoryID);
         static ComponentHolderID GetNextComponentHolderID();
 

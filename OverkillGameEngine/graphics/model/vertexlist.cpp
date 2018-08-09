@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include <graphics\model\vertexlist.h>
 
+#include <core\io\parsers\json\jsonnode.h>
 #include <graphics\renderingcontext.h>
 
 namespace OK
@@ -25,6 +26,53 @@ namespace OK
             m_IndexBuffer->Release();
             m_IndexBuffer = nullptr;
         }
+    }
+
+    EResult VertexList::LoadVertexList(const RenderingContext& renderingContext, JSONNode* vertexListNode)
+    {
+        JSONNode* vertexDataNode = vertexListNode->GetNode("VertexList");
+        JSONNode* indexDataNode = vertexListNode->GetNode("IndexList");
+        okAssert(vertexDataNode != nullptr, "Could not find Vertex List node in game data file.");
+        okAssert(indexDataNode != nullptr, "Could not find Index List node in game data file.");
+        vertexDataNode->ComputeSubNodes();
+        indexDataNode->ComputeSubNodes();
+        okAssert(vertexDataNode->GetNodeType() == JSONNode::ENodeType::Array, "Vertex List node in must be of type Array.");
+        okAssert(indexDataNode->GetNodeType() == JSONNode::ENodeType::Array, "Index List node in must be of type Array.");
+
+        Array<VertexData> vertexData;
+        OK::u32 vertexCount = vertexDataNode->GetArrayNodeSize();
+        vertexData.Reserve(vertexCount);
+        for (OK::u32 i = 0; i < vertexCount; ++i)
+        {
+            JSONNode* vertexNode = vertexDataNode->GetNodeAtIndex(i);
+            vertexNode->ComputeSubNodes();
+
+            VertexData& newVertexData{ vertexData.Grow() };
+            OK::f32 x{ vertexNode->GetValue<OK::f32>("x") };
+            OK::f32 y{ vertexNode->GetValue<OK::f32>("y") };
+            OK::f32 z{ vertexNode->GetValue<OK::f32>("z") };
+            newVertexData.m_Position = OK::Vec4{ x, y, z };
+
+            OK::f32 r{ vertexNode->GetValue<OK::f32>("r") };
+            OK::f32 g{ vertexNode->GetValue<OK::f32>("g") };
+            OK::f32 b{ vertexNode->GetValue<OK::f32>("b") };
+            OK::f32 a{ vertexNode->GetValue<OK::f32>("a") };
+            newVertexData.m_Color = OK::Vec4{ r, g, b, a };
+        }
+        SetVertexList(renderingContext, vertexData);
+
+        Array<OK::u32> indexData;
+        OK::u32 indexCount = indexDataNode->GetArrayNodeSize();
+        indexData.Reserve(vertexCount);
+        for (OK::u32 i = 0; i < indexCount; ++i)
+        {
+            JSONNode* indexNode = indexDataNode->GetNodeAtIndex(i);
+            indexNode->ComputeSubNodes();
+            indexData.Add(indexNode->GetValue<OK::u32>("index"));
+        }
+        SetIndexList(renderingContext, indexData);
+
+        return EResult::Success;
     }
 
     void VertexList::SetVertexList(const RenderingContext& renderingContext, const Array<VertexData>& vertexData)

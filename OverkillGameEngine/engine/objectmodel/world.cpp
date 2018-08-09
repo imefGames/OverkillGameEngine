@@ -34,7 +34,7 @@ namespace OK
         for (OK::u32 i = 0; i < entityCount; ++i)
         {
             ComponentHolderID newEntity = m_EntityIDs.Add(ComponentHolder::GetNextComponentHolderID());
-            ComponentHolder::LoadEntity(newEntity, entityList->GetNodeAtIndex(i));
+            ComponentHolder::LoadComponentList(newEntity, entityList->GetNodeAtIndex(i));
         }
 
         //TODO: load world components

@@ -16,10 +16,10 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* Make a 3D model library loaded from game data.
+* Add scale & rotation to Transform component
 * Implement texture shader
 * Implement input handling system
-* Cache component tuple list in systems.
+* Cache component tuple list in systems
 * Fix/optimize JSon parser
 * Create a Natvis for String & StringView classes
 
