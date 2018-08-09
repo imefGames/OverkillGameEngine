@@ -104,6 +104,12 @@
     <ClCompile Include="graphics\model\modellibrarycomponent.cpp">
       <Filter>graphics\model</Filter>
     </ClCompile>
+    <ClCompile Include="engine\input\inputmanager.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\input\inputenums.cpp">
+      <Filter>engine\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -153,6 +159,9 @@
     </Filter>
     <Filter Include="graphics\model">
       <UniqueIdentifier>{4e78ed36-9898-43fa-b9f4-d992c53120c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\input">
+      <UniqueIdentifier>{6b61807b-4edc-45d6-8fb0-391a46d61719}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +309,12 @@
     </ClInclude>
     <ClInclude Include="graphics\model\modellibrarycomponent.h">
       <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\input\inputmanager.h">
+      <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\input\inputenums.h">
+      <Filter>engine\input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

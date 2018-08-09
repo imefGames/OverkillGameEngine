@@ -4,6 +4,7 @@ namespace OK
 {
     class GameLoop;
     class GameWindow;
+    class InputManager;
     struct GameWindowData;
 
     class GameEngine
@@ -17,6 +18,7 @@ namespace OK
 
         static const OK::char8* K_GAME_DATA_FILE_PATH;
 
+        InputManager* m_InputManager;
         GameLoop* m_GameLoop;
         GameWindow* m_GameWindow;
     };

@@ -147,6 +147,8 @@
     <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
     <ClCompile Include="engine\gameloop.cpp" />
+    <ClCompile Include="engine\input\inputenums.cpp" />
+    <ClCompile Include="engine\input\inputmanager.cpp" />
     <ClCompile Include="engine\objectmodel\component.cpp" />
     <ClCompile Include="engine\objectmodel\componentfactory.cpp" />
     <ClCompile Include="engine\objectmodel\componentholder.cpp" />
@@ -198,6 +200,8 @@
     <ClInclude Include="engine\components\transformcomponent.h" />
     <ClInclude Include="engine\gameengine.h" />
     <ClInclude Include="engine\gameloop.h" />
+    <ClInclude Include="engine\input\inputenums.h" />
+    <ClInclude Include="engine\input\inputmanager.h" />
     <ClInclude Include="engine\objectmodel\component.h" />
     <ClInclude Include="engine\objectmodel\componentfactory.h" />
     <ClInclude Include="engine\objectmodel\componentholder.h" />

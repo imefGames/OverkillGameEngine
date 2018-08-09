@@ -9,6 +9,9 @@
 namespace OK
 {
     OK::Bool g_PressedQuit{ false };
+    EKeyboardInputEvent g_KeyboardEvent{ EKeyboardInputEvent::None };
+    OK::u32 g_KeyboardKeyCode{ 0 };
+
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 
     const OK::u32 GameWindow::K_WINDOW_WIDTH = 640;
@@ -66,6 +69,10 @@ namespace OK
 
     void GameWindow::PollEvents(GameWindowEventData& eventData)
     {
+        g_KeyboardEvent = EKeyboardInputEvent::None;
+        g_KeyboardKeyCode = 0;
+        g_PressedQuit = false;
+
         MSG message;
         if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
         {
@@ -74,6 +81,8 @@ namespace OK
         }
 
         eventData.m_QuitGame = g_PressedQuit;
+        eventData.m_KeyboardEvent = g_KeyboardEvent;
+        eventData.m_KeyboardKeyCode = g_KeyboardKeyCode;
     }
 
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam)
@@ -81,18 +90,32 @@ namespace OK
         LRESULT returnValue{};
         switch (message)
         {
-        case WM_DESTROY:
-        {
-            PostQuitMessage(0);
-            g_PressedQuit = true;
-            break;
-        }
+            case WM_KEYDOWN:
+            {
+                g_KeyboardEvent = EKeyboardInputEvent::KeyDown;
+                g_KeyboardKeyCode = static_cast<OK::u32>(wParam);
+                break;
+            }
 
-        default:
-        {
-            returnValue = DefWindowProc(windowHandle, message, wParam, lParam);
-            break;
-        }
+            case WM_KEYUP:
+            {
+                g_KeyboardEvent = EKeyboardInputEvent::KeyUp;
+                g_KeyboardKeyCode = static_cast<OK::u32>(wParam);
+                break;
+            }
+
+            case WM_DESTROY:
+            {
+                PostQuitMessage(0);
+                g_PressedQuit = true;
+                break;
+            }
+
+            default:
+            {
+                returnValue = DefWindowProc(windowHandle, message, wParam, lParam);
+                break;
+            }
         }
 
         return returnValue;

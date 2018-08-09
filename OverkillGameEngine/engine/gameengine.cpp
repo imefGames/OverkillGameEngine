@@ -4,10 +4,12 @@
 #include <core\io\parsers\json\jsonnode.h>
 #include <core\io\parsers\json\jsonparser.h>
 #include <engine\gameloop.h>
+#include <engine\input\inputmanager.h>
 #include <engine\objectmodel\universe.h>
 #include <engine\window\gamewindow.h>
 #include <engine\window\gamewindoweventdata.h>
 #include <graphics\graphicswrapper.h>
+#include <ctime>
 
 namespace OK
 {
@@ -17,6 +19,8 @@ namespace OK
     {
         ComponentHolder::CreateSingleton();
         GraphicsWrapper::CreateSingleton();
+        InputManager::CreateSingleton();
+        m_InputManager = InputManager::Get();
         m_GameLoop = new GameLoop;
         m_GameWindow = new GameWindow;
 
@@ -36,6 +40,8 @@ namespace OK
 
         okSafeDelete(m_GameLoop);
         okSafeDelete(m_GameWindow);
+        m_InputManager = nullptr;
+        InputManager::DeleteSingleton();
         GraphicsWrapper::DeleteSingleton();
         ComponentHolder::DeleteSingleton();
     }
@@ -43,12 +49,18 @@ namespace OK
     void GameEngine::RunEngineUntilEnd()
     {
         GameWindowEventData eventData;
-        OK::f32 deltaTime{ 0.0f }; //TODO: compute delta time
+        OK::f32 deltaTime{ 0.001f }; //TODO: compute delta time
         OK::Bool keepRunning{ true };
         while (keepRunning)
         {
+            std::clock_t frameStart = std::clock();
+
             m_GameWindow->PollEvents(eventData);
+            m_InputManager->HandleWindowEvent(eventData);
             m_GameLoop->Tick(eventData, deltaTime);
+
+            std::clock_t frameEnd = std::clock();
+            deltaTime = (static_cast<OK::f32>(frameEnd - frameStart) / CLOCKS_PER_SEC);
 
             if (eventData.m_QuitGame)
             {
