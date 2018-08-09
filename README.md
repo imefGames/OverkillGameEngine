@@ -16,15 +16,16 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* Implement model component
-* Implement render system
-* Implement basic color shader
+* Make a 3D model library loaded from game data.
+* Implement texture shader
 * Implement input handling system
+* Cache component tuple list in systems.
 * Fix/optimize JSon parser
 * Create a Natvis for String & StringView classes
 
 Current Bugs/Issues
 -------------------
+* Array copy doesn't seem to work (issue noted on array of vectors).
 * The JSon parser doesn't work 100%. It needs to be fixed...
 * String/StringView classes are still a pain to use. It'd be nice to handle more operators.
 
