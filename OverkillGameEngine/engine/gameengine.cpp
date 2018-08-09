@@ -27,12 +27,14 @@ namespace OK
         m_GameLoop->Init();
         m_GameWindow->Init(windowData);
         GraphicsWrapper::Get()->Init(windowData);
+        m_InputManager->Init();
 
         LoadGameData("GameData.json");
     }
 
     void GameEngine::Shutdown()
     {
+        m_InputManager->Shutdown();
         GraphicsWrapper::Get()->Shutdown();
 
         m_GameWindow->Shutdown();

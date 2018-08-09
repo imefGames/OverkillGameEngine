@@ -21,6 +21,6 @@ namespace OK
 
     void GameLoop::Tick(const GameWindowEventData& eventData, OK::f32 dt)
     {
-        m_Universe->Update(0.0f);
+        m_Universe->Update(dt);
     }
 }
