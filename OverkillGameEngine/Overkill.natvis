@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <Type Name="OK::BaseStringView&lt;*&gt;">
+        <DisplayString>Content={m_StringStart,[m_Length]},Length={m_Length}</DisplayString>
+        <Expand>
+            <Item Name="[Content]" ExcludeView="simple">m_StringStart,[m_Length]</Item>
+            <Item Name="[Length]" ExcludeView="simple">m_Length</Item>
+        </Expand>
+    </Type>
+    <Type Name="OK::Array&lt;*&gt;">
+        <DisplayString>Array(Size={m_Size})</DisplayString>
+        <Expand>
+            <Item Name="[Data]" ExcludeView="simple">m_Data,[m_Size]</Item>
+            <Item Name="[Size]" ExcludeView="simple">m_Size</Item>
+        </Expand>
+    </Type>
+    <Type Name="OK::BaseString&lt;*&gt;">
+        <DisplayString>{m_Data,[m_Size]}</DisplayString>
+        <Expand>
+            <Item Name="[Data]" ExcludeView="simple">m_Data,[m_Size]</Item>
+            <Item Name="[Size]" ExcludeView="simple">m_Size</Item>
+        </Expand>
+    </Type>
+</AutoVisualizer>

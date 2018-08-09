@@ -17,11 +17,11 @@ Planned features for v1
 Current Objectives
 ------------------
 * Add scale & rotation to Transform component
+* Add a uniform in the shader for the entity transform
 * Implement texture shader
 * Implement input handling system
 * Cache component tuple list in systems
 * Fix/optimize JSon parser
-* Create a Natvis for String & StringView classes
 
 Current Bugs/Issues
 -------------------

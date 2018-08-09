@@ -26,12 +26,14 @@ namespace OK
     private:
         T* m_StringStart;
         T* m_StringEnd;
+        OK::u32 m_Length;
     };
 
     template<typename T>
     BaseStringView<T>::BaseStringView()
         : m_StringStart{ nullptr }
         , m_StringEnd{ nullptr }
+        , m_Length{ 0 }
     {
     }
 
@@ -39,6 +41,7 @@ namespace OK
     BaseStringView<T>::BaseStringView(T* stringStart, T* stringEnd)
         : m_StringStart{ stringStart }
         , m_StringEnd{ stringEnd }
+        , m_Length{ (m_StringEnd - m_StringStart) / sizeof(T) }
     {
     }
 
@@ -46,13 +49,14 @@ namespace OK
     BaseStringView<T>::BaseStringView(T* stringStart, OK::u32 stringLength)
         : m_StringStart{ stringStart }
         , m_StringEnd{ stringStart + stringLength }
+        , m_Length{ stringLength }
     {
     }
 
     template<typename T>
     OK::u32 BaseStringView<T>::GetLength() const
     {
-        return (m_StringEnd - m_StringStart) / sizeof(T);
+        return m_Length;
     }
 
     template<typename T>

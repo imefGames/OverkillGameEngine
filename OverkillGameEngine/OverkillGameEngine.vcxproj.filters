@@ -305,4 +305,7 @@
   <ItemGroup>
     <None Include="GameData.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="Overkill.natvis" />
+  </ItemGroup>
 </Project>
