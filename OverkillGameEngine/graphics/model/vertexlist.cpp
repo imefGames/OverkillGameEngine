@@ -27,7 +27,7 @@ namespace OK
         }
     }
 
-    void VertexList::SetVertexList(const RenderingContext& renderingContext, Array<VertexData> vertexData)
+    void VertexList::SetVertexList(const RenderingContext& renderingContext, const Array<VertexData>& vertexData)
     {
         D3D11_BUFFER_DESC vertexBufferDesc;
         D3D11_SUBRESOURCE_DATA vertexBufferData;
@@ -49,7 +49,7 @@ namespace OK
         okAssert(SUCCEEDED(result), "Failed to load vertex buffer.");
     }
 
-    void VertexList::SetIndexList(const RenderingContext& renderingContext, Array<OK::u32> indexList)
+    void VertexList::SetIndexList(const RenderingContext& renderingContext, const Array<OK::u32>& indexList)
     {
         D3D11_BUFFER_DESC indexBufferDesc;
         D3D11_SUBRESOURCE_DATA indexData;

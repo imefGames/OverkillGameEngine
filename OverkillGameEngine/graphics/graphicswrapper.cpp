@@ -95,7 +95,7 @@ namespace OK
         Shader* foundShader = m_ShaderLibrary.FindShader(model->GetShaderName().begin());
         if (foundShader != nullptr)
         {
-            foundShader->RunShader(m_RenderingContext, vertexList.GetIndexCount());// v.GetIndexCount());
+            foundShader->RunShader(m_RenderingContext, vertexList.GetIndexCount());
         }
     }
 }
