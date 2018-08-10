@@ -172,8 +172,10 @@
     <ClCompile Include="graphics\model\vertexdata.cpp" />
     <ClCompile Include="graphics\model\vertexlist.cpp" />
     <ClCompile Include="graphics\renderingcontext.cpp" />
+    <ClCompile Include="graphics\shaders\colorshader.cpp" />
     <ClCompile Include="graphics\shaders\shader.cpp" />
     <ClCompile Include="graphics\shaders\shaderlibrary.cpp" />
+    <ClCompile Include="graphics\shaders\textureshader.cpp" />
     <ClCompile Include="graphics\texture\texture.cpp" />
     <ClCompile Include="graphics\texture\texturelibrary.cpp" />
     <ClCompile Include="graphics\texture\texturelibrarycomponent.cpp" />
@@ -228,8 +230,10 @@
     <ClInclude Include="graphics\model\vertexdata.h" />
     <ClInclude Include="graphics\model\vertexlist.h" />
     <ClInclude Include="graphics\renderingcontext.h" />
+    <ClInclude Include="graphics\shaders\colorshader.h" />
     <ClInclude Include="graphics\shaders\shader.h" />
     <ClInclude Include="graphics\shaders\shaderlibrary.h" />
+    <ClInclude Include="graphics\shaders\textureshader.h" />
     <ClInclude Include="graphics\texture\texture.h" />
     <ClInclude Include="graphics\texture\texturelibrary.h" />
     <ClInclude Include="graphics\texture\texturelibrarycomponent.h" />

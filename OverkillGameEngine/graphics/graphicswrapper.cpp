@@ -87,7 +87,10 @@ namespace OK
             Shader* foundShader{ m_ShaderLibrary.FindShader(model->GetShaderName().begin()) };
             if (foundShader != nullptr)
             {
-                foundShader->RunShader(m_RenderingContext, foundModel->GetIndexCount());
+                ShaderRenderData renderData;
+                renderData.m_IndexCount = foundModel->GetIndexCount();
+                renderData.m_Texture = m_TextureLibrary.FindTexture(model->GetTextureName().begin());
+                foundShader->RunShader(m_RenderingContext, renderData);
             }
         }
     }

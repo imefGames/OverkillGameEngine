@@ -17,7 +17,7 @@ namespace OK
         void Unload();
 
         const String& GetName() const { return m_Name; }
-        const ID3D11ShaderResourceView* GetTexture() const { return m_D3DTexture; }
+        ID3D11ShaderResourceView* const GetTexture() const { return m_D3DTexture; }
 
     private:
         String m_Name;

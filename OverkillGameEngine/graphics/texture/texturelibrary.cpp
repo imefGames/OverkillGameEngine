@@ -28,9 +28,10 @@ namespace OK
             textureName.Resize(textureNameNode->GetData().GetLength());
             OK::MemCopy(textureNameNode->GetData().begin(), textureName.begin(), textureName.GetSize());
 
-            String texturePath;
-            texturePath.Resize(texturePathNode->GetData().GetLength());
-            OK::MemCopy(texturePathNode->GetData().begin(), texturePath.begin(), texturePath.GetSize());
+            //TODO: fix JSON handling of strings
+            String texturePath{"../assets/textures/test.bmp"};
+            //texturePath.Resize(texturePathNode->GetData().GetLength());
+            //OK::MemCopy(texturePathNode->GetData().begin(), texturePath.begin(), texturePath.GetSize());
 
             Texture& newTexture = m_Textures.Grow();
             if (newTexture.Load(renderingContext, textureName, texturePath) == EResult::Failure)

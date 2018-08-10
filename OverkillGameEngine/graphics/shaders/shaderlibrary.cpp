@@ -1,17 +1,32 @@
 #include <stdafx.h>
 #include <graphics\shaders\shaderlibrary.h>
 
-#include <graphics\shaders\shader.h>
+#include <graphics\shaders\colorshader.h>
+#include <graphics\shaders\textureshader.h>
 
 namespace OK
 {
+
+    template<typename ShaderType>
+    void ShaderLibrary::RegisterShader(const RenderingContext& renderingContext, const OK::char8* shaderName, const OK::char8* vertexShaderFile, const OK::char8* pixelShaderFile)
+    {
+        Shader* newShader{ new ShaderType{ shaderName } };
+        newShader->InitializeShader(renderingContext, vertexShaderFile, pixelShaderFile);
+        m_Shaders.Add(newShader);
+    }
+
     void ShaderLibrary::PopulateLibrary(const RenderingContext& renderingContext)
     {
-        m_Shaders.Add(new Shader{ renderingContext, " \"Color\"", "graphics/shaders/color.vs", "graphics/shaders/color.ps" });
+        RegisterShader<ColorShader>(renderingContext, " \"Color\"", "graphics/shaders/color.vs", "graphics/shaders/color.ps");
+        RegisterShader<TextureShader>(renderingContext, " \"Texture\"", "graphics/shaders/texture.vs", "graphics/shaders/texture.ps");
     }
 
     void ShaderLibrary::ClearLibrary()
     {
+        for (Shader* shader : m_Shaders)
+        {
+            shader->ShutdownShader();
+        }
         m_Shaders.DeleteAll();
     }
 

@@ -15,6 +15,9 @@ namespace OK
         Shader* FindShader(const OK::char8* shaderName);
 
     private:
+        template<typename ShaderType>
+        void RegisterShader(const RenderingContext& renderingContext, const OK::char8* shaderName, const OK::char8* vertexShaderFile, const OK::char8* pixelShaderFile);
+
         PointerArray<Shader> m_Shaders;
     };
 }

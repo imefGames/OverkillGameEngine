@@ -119,6 +119,12 @@
     <ClCompile Include="graphics\texture\texturelibrarycomponent.cpp">
       <Filter>graphics\texture</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\shaders\colorshader.cpp">
+      <Filter>graphics\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaders\textureshader.cpp">
+      <Filter>graphics\shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -144,9 +150,6 @@
     </Filter>
     <Filter Include="graphics">
       <UniqueIdentifier>{0956b7e5-a653-4a79-be46-c9d67555e7ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\d3d">
-      <UniqueIdentifier>{e2fcfd69-5691-476c-879e-5694d365377b}</UniqueIdentifier>
     </Filter>
     <Filter Include="graphics\components">
       <UniqueIdentifier>{a735af1c-ae82-4482-a629-d29993aa3a21}</UniqueIdentifier>
@@ -174,6 +177,9 @@
     </Filter>
     <Filter Include="graphics\texture">
       <UniqueIdentifier>{1f5cb407-e35a-4e96-b9f2-293abf462410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\d3d">
+      <UniqueIdentifier>{e2fcfd69-5691-476c-879e-5694d365377b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +342,12 @@
     </ClInclude>
     <ClInclude Include="graphics\texture\texturelibrarycomponent.h">
       <Filter>graphics\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaders\colorshader.h">
+      <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaders\textureshader.h">
+      <Filter>graphics\shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

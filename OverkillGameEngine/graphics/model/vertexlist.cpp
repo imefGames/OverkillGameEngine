@@ -58,6 +58,10 @@ namespace OK
             OK::f32 b{ vertexNode->GetValue<OK::f32>("b") };
             OK::f32 a{ vertexNode->GetValue<OK::f32>("a") };
             newVertexData.m_Color = OK::Vec4{ r, g, b, a };
+
+            OK::f32 u{ vertexNode->GetValue<OK::f32>("u") };
+            OK::f32 v{ vertexNode->GetValue<OK::f32>("v") };
+            newVertexData.m_TextureCoords = OK::Vec4{ u, v };
         }
         SetVertexList(renderingContext, vertexData);
 
