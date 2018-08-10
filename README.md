@@ -2,12 +2,12 @@
 
 Project Overkill is a home made Game Engine.
 The goal of this project for me is to learn as much as possible about game engines.
-That is why I wish to make this engine as powerful as possible.
+That is why I wish to make this engine as powerful as possible while relying as little as possible on libraries & the STL.
 
 Planned features for v1
 -----------------------
 * Full Entity-Component-System model
-* Basic 2D & 3D with DirectX
+* Basic 2D & 3D with DirectX (DirectX code is heavily inspired by http://www.rastertek.com/tutdx11.html)
 * Rudimentary sound engine
 * Data storage in JSon file
 * Mono-threaded
