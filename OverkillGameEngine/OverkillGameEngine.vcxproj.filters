@@ -110,6 +110,15 @@
     <ClCompile Include="engine\input\inputenums.cpp">
       <Filter>engine\input</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\texture\texturelibrary.cpp">
+      <Filter>graphics\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\texture\texture.cpp">
+      <Filter>graphics\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\texture\texturelibrarycomponent.cpp">
+      <Filter>graphics\texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -162,6 +171,9 @@
     </Filter>
     <Filter Include="engine\input">
       <UniqueIdentifier>{6b61807b-4edc-45d6-8fb0-391a46d61719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\texture">
+      <UniqueIdentifier>{1f5cb407-e35a-4e96-b9f2-293abf462410}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +327,15 @@
     </ClInclude>
     <ClInclude Include="engine\input\inputenums.h">
       <Filter>engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\texture\texturelibrary.h">
+      <Filter>graphics\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\texture\texture.h">
+      <Filter>graphics\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\texture\texturelibrarycomponent.h">
+      <Filter>graphics\texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

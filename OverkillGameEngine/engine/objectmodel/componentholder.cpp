@@ -8,6 +8,7 @@
 #include <graphics\components\cameracomponent.h>
 #include <graphics\components\modelcomponent.h>
 #include <graphics\model\modellibrarycomponent.h>
+#include <graphics\texture\texturelibrarycomponent.h>
 
 namespace OK
 {
@@ -88,6 +89,7 @@ namespace OK
         m_Factories.Add(new ComponentFactory<CameraComponent>(m_Factories.GetSize(), " \"Camera\""));
         m_Factories.Add(new ComponentFactory<ModelComponent>(m_Factories.GetSize(), " \"Model\""));
         m_Factories.Add(new ComponentFactory<ModelLibraryComponent>(m_Factories.GetSize(), " \"ModelLibrary\""));
+        m_Factories.Add(new ComponentFactory<TextureLibraryComponent>(m_Factories.GetSize(), " \"TextureLibrary\""));
     }
 
     void ComponentHolder::UnregisterComponentFactories()

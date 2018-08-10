@@ -46,7 +46,9 @@ namespace OK
 
     void GraphicsWrapper::Shutdown()
     {
+        m_ModelLibrary.ClearLibrary();
         m_ShaderLibrary.ClearLibrary();
+        m_TextureLibrary.ClearLibrary();
 
         if (m_D3DContext != nullptr)
         {
@@ -69,6 +71,11 @@ namespace OK
     EResult GraphicsWrapper::RegisterModels(JSONNode* modelListNode)
     {
         return m_ModelLibrary.RegisterModels(m_RenderingContext, modelListNode);
+    }
+
+    EResult GraphicsWrapper::RegisterTextures(JSONNode* textureLibraryNode)
+    {
+        return m_TextureLibrary.RegisterTextures(m_RenderingContext, textureLibraryNode);
     }
 
     void GraphicsWrapper::RenderModel(const ModelComponent* model, const TransformComponent* transform)

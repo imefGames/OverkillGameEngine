@@ -28,7 +28,9 @@ namespace OK
             ++currentChar;
             ++stringLength;
         }
+        Reserve(stringLength + 1); //+1 to include '\0'
         Resize(stringLength);
         OK::MemCopy(reinterpret_cast<const void*>(rawString), GetRawData(), stringLength * sizeof(T));
+        GetRawData()[stringLength] = 0;
     }
 }

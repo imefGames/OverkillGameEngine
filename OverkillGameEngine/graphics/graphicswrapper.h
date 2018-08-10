@@ -4,6 +4,7 @@
 #include <graphics\renderingcontext.h>
 #include <graphics\model\modellibrary.h>
 #include <graphics\shaders\shaderlibrary.h>
+#include <graphics\texture\texturelibrary.h>
 
 namespace OK
 {
@@ -24,6 +25,7 @@ namespace OK
         void EndScene();
 
         EResult RegisterModels(JSONNode* modelListNode);
+        EResult RegisterTextures(JSONNode* textureNode);
         void RenderModel(const ModelComponent* model, const TransformComponent* transform);
 
     private:
@@ -36,5 +38,6 @@ namespace OK
         RenderingContext m_RenderingContext;
         ModelLibrary m_ModelLibrary;
         ShaderLibrary m_ShaderLibrary;
+        TextureLibrary m_TextureLibrary;
     };
 }

@@ -24,6 +24,7 @@ namespace OK
             modelNode->ComputeSubNodes();
             ModelLibraryEntry& newModel{ m_Models.Grow() };
             JSONNode* modelName = modelNode->GetNode("Name");
+            newModel.m_Name.Resize(modelName->GetData().GetLength());
             OK::MemCopy(modelName->GetData().begin(), newModel.m_Name.begin(), newModel.m_Name.GetSize());
 
             newModel.m_Model = new VertexList;
@@ -48,7 +49,6 @@ namespace OK
 
     VertexList* ModelLibrary::FindModel(const OK::char8* modelName)
     {
-
         auto findByName = [modelName](const ModelLibraryEntry& modelEntry)
         {
             return OK::MemEqual(modelEntry.m_Name.begin(), modelName, modelEntry.m_Name.GetSize());

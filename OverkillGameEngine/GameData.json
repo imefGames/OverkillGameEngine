@@ -51,6 +51,16 @@
                         ]
                     }
                 ]
+            } ,
+            {
+                Name : "TextureLibrary" ,
+                TextureList : 
+                [
+                    {
+                        Name : "Test" ,
+                        Path : "../assets/textures/test.png"
+                    }
+                ]
             }
         ] ,
 		StartupWorld : "TestWorld",

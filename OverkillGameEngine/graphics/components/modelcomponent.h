@@ -8,7 +8,7 @@ namespace OK
     {
     public:
         const String& GetShaderName() const { return m_ShaderName; }
-        const String& GetModelName() const { return m_ShaderName; }
+        const String& GetModelName() const { return m_ModelName; }
 
     private:
         EResult LoadComponent(JSONNode* componentNode) override;

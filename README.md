@@ -17,6 +17,7 @@ Planned features for v1
 Current Objectives
 ------------------
 * Add scale & rotation to Transform component
+* Make generic asset library
 * Implement texture shader
 * Cache component tuple list in systems
 * Fix/optimize JSon parser
