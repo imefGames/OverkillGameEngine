@@ -7,13 +7,13 @@ namespace OK
     namespace ComponentUtils
     {
         template <typename ComponentType, typename ... Args>
-        EResult FindComponents(ComponentHolderID holderID, ComponentType*& component, Args ... args)
+        EResult FindComponents(ComponentHolderID holderID, ComponentType*& component, Args&& ... args)
         {
             EResult findResult{ EResult::Failure };
             component = static_cast<ComponentType*>(ComponentHolder::FindComponentForID(holderID, ComponentType::GetFactoryID()));
             if (component != nullptr)
             {
-                findResult = FindComponents(holderID, args...);
+                findResult = FindComponents(holderID, std::forward<Args>(args)...);
             }
             return findResult;
         }

@@ -379,8 +379,11 @@ namespace OK
         renderingContext.m_Device = m_device;
     }
 
-    void D3DContext::PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList)
+    void D3DContext::PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList, const TransformComponent* modelTransform)
     {
+        const OK::Vec4& modelPosition{ modelTransform->GetPosition() };
+        D3DXMatrixTranslation(&renderingContext.m_WorldMatrix, modelPosition.GetX(), modelPosition.GetY(), modelPosition.GetZ());
+
         OK::u32 stride{ sizeof(VertexData) };
         OK::u32 offset{ 0 };
 

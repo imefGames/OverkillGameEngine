@@ -38,7 +38,7 @@ namespace OK
         ID3D11DeviceContext* GetDeviceContext();
 
         void ComputeRenderingContext(RenderingContext& renderingContext, const TransformComponent* cameraTransform);
-        void PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList);
+        void PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList, const TransformComponent* modelTransform);
 
         void GetProjectionMatrix(D3DXMATRIX&);
         void GetWorldMatrix(D3DXMATRIX&);

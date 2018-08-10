@@ -83,18 +83,34 @@
 						[
 							{
 								Name : "Transform" ,
-								x : 0 ,
+								x : -2 ,
 								y : 0 ,
 								z : 0
 							} ,
 							{
-                                Name : "Model",
+                                Name : "Model" ,
+                                ShaderName : "Color" ,
+                                ModelName : "Triangle"
+							}
+						]
+					} ,
+					{
+						Components :
+						[
+							{
+								Name : "Transform" ,
+                                x : 2 ,
+								y : 0 ,
+								z : 0
+							} ,
+							{
+                                Name : "Model" ,
                                 ShaderName : "Color" ,
                                 ModelName : "Triangle"
 							}
 						]
 					}
-				]
+                ]
 			}
 		]
 	}

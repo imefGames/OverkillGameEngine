@@ -76,7 +76,7 @@ namespace OK
         VertexList* foundModel{ m_ModelLibrary.FindModel(model->GetModelName().begin()) };
         if (foundModel != nullptr)
         {
-            m_D3DContext->PrepareModelRendering(m_RenderingContext, *foundModel);
+            m_D3DContext->PrepareModelRendering(m_RenderingContext, *foundModel, transform);
             Shader* foundShader{ m_ShaderLibrary.FindShader(model->GetShaderName().begin()) };
             if (foundShader != nullptr)
             {
