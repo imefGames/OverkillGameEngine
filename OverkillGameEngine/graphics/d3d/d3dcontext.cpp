@@ -358,13 +358,14 @@ namespace OK
         if (cameraTransform != nullptr)
         {
             const OK::Vec4& cameraPosition = cameraTransform->GetPosition();
+            const OK::Vec4& cameraRotation = cameraTransform->GetRotationEuler();
 
             D3DXVECTOR3 up{ 0.0f, 1.0f, 0.0f };
             D3DXVECTOR3 position{ cameraPosition.GetX(), cameraPosition.GetY(), cameraPosition.GetZ() };
             D3DXVECTOR3 lookAt{ 0.0f, 0.0f, 1.0f };
 
             D3DXMATRIX rotationMatrix;
-            D3DXMatrixRotationYawPitchRoll(&rotationMatrix, 0 * 0.0174532925f, 0 * 0.0174532925f, 0 * 0.0174532925f);
+            D3DXMatrixRotationYawPitchRoll(&rotationMatrix, cameraRotation.GetY(), cameraRotation.GetX(), cameraRotation.GetZ());
             D3DXVec3TransformCoord(&lookAt, &lookAt, &rotationMatrix);
             D3DXVec3TransformCoord(&up, &up, &rotationMatrix);
             lookAt = position + lookAt;
@@ -382,7 +383,13 @@ namespace OK
     void D3DContext::PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList, const TransformComponent* modelTransform)
     {
         const OK::Vec4& modelPosition{ modelTransform->GetPosition() };
-        D3DXMatrixTranslation(&renderingContext.m_WorldMatrix, modelPosition.GetX(), modelPosition.GetY(), modelPosition.GetZ());
+        const OK::Vec4& modelRotation{ modelTransform->GetRotationEuler() };
+        const OK::Vec4& modelScale{ modelTransform->GetScale() };
+        D3DXVECTOR3 position{ modelPosition.GetX(), modelPosition.GetY(), modelPosition.GetZ() };
+        D3DXVECTOR3 scale{ modelScale.GetX(), modelScale.GetY(), modelScale.GetZ() };
+        D3DXQUATERNION rotation;
+        D3DXQuaternionRotationYawPitchRoll(&rotation, modelRotation.GetY(), modelRotation.GetX(), modelRotation.GetZ());
+        D3DXMatrixTransformation(&renderingContext.m_WorldMatrix, nullptr, nullptr, &scale, nullptr, &rotation, &position);
 
         OK::u32 stride{ sizeof(VertexData) };
         OK::u32 offset{ 0 };
