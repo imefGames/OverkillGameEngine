@@ -20,6 +20,30 @@ namespace OK
     {
     }
 
+    OK::f32& Vec4::GetX()
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        return data[0];
+    }
+
+    OK::f32& Vec4::GetY()
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        return data[1];
+    }
+
+    OK::f32& Vec4::GetZ()
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        return data[2];
+    }
+
+    OK::f32& Vec4::GetW()
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        return data[3];
+    }
+
     OK::f32 Vec4::GetX() const
     {
         const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
@@ -42,6 +66,30 @@ namespace OK
     {
         const OK::f32* data = reinterpret_cast<const OK::f32*>(&m_Data);
         return data[3];
+    }
+
+    void Vec4::SetX(OK::f32 x)
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        data[0] = x;
+    }
+
+    void Vec4::SetY(OK::f32 y)
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        data[1] = y;
+    }
+
+    void Vec4::SetZ(OK::f32 z)
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        data[2] = z;
+    }
+
+    void Vec4::SetW(OK::f32 w)
+    {
+        OK::f32* data = reinterpret_cast<OK::f32*>(&m_Data);
+        data[3] = w;
     }
 
     Vec4& Vec4::operator=(const Vec4& other)

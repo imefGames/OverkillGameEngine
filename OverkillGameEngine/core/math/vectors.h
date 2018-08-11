@@ -11,10 +11,20 @@ namespace OK
         Vec4(const Vec4& other);
         Vec4(OK::f32 x, OK::f32 y = 0.0f, OK::f32 z = 0.0f, OK::f32 w = 1.0f);
 
+        OK::f32& GetX();
+        OK::f32& GetY();
+        OK::f32& GetZ();
+        OK::f32& GetW();
+
         OK::f32 GetX() const;
         OK::f32 GetY() const;
         OK::f32 GetZ() const;
         OK::f32 GetW() const;
+
+        void SetX(OK::f32 x);
+        void SetY(OK::f32 y);
+        void SetZ(OK::f32 z);
+        void SetW(OK::f32 w);
 
         Vec4& operator=(const Vec4& other);
 
