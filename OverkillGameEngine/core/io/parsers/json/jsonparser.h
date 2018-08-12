@@ -1,7 +1,5 @@
 #pragma once
 
-#include <core\io\filereader.h>
-
 namespace OK
 {
     class JSONNode;
@@ -9,15 +7,12 @@ namespace OK
     class JSONParser
     {
     public:
-        JSONParser(const OK::char8* filePath);
-        ~JSONParser();
-
-        EResult ParseRootNodes();
-        JSONNode* GetNode(const OK::char8* nodeKey);
+        void Parse(String::const_iterator searchStart, String::const_iterator searchEnd, JSONNode& result);
 
     private:
-        FileReader m_FileReader;
-        JSONNode* m_RootNode;
-        String m_FileText;
+        void ParseInternal(String::const_iterator& searchStart, String::const_iterator searchEnd, JSONNode& result, const JSONNode* parent);
+        static void FindNextToken(String::const_iterator searchStart, String::const_iterator searchEnd, String::const_iterator& nextSearchStart, StringView& foundToken);
+        static void SkipSpaces(String::const_iterator& searchStart, String::const_iterator searchEnd);
+        static void SkipUntil(String::const_iterator& searchStart, String::const_iterator searchEnd, char endChar);
     };
 }

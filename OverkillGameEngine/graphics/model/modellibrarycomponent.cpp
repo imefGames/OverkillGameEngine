@@ -5,7 +5,7 @@
 
 namespace OK
 {
-    EResult ModelLibraryComponent::LoadComponent(JSONNode* componentNode)
+    EResult ModelLibraryComponent::LoadComponent(const JSONNode& componentNode)
     {
         return GraphicsWrapper::Get()->RegisterModels(componentNode);
     }

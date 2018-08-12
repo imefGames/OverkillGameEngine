@@ -12,7 +12,7 @@ namespace OK
         const String& GetTextureName() const { return m_TextureName; }
 
     private:
-        EResult LoadComponent(JSONNode* componentNode) override;
+        EResult LoadComponent(const JSONNode& componentNode) override;
 
         String m_ModelName;
         String m_ShaderName;

@@ -10,7 +10,7 @@ namespace OK
     class BaseComponent
     {
     public:
-        virtual EResult LoadComponent(JSONNode* componentNode) { return EResult::Success; }
+        virtual EResult LoadComponent(const JSONNode& componentNode) { return EResult::Success; }
 
         ComponentHolderID GetHolderID() const { return m_ComponentHolderID; }
         void SetHolderID(ComponentHolderID componentHolderID) { m_ComponentHolderID = componentHolderID; }

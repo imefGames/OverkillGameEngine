@@ -68,12 +68,12 @@ namespace OK
         m_D3DContext->EndScene();
     }
 
-    EResult GraphicsWrapper::RegisterModels(JSONNode* modelListNode)
+    EResult GraphicsWrapper::RegisterModels(const JSONNode& modelListNode)
     {
         return m_ModelLibrary.RegisterModels(m_RenderingContext, modelListNode);
     }
 
-    EResult GraphicsWrapper::RegisterTextures(JSONNode* textureLibraryNode)
+    EResult GraphicsWrapper::RegisterTextures(const JSONNode& textureLibraryNode)
     {
         return m_TextureLibrary.RegisterTextures(m_RenderingContext, textureLibraryNode);
     }

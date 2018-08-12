@@ -38,8 +38,8 @@ namespace OK
     template<>
     inline auto ConvertFromString<OK::Bool>(const OK::char8* string, OK::u32 length) -> decltype(auto)
     {
-        OK::Bool isTrue{ OK::MemEqual(string, " true", length) };
-        OK::Bool isFalse{ OK::MemEqual(string, " false", length) };
+        OK::Bool isTrue{ OK::MemEqual(string, "true", length) };
+        OK::Bool isFalse{ OK::MemEqual(string, "false", length) };
         okAssert(isTrue || isFalse, "Invalid boolean value.");
 
         return isTrue;

@@ -1,10 +1,47 @@
 #pragma once
 
+#include <core\string.h>
+#include <core\containers\array.h>
+
 namespace OK
 {
     class JSONNode
     {
     public:
+        using const_iterator = const JSONNode*;
+
+        const JSONNode& operator[](unsigned int index) const;
+        const JSONNode* operator[](const char* nodeName) const;
+        const StringView& GetValue() const;
+
+        OK::u32 GetSubNodeCount() const { return m_SubNodes.GetSize(); }
+
+        const_iterator begin() const;
+        const_iterator end() const;
+
+        template<typename T>
+        T GetValueAs() const
+        {
+            const StringView& value{ GetValue() };
+            return ConvertFromString<T>(value.begin(), value.GetLength());
+        }
+
+        template<typename T>
+        T GetValueAs(const char* nodeName) const
+        {
+            const JSONNode* foundNode{ (*this)[nodeName] };
+            okAssert(foundNode != nullptr, "Could not find node.");
+            return foundNode->GetValueAs<T>();
+        }
+
+        template<typename T>
+        T GetValueAs(const char* nodeName, T fallback) const
+        {
+            const JSONNode* foundNode{ (*this)[nodeName] };
+            return (foundNode != nullptr ? foundNode->GetValueAs<T>() : fallback);
+        }
+
+    private:
         enum class ENodeType
         {
             Undefined,
@@ -13,30 +50,11 @@ namespace OK
             Leaf
         };
 
-        JSONNode() = default;
-        JSONNode(const StringView& nodeKey, const StringView& nodeData);
+        StringView m_Name;
+        StringView m_Value;
+        Array<JSONNode> m_SubNodes;
+        ENodeType m_NodeType{ ENodeType::Undefined };
 
-        const StringView& GetKey() const { return m_NodeKey; }
-        const StringView& GetData() const { return m_NodeData; }
-        ENodeType GetNodeType() const { return m_NodeType; }
-        OK::u32 GetArrayNodeSize() const { return m_SubNodes.GetSize(); }
-
-        EResult ComputeSubNodes();
-        JSONNode* GetNodeAtIndex(OK::u32 nodeIndex);
-        JSONNode* GetNode(const OK::char8* nodeKey);
-
-        template<typename T>
-        T GetValue(const OK::char8* nodeKey)
-        {
-            JSONNode* foundNode = GetNode(nodeKey);
-            okAssert(foundNode != nullptr, "Could nout find Sub Node.");
-            return OK::ConvertFromString<T>(foundNode->m_NodeData.begin(), foundNode->m_NodeData.GetLength());
-        }
-
-    private:
-        StringView m_NodeKey;
-        StringView m_NodeData;
-        ENodeType m_NodeType;
-        OK::Array<JSONNode> m_SubNodes;
+        friend class JSONParser;
     };
 }

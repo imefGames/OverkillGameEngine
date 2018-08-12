@@ -16,16 +16,14 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* Fix JSON handling of strings
 * Make generic asset library
 * Implement basic lighting in shader
 * Handle mouse input
 * Cache component tuple list in systems
-* Fix/optimize JSon parser
 
 Current Bugs/Issues
 -------------------
-* The JSon parser doesn't work 100%. It needs to be fixed...
+* The JSon parser fails when encountering empty arrays or objects.
 * String/StringView classes are still a pain to use. It'd be nice to handle more operators.
 
 Beyond v1

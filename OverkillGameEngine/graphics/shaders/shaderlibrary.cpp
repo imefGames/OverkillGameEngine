@@ -17,8 +17,8 @@ namespace OK
 
     void ShaderLibrary::PopulateLibrary(const RenderingContext& renderingContext)
     {
-        RegisterShader<ColorShader>(renderingContext, " \"Color\"", "graphics/shaders/color.vs", "graphics/shaders/color.ps");
-        RegisterShader<TextureShader>(renderingContext, " \"Texture\"", "graphics/shaders/texture.vs", "graphics/shaders/texture.ps");
+        RegisterShader<ColorShader>(renderingContext, "Color", "graphics/shaders/color.vs", "graphics/shaders/color.ps");
+        RegisterShader<TextureShader>(renderingContext, "Texture", "graphics/shaders/texture.vs", "graphics/shaders/texture.ps");
     }
 
     void ShaderLibrary::ClearLibrary()

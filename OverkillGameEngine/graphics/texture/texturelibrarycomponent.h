@@ -7,6 +7,6 @@ namespace OK
     class TextureLibraryComponent : public Component<TextureLibraryComponent>
     {
     private:
-        EResult LoadComponent(JSONNode* componentNode) override;
+        EResult LoadComponent(const JSONNode& componentNode) override;
     };
 }

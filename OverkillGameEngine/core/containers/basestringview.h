@@ -11,6 +11,7 @@ namespace OK
         BaseStringView(T* stringStart, OK::u32 stringLength);
 
         OK::u32 GetLength() const;
+        OK::Bool IsEmpty() const { return GetLength() == 0; }
 
         using iterator = T*;
         using const_iterator = T* const;

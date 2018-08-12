@@ -5,33 +5,25 @@
 
 namespace OK
 {
-    EResult TextureLibrary::RegisterTextures(const RenderingContext& renderingContext, JSONNode* textureLibraryNode)
+    EResult TextureLibrary::RegisterTextures(const RenderingContext& renderingContext, const JSONNode& textureLibraryNode)
     {
         EResult loadResult{ EResult::Success };
 
-        JSONNode* textureListNode = textureLibraryNode->GetNode("TextureList");
-        okAssert(textureListNode != nullptr, "Could not find Texture List node in game data file.");
-        textureListNode->ComputeSubNodes();
-        okAssert(textureListNode->GetNodeType() == JSONNode::ENodeType::Array, "Texture List node in must be of type Array.");
-
-        OK::u32 textureCount = textureListNode->GetArrayNodeSize();
-        m_Textures.Reserve(textureCount);
-        for (OK::u32 i = 0; i < textureCount; ++i)
+        const JSONNode* textureListNode{ textureLibraryNode["TextureList"] };
+        m_Textures.Reserve(textureListNode->GetSubNodeCount());
+        for (const JSONNode& textureNode : *textureListNode)
         {
-            JSONNode* textureNode{ textureListNode->GetNodeAtIndex(i) };
-            textureNode->ComputeSubNodes();
-
-            JSONNode* textureNameNode = textureNode->GetNode("Name");
-            JSONNode* texturePathNode = textureNode->GetNode("Path");
+            const JSONNode* textureNameNode = textureNode["Name"];
+            const JSONNode* texturePathNode = textureNode["Path"];
 
             String textureName;
-            textureName.Resize(textureNameNode->GetData().GetLength());
-            OK::MemCopy(textureNameNode->GetData().begin(), textureName.begin(), textureName.GetSize());
+            textureName.Resize(textureNameNode->GetValue().GetLength());
+            OK::MemCopy(textureNameNode->GetValue().begin(), textureName.begin(), textureName.GetSize());
 
-            //TODO: fix JSON handling of strings
-            String texturePath{"../assets/textures/test.bmp"};
-            //texturePath.Resize(texturePathNode->GetData().GetLength());
-            //OK::MemCopy(texturePathNode->GetData().begin(), texturePath.begin(), texturePath.GetSize());
+            String texturePath;
+            texturePath.Resize(texturePathNode->GetValue().GetLength()+1);
+            OK::MemCopy(texturePathNode->GetValue().begin(), texturePath.begin(), texturePath.GetSize());
+            texturePath[texturePath.GetSize() - 1] = '\0';
 
             Texture& newTexture = m_Textures.Grow();
             if (newTexture.Load(renderingContext, textureName, texturePath) == EResult::Failure)

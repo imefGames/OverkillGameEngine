@@ -12,7 +12,7 @@ namespace OK
         OK::Bool IsActive() const { return m_IsActive; }
 
     private:
-        EResult LoadComponent(JSONNode* componentNode) override;
+        EResult LoadComponent(const JSONNode& componentNode) override;
 
         OK::Bool m_IsActive;
     };

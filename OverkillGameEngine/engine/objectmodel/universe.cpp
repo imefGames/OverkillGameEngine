@@ -14,29 +14,18 @@ namespace OK
     {
     }
 
-    EResult Universe::LoadGameData(JSONNode* universeNode)
+    EResult Universe::LoadGameData(const JSONNode& universeNode)
     {
-        okAssert(universeNode != nullptr, "Could not find Universe node in game data file.");
-        universeNode->ComputeSubNodes();
-        JSONNode* worldList = universeNode->GetNode("Worlds");
-        JSONNode* startupWorld = universeNode->GetNode("StartupWorld");
-        okAssert(worldList != nullptr, "Could not find World List node in game data file.");
-        okAssert(startupWorld != nullptr, "Could not find Startup World node in game data file.");
+        const JSONNode* worldList = universeNode["Worlds"];
+        const JSONNode* startupWorld = universeNode["StartupWorld"];
 
-        worldList->ComputeSubNodes();
-        startupWorld->ComputeSubNodes();
-        okAssert(worldList->GetNodeType() == JSONNode::ENodeType::Array, "World List node in must be of type Array.");
-        okAssert(startupWorld->GetNodeType() == JSONNode::ENodeType::Leaf, "Startup World node in must be of type Leaf.");
-
-        OK::u32 worldListSize = worldList->GetArrayNodeSize();
-        for (OK::u32 i = 0; i < worldListSize; ++i)
+        for (const JSONNode& worldNode : *worldList)
         {
-            JSONNode* worldNode = worldList->GetNodeAtIndex(i);
             World& newWorld = m_Worlds.Grow();
             newWorld.LoadGameData(worldNode);
         }
 
-        StringView startupWorldName = startupWorld->GetData();
+        StringView startupWorldName = startupWorld->GetValue();
         auto findByName = [startupWorldName](const World& currentWorld)
         {
             return startupWorldName == currentWorld.GetWorldName().begin();

@@ -10,7 +10,7 @@ namespace OK
     class TextureLibrary
     {
     public:
-        EResult RegisterTextures(const RenderingContext& renderingContext, JSONNode* textureLibraryNode);
+        EResult RegisterTextures(const RenderingContext& renderingContext, const JSONNode& textureLibraryNode);
         void ClearLibrary();
         Texture* FindTexture(const OK::char8* textureName);
 

@@ -13,7 +13,7 @@ namespace OK
     public:
         World();
 
-        EResult LoadGameData(JSONNode* worldNode);
+        EResult LoadGameData(const JSONNode& worldNode);
 
         void Init();
         void Shutdown();

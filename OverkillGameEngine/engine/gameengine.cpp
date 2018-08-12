@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include <engine\gameengine.h>
 
+#include <core\io\filereader.h>
 #include <core\io\parsers\json\jsonnode.h>
 #include <core\io\parsers\json\jsonparser.h>
 #include <engine\gameloop.h>
@@ -73,13 +74,17 @@ namespace OK
 
     void GameEngine::LoadGameData(const OK::char8* filePath)
     {
+        String gameDataText;
+        FileReader fileReader{ filePath };
+        fileReader.ReadFullFile(gameDataText);
+        JSONParser parser;
         EResult loadResult{ EResult::Failure };
-        JSONParser parser{ filePath };
-        if (parser.ParseRootNodes() == EResult::Success)
-        {
-            JSONNode* universeNode = parser.GetNode("Universe");
-            loadResult = Universe::Get()->LoadGameData(universeNode);
-        }
+        
+        JSONNode rootNode;
+        parser.Parse(gameDataText.begin(), gameDataText.end(), rootNode);
+
+        const JSONNode* universeNode = rootNode["Universe"];
+        loadResult = Universe::Get()->LoadGameData(*universeNode);
 
         if (loadResult == EResult::Failure)
         {

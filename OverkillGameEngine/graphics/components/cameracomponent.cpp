@@ -10,11 +10,9 @@ namespace OK
     {
     }
     
-    EResult CameraComponent::LoadComponent(JSONNode* componentNode)
+    EResult CameraComponent::LoadComponent(const JSONNode& componentNode)
     {
-        okAssert(componentNode != nullptr, "Could not find Component node in game data file.");
-
-        m_IsActive = componentNode->GetValue<OK::Bool>("IsActive");
+        m_IsActive = componentNode.GetValueAs<OK::Bool>("IsActive");
         return EResult::Success;
 
     }

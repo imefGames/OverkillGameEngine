@@ -7,6 +7,6 @@ namespace OK
     class ModelLibraryComponent : public Component<ModelLibraryComponent>
     {
     private:
-        EResult LoadComponent(JSONNode* componentNode) override;
+        EResult LoadComponent(const JSONNode& componentNode) override;
     };
 }

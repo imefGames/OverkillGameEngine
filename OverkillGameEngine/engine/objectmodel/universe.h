@@ -17,7 +17,7 @@ namespace OK
     public:
         Universe();
 
-        EResult LoadGameData(JSONNode* universeNode);
+        EResult LoadGameData(const JSONNode& universeNode);
 
     private:
         void Init();

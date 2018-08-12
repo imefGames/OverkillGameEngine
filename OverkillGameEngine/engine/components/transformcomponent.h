@@ -21,7 +21,7 @@ namespace OK
         void SetScale(const OK::Vec4& newScale) { m_Scale = newScale; }
 
     private:
-        EResult LoadComponent(JSONNode* componentNode) override;
+        EResult LoadComponent(const JSONNode& componentNode) override;
 
         OK::Vec4 m_Position;
         OK::Vec4 m_RotationEuler;

@@ -24,8 +24,8 @@ namespace OK
         void BeginScene(const TransformComponent* cameraTransform);
         void EndScene();
 
-        EResult RegisterModels(JSONNode* modelListNode);
-        EResult RegisterTextures(JSONNode* textureNode);
+        EResult RegisterModels(const JSONNode& modelListNode);
+        EResult RegisterTextures(const JSONNode& textureNode);
         void RenderModel(const ModelComponent* model, const TransformComponent* transform);
 
     private:

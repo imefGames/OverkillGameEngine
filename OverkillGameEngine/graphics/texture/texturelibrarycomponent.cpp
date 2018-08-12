@@ -5,7 +5,7 @@
 
 namespace OK
 {
-    EResult TextureLibraryComponent::LoadComponent(JSONNode* componentNode)
+    EResult TextureLibraryComponent::LoadComponent(const JSONNode& componentNode)
     {
         return GraphicsWrapper::Get()->RegisterTextures(componentNode);
     }

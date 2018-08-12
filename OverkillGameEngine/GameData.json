@@ -1,156 +1,157 @@
 {
-	Universe :
+	"Universe":
 	{
-        Components :
+        "Components":
         [
             {
-                Name : "ModelLibrary" ,
-                ModelList :
+                "Name": "ModelLibrary",
+                "ModelList":
                 [
                     {
-                        Name : "Triangle" ,
-                        VertexList : 
+                        "Name": "Triangle",
+                        "VertexList": 
                         [
                             {
-                                x : -1 ,
-                                y : -1 ,
-                                z : 0 ,
+                                "x": -1,
+                                "y": -1,
+                                "z": 0,
 
-                                r : 0 ,
-                                g : 1 ,
-                                b : 0 ,
-                                a : 1 ,
+                                "r": 0,
+                                "g": 1,
+                                "b": 0,
+                                "a": 1,
                             
-                                u : 0 ,
-                                v : 1
-                            } ,
+                                "u" : 0,
+                                "v" : 1
+                            },
                             {
-                                x : 0 ,
-                                y : 1 ,
-                                z : 0 ,
+                                "x": 0,
+                                "y": 1,
+                                "z": 0,
 
-                                r : 0 ,
-                                g : 0 ,
-                                b : 1 ,
-                                a : 1 ,
-                            
-                                u : 0.5 ,
-                                v : 0
-                            } ,
+                                "r": 0,
+                                "g": 0,
+                                "b": 1,
+                                "a": 1,
+
+                                "u": 0.5,
+                                "v": 0
+                            },
                             {
-                                x : 1 ,
-                                y : -1 ,
-                                z : 0 ,
+                                "x": 1,
+                                "y": -1,
+                                "z": 0,
 
-                                r : 1 ,
-                                g : 0 ,
-                                b : 0 ,
-                                a : 1 ,
+                                "r": 1,
+                                "g": 0,
+                                "b": 0,
+                                "a": 1,
 
-                                u : 1 ,
-                                v : 1
+                                "u": 1,
+                                "v": 1
                             }
-                        ] ,
-                        IndexList :
+                        ],
+                        "IndexList":
                         [
-                            { index : 0 } ,
-                            { index : 1 } ,
-                            { index : 2 }
+                            { "index": 0 },
+                            { "index": 1 },
+                            { "index": 2 }
                         ]
                     }
                 ]
-            } ,
+            },
             {
-                Name : "TextureLibrary" ,
-                TextureList : 
+                "Name": "TextureLibrary",
+                "TextureList":
                 [
                     {
-                        Name : "Test" ,
-                        Path : "../assets/textures/test.bmp"
+                        "Name": "Test",
+                        "Path": "../assets/textures/test.bmp"
                     }
                 ]
             }
-        ] ,
-		StartupWorld : "TestWorld",
-		Worlds :
+        ],
+		"StartupWorld": "TestWorld",
+		"Worlds":
 		[
 			{
-				Name : "TestWorld" ,
-				Components :
-				[
-				] ,
-				Entities :
+				"Name": "TestWorld",
+                "Components": 
+                [
+                    1
+                ],
+				"Entities":
 				[
 					{
-						Components :
+						"Components":
 						[
 							{
-								Name : "Transform" ,
-								x : 0 ,
-								y : 0 ,
-								z : -10 ,
+								"Name": "Transform",
+								"x": 0,
+								"y": 0,
+								"z": -10,
                                 
-                                rx : 0 ,
-								ry : 0 ,
-                                rz : 0 ,
+                                "rx": 0,
+								"ry": 0,
+                                "rz": 0,
 
-                                sx : 1 ,
-								sy : 1 ,
-								sz : 1
-							} ,
+                                "sx": 1,
+								"sy": 1,
+								"sz": 1
+							},
 							{
-                                Name : "Camera",
-                                IsActive : true
+                                "Name": "Camera",
+                                "IsActive": true
 							}
 						]
-					} ,
+					},
 					{
-						Components :
+						"Components":
 						[
 							{
-								Name : "Transform" ,
-								x : -2 ,
-								y : 0 ,
-								z : 0 ,
+								"Name": "Transform",
+								"x": -2,
+								"y": 0,
+								"z": 0,
                                 
-                                rx : 0 ,
-								ry : 0 ,
-                                rz : 0 ,
+                                "rx": 0,
+								"ry": 0,
+                                "rz": 0,
 
-                                sx : 1 ,
-								sy : 1 ,
-								sz : 1
-							} ,
+                                "sx": 1,
+								"sy": 1,
+								"sz": 1
+							},
 							{
-                                Name : "Model" ,
-                                ModelName : "Triangle" ,
-                                ShaderName : "Texture" ,
-                                TextureName : "Test"
+                                "Name": "Model",
+                                "ModelName": "Triangle",
+                                "ShaderName": "Texture",
+                                "TextureName": "Test"
 							}
 						]
-					} ,
+					},
 					{
-						Components :
+						"Components":
 						[
 							{
-								Name : "Transform" ,
-                                x : 2 ,
-								y : 0 ,
-                                z : 0 ,
+								"Name": "Transform",
+                                "x": 2,
+								"y": 0,
+                                "z": 0,
                                 
-                                rx : 0 ,
-								ry : 0 ,
-                                rz : 0 ,
+                                "rx": 0,
+								"ry": 0,
+                                "rz": 0,
 
-                                sx : 1 ,
-								sy : 1 ,
-								sz : 1
-							} ,
+                                "sx": 1,
+								"sy": 1,
+								"sz": 1
+							},
 							{
-                                Name : "Model" ,
-                                ModelName : "Triangle" , 
-                                ShaderName : "Color" ,
-                                TextureName : "Test"
+                                "Name": "Model",
+                                "ModelName": "Triangle",
+                                "ShaderName": "Color",
+                                "TextureName": "Test"
 							}
 						]
 					}

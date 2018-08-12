@@ -9,7 +9,7 @@ namespace OK
     class ModelLibrary
     {
     public:
-        EResult RegisterModels(const RenderingContext& renderingContext, JSONNode* modelLibraryNode);
+        EResult RegisterModels(const RenderingContext& renderingContext, const JSONNode& modelLibraryNode);
         void ClearLibrary();
         VertexList* FindModel(const OK::char8* modelName);
 

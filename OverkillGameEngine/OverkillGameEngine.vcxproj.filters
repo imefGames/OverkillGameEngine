@@ -74,9 +74,6 @@
     <ClCompile Include="core\io\parsers\json\jsonparser.cpp">
       <Filter>core\io\parsers\json</Filter>
     </ClCompile>
-    <ClCompile Include="core\io\parsers\parserutils.cpp">
-      <Filter>core\io\parsers</Filter>
-    </ClCompile>
     <ClCompile Include="engine\objectmodel\componentutils.cpp">
       <Filter>engine\objectmodel</Filter>
     </ClCompile>
@@ -297,9 +294,6 @@
     </ClInclude>
     <ClInclude Include="core\io\parsers\json\jsonparser.h">
       <Filter>core\io\parsers\json</Filter>
-    </ClInclude>
-    <ClInclude Include="core\io\parsers\parserutils.h">
-      <Filter>core\io\parsers</Filter>
     </ClInclude>
     <ClInclude Include="engine\objectmodel\componentutils.h">
       <Filter>engine\objectmodel</Filter>

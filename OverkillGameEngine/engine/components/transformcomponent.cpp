@@ -5,23 +5,21 @@
 
 namespace OK
 {
-    EResult TransformComponent::LoadComponent(JSONNode* componentNode)
+    EResult TransformComponent::LoadComponent(const JSONNode& componentNode)
     {
-        okAssert(componentNode != nullptr, "Could not find Component node in game data file.");
-
-        OK::f32 x{ componentNode->GetValue<OK::f32>("x") };
-        OK::f32 y{ componentNode->GetValue<OK::f32>("y") };
-        OK::f32 z{ componentNode->GetValue<OK::f32>("z") };
+        OK::f32 x{ componentNode.GetValueAs<OK::f32>("x") };
+        OK::f32 y{ componentNode.GetValueAs<OK::f32>("y") };
+        OK::f32 z{ componentNode.GetValueAs<OK::f32>("z") };
         m_Position = Vec4{ x, y, z };
 
-        OK::f32 rx{ componentNode->GetValue<OK::f32>("rx") };
-        OK::f32 ry{ componentNode->GetValue<OK::f32>("ry") };
-        OK::f32 rz{ componentNode->GetValue<OK::f32>("rz") };
+        OK::f32 rx{ componentNode.GetValueAs<OK::f32>("rx", 0.0f) };
+        OK::f32 ry{ componentNode.GetValueAs<OK::f32>("ry", 0.0f) };
+        OK::f32 rz{ componentNode.GetValueAs<OK::f32>("rz", 0.0f) };
         m_RotationEuler = Vec4{ rx, ry, rz };
 
-        OK::f32 sx{ componentNode->GetValue<OK::f32>("sx") };
-        OK::f32 sy{ componentNode->GetValue<OK::f32>("sy") };
-        OK::f32 sz{ componentNode->GetValue<OK::f32>("sz") };
+        OK::f32 sx{ componentNode.GetValueAs<OK::f32>("sx", 1.0f) };
+        OK::f32 sy{ componentNode.GetValueAs<OK::f32>("sy", 1.0f) };
+        OK::f32 sz{ componentNode.GetValueAs<OK::f32>("sz", 1.0f) };
         m_Scale= Vec4{ sx, sy, sz };
         return EResult::Success;
     }
