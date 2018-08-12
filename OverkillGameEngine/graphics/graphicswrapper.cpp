@@ -3,6 +3,7 @@
 
 #include <engine\components\transformcomponent.h>
 #include <engine\window\gamewindowdata.h>
+#include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
 #include <graphics\d3d\d3dcontext.h>
 #include <graphics\model\vertexlist.h>
@@ -17,7 +18,13 @@ namespace OK
 
     GraphicsWrapper::GraphicsWrapper()
         : m_D3DContext{ nullptr }
+        , m_RenderingContext{ new RenderingContext }
     {
+    }
+
+    GraphicsWrapper::~GraphicsWrapper()
+    {
+        okSafeDelete(m_RenderingContext);
     }
 
     EResult GraphicsWrapper::Init(const GameWindowData& windowData)
@@ -38,8 +45,8 @@ namespace OK
             result = EResult::Failure;
         }
 
-        m_D3DContext->ComputeRenderingContext(m_RenderingContext, nullptr);
-        m_ShaderLibrary.PopulateLibrary(m_RenderingContext);
+        m_D3DContext->ComputeRenderingContext(*m_RenderingContext, nullptr);
+        m_ShaderLibrary.PopulateLibrary(*m_RenderingContext);
 
         return result;
     }
@@ -60,7 +67,7 @@ namespace OK
     void GraphicsWrapper::BeginScene(const TransformComponent* cameraTransform)
     {
         m_D3DContext->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
-        m_D3DContext->ComputeRenderingContext(m_RenderingContext, cameraTransform);
+        m_D3DContext->ComputeRenderingContext(*m_RenderingContext, cameraTransform);
     }
 
     void GraphicsWrapper::EndScene()
@@ -68,14 +75,32 @@ namespace OK
         m_D3DContext->EndScene();
     }
 
+    void GraphicsWrapper::SetLight(LightSourceComponent* lightComponent, TransformComponent* lightTransform)
+    {
+        if (lightComponent != nullptr)
+        {
+            m_RenderingContext->m_LightColor = lightComponent->GetDiffuseColor();
+        }
+        if (lightTransform != nullptr)
+        {
+            const OK::Vec4& lightRotation{ lightTransform->GetRotationEuler() };
+
+            D3DXVECTOR3 lookAt{ 0.0f, 0.0f, 1.0f };
+            D3DXMATRIX rotationMatrix;
+            D3DXMatrixRotationYawPitchRoll(&rotationMatrix, lightRotation.GetY(), lightRotation.GetX(), lightRotation.GetZ());
+            D3DXVec3TransformCoord(&lookAt, &lookAt, &rotationMatrix);
+            m_RenderingContext->m_LightDirection = OK::Vec4{ lookAt.x, lookAt.y, lookAt.z };
+        }
+    }
+
     EResult GraphicsWrapper::RegisterModels(const JSONNode& modelListNode)
     {
-        return m_ModelLibrary.RegisterModels(m_RenderingContext, modelListNode);
+        return m_ModelLibrary.RegisterModels(*m_RenderingContext, modelListNode);
     }
 
     EResult GraphicsWrapper::RegisterTextures(const JSONNode& textureLibraryNode)
     {
-        return m_TextureLibrary.RegisterTextures(m_RenderingContext, textureLibraryNode);
+        return m_TextureLibrary.RegisterTextures(*m_RenderingContext, textureLibraryNode);
     }
 
     void GraphicsWrapper::RenderModel(const ModelComponent* model, const TransformComponent* transform)
@@ -83,14 +108,14 @@ namespace OK
         VertexList* foundModel{ m_ModelLibrary.FindModel(model->GetModelName().begin()) };
         if (foundModel != nullptr)
         {
-            m_D3DContext->PrepareModelRendering(m_RenderingContext, *foundModel, transform);
+            m_D3DContext->PrepareModelRendering(*m_RenderingContext, *foundModel, transform);
             Shader* foundShader{ m_ShaderLibrary.FindShader(model->GetShaderName().begin()) };
             if (foundShader != nullptr)
             {
                 ShaderRenderData renderData;
                 renderData.m_IndexCount = foundModel->GetIndexCount();
                 renderData.m_Texture = m_TextureLibrary.FindTexture(model->GetTextureName().begin());
-                foundShader->RunShader(m_RenderingContext, renderData);
+                foundShader->RunShader(*m_RenderingContext, renderData);
             }
         }
     }

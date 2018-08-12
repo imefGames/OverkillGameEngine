@@ -16,10 +16,12 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* Make generic asset library
-* Implement basic lighting in shader
-* Handle mouse input
-* Cache component tuple list in systems
+* [FEATURE]  Implement obj model loader
+* [FEATURE]  Implement ambient lighting
+* [FEATURE]  Implement specular lighting
+* [FEATURE]  Handle mouse input
+* [REFACTOR] Make generic asset library
+* [REFACTOR] Cache component tuple list in systems
 
 Current Bugs/Issues
 -------------------

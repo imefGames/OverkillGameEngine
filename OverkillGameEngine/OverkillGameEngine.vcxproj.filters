@@ -122,6 +122,15 @@
     <ClCompile Include="graphics\shaders\textureshader.cpp">
       <Filter>graphics\shaders</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\components\lightsourcecomponent.cpp">
+      <Filter>graphics\components</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\lightsystem.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaders\lightshader.cpp">
+      <Filter>graphics\shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -341,6 +350,15 @@
       <Filter>graphics\shaders</Filter>
     </ClInclude>
     <ClInclude Include="graphics\shaders\textureshader.h">
+      <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\components\lightsourcecomponent.h">
+      <Filter>graphics\components</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\lightsystem.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaders\lightshader.h">
       <Filter>graphics\shaders</Filter>
     </ClInclude>
   </ItemGroup>

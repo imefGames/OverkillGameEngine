@@ -10,23 +10,20 @@ namespace OK
 {
     TextureShader::TextureShader(const OK::char8* shaderName)
         : Shader{ shaderName }
+        , m_SampleState{ nullptr }
     {
     }
 
     void TextureShader::InitializeShader(const RenderingContext& renderingContext, const OK::char8* vertexShaderFile, const OK::char8* pixelShaderFile)
     {
         HRESULT result;
-        ID3D10Blob* errorMessage;
-        ID3D10Blob* vertexShaderBuffer;
-        ID3D10Blob* pixelShaderBuffer;
+        ID3D10Blob* errorMessage{ nullptr };
+        ID3D10Blob* vertexShaderBuffer{ nullptr };
+        ID3D10Blob* pixelShaderBuffer{ nullptr };
         D3D11_INPUT_ELEMENT_DESC polygonLayout[2];
-        unsigned int numElements;
+        OK::u32 numElements;
         D3D11_BUFFER_DESC matrixBufferDesc;
         D3D11_SAMPLER_DESC samplerDesc;
-
-        errorMessage = 0;
-        vertexShaderBuffer = 0;
-        pixelShaderBuffer = 0;
 
         result = D3DX11CompileFromFile(vertexShaderFile, NULL, NULL, "TextureVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL, &vertexShaderBuffer, &errorMessage, NULL);
         okAssert(SUCCEEDED(result), "Failed to compile Vertex shader.");

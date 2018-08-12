@@ -8,6 +8,10 @@ namespace OK
 {
     Shader::Shader(const OK::char8* shaderName)
         : m_Name{ shaderName }
+        , m_VertexShader{ nullptr }
+        , m_PixelShader{ nullptr }
+        , m_Layout{ nullptr }
+        , m_MatrixBuffer{ nullptr }
     {
     }
 

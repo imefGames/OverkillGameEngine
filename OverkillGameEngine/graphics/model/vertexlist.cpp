@@ -52,6 +52,11 @@ namespace OK
             OK::f32 u{ vertexNode.GetValueAs<OK::f32>("u") };
             OK::f32 v{ vertexNode.GetValueAs<OK::f32>("v") };
             newVertexData.m_TextureCoords = OK::Vec4{ u, v };
+
+            OK::f32 nx{ vertexNode.GetValueAs<OK::f32>("nx") };
+            OK::f32 ny{ vertexNode.GetValueAs<OK::f32>("ny") };
+            OK::f32 nz{ vertexNode.GetValueAs<OK::f32>("nz") };
+            newVertexData.m_Normal = OK::Vec4{ nx, ny, nz };
         }
         SetVertexList(renderingContext, vertexData);
 

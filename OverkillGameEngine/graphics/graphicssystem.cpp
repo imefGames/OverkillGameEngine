@@ -4,7 +4,9 @@
 #include <engine\components\transformcomponent.h>
 #include <engine\objectmodel\componentutils.h>
 #include <graphics\camerasystem.h>
+#include <graphics\lightsystem.h>
 #include <graphics\graphicswrapper.h>
+#include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
 
 namespace OK
@@ -30,6 +32,14 @@ namespace OK
         TransformComponent* cameraTransform{ nullptr };
         ComponentUtils::FindComponents(cameraHolderID, cameraTransform);
         m_GraphicsWrapper->BeginScene(cameraTransform);
+
+        ComponentHolderID lightHolderID{ LightSystem::GetActiveLightomponentHolderID() };
+        LightSourceComponent* lightComponent{ nullptr };
+        TransformComponent* lightTransform{ nullptr };
+        if (ComponentUtils::FindComponents(lightHolderID, lightComponent, lightTransform) == EResult::Success)
+        {
+            m_GraphicsWrapper->SetLight(lightComponent, lightTransform);
+        }
 
         const Array<ComponentHolderID>& activeHolderIDs{ GetActiveComponentHolders() };
         for (ComponentHolderID holderID : activeHolderIDs)

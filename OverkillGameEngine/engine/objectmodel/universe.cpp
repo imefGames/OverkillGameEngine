@@ -5,6 +5,7 @@
 #include <engine\objectmodel\universesystem.h>
 #include <graphics\camerasystem.h>
 #include <graphics\graphicssystem.h>
+#include <graphics\lightsystem.h>
 
 namespace OK
 {
@@ -41,6 +42,7 @@ namespace OK
     void Universe::Init()
     {
         m_UniverseSystems.Add(new CameraSystem);
+        m_UniverseSystems.Add(new LightSystem);
         m_UniverseSystems.Add(new GraphicsSystem);
 
         for (UniverseSystem* system : m_UniverseSystems)

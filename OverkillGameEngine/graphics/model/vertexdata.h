@@ -9,6 +9,7 @@ namespace OK
         OK::Vec4 m_Position;
         OK::Vec4 m_Color;
         OK::Vec4 m_TextureCoords;
+        OK::Vec4 m_Normal;
 
         static void* operator new(size_t size);
         static void* operator new[](size_t size);
