@@ -3,6 +3,7 @@
 
 #include <core\io\parsers\json\jsonnode.h>
 #include <graphics\model\vertexlist.h>
+#include <graphics\model\loaders\modelloaderobj.h>
 #include <graphics\shaders\shader.h>
 
 namespace OK
@@ -10,6 +11,8 @@ namespace OK
     EResult ModelLibrary::RegisterModels(const RenderingContext& renderingContext, const JSONNode& modelLibraryNode)
     {
         EResult loadResult{ EResult::Success };
+        Array<VertexData> vertexData;
+        Array<OK::u32> indexData;
 
         const JSONNode* modelListNode = modelLibraryNode["ModelList"];
         m_Models.Reserve(modelListNode->GetSubNodeCount());
@@ -20,8 +23,14 @@ namespace OK
             newModel.m_Name.Resize(modelName->GetValue().GetLength());
             OK::MemCopy(modelName->GetValue().begin(), newModel.m_Name.begin(), newModel.m_Name.GetSize());
 
-            newModel.m_Model = new VertexList;
-            if (newModel.m_Model->LoadVertexList(renderingContext, modelNode) == EResult::Failure)
+            const StringView& filePath{ modelNode["Path"]->GetValue() };
+            if (ModelLoaderObj::LoadModel(filePath, vertexData, indexData) == EResult::Success)
+            {
+                newModel.m_Model = new VertexList;
+                newModel.m_Model->SetVertexList(renderingContext, vertexData);
+                newModel.m_Model->SetIndexList(renderingContext, indexData);
+            }
+            else
             {
                 loadResult = EResult::Failure;
                 break;

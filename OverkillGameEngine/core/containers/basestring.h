@@ -9,6 +9,7 @@ namespace OK
     {
     public:
         BaseString();
+        BaseString(const T* beginString, OK::u32 stringLength);
         BaseString(const T* rawString);
     };
 
@@ -16,6 +17,15 @@ namespace OK
     BaseString<T>::BaseString()
         : Array<T>{ }
     {
+    }
+
+    template<typename T>
+    BaseString<T>::BaseString(const T* beginString, OK::u32 stringLength)
+    {
+        Reserve(stringLength + 1); //+1 to include '\0'
+        Resize(stringLength);
+        OK::MemCopy(reinterpret_cast<const void*>(beginString), GetRawData(), stringLength * sizeof(T));
+        GetRawData()[stringLength] = 0;
     }
 
     template<typename T>

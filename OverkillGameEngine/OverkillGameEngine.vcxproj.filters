@@ -137,6 +137,12 @@
     <ClCompile Include="core\allocation\alignedallocation.cpp">
       <Filter>core\allocation</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\model\loaders\modelloaderobj.cpp">
+      <Filter>graphics\model\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="core\string.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -195,6 +201,9 @@
     </Filter>
     <Filter Include="core\allocation">
       <UniqueIdentifier>{b87166b1-d927-46ef-8025-d4001d789f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\model\loaders">
+      <UniqueIdentifier>{e262f0af-cb70-4858-9937-cd9a8bef8914}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -375,6 +384,9 @@
     </ClInclude>
     <ClInclude Include="core\allocation\alignedallocation.h">
       <Filter>core\allocation</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\model\loaders\modelloaderobj.h">
+      <Filter>graphics\model\loaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

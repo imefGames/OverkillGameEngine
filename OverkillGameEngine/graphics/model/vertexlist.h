@@ -15,8 +15,6 @@ namespace OK
         VertexList();
         ~VertexList();
 
-        EResult LoadVertexList(const RenderingContext& renderingContext, const JSONNode& vertexListNode);
-
         void SetVertexList(const RenderingContext& renderingContext, const Array<VertexData>& vertexList);
         void SetIndexList(const RenderingContext& renderingContext, const Array<OK::u32>& indexList);
 

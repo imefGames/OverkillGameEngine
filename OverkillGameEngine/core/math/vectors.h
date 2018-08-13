@@ -4,7 +4,7 @@
 
 namespace OK
 {
-    class alignas(16) Vec4
+    class alignas(16) Vec4 : public AllocationPolicy<AlignedAllocation<16>>
     {
     public:
         Vec4();

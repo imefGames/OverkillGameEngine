@@ -45,4 +45,21 @@ namespace OK
         }
         return readResult;
     }
+
+    EResult FileReader::ReadLine(String& fileText)
+    {
+        EResult readResult{ EResult::Failure };
+        OK::char8 currentChar{};
+        if (IsFileOpen())
+        {
+            fileText.Clear();
+            do
+            {
+                currentChar = getc(m_FileHandle);
+                fileText.Add(currentChar);
+            }
+            while (!IsAtEOF() && currentChar != '\n');
+        }
+        return readResult;
+    }
 }

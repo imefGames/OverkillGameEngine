@@ -145,6 +145,7 @@
     <ClCompile Include="core\io\parsers\json\jsonnode.cpp" />
     <ClCompile Include="core\io\parsers\json\jsonparser.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
+    <ClCompile Include="core\string.cpp" />
     <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
     <ClCompile Include="engine\gameloop.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="graphics\graphicssystem.cpp" />
     <ClCompile Include="graphics\graphicswrapper.cpp" />
     <ClCompile Include="graphics\lightsystem.cpp" />
+    <ClCompile Include="graphics\model\loaders\modelloaderobj.cpp" />
     <ClCompile Include="graphics\model\modellibrary.cpp" />
     <ClCompile Include="graphics\model\modellibrarycomponent.cpp" />
     <ClCompile Include="graphics\model\vertexdata.cpp" />
@@ -232,6 +234,7 @@
     <ClInclude Include="graphics\graphicssystem.h" />
     <ClInclude Include="graphics\graphicswrapper.h" />
     <ClInclude Include="graphics\lightsystem.h" />
+    <ClInclude Include="graphics\model\loaders\modelloaderobj.h" />
     <ClInclude Include="graphics\model\modellibrary.h" />
     <ClInclude Include="graphics\model\modellibrarycomponent.h" />
     <ClInclude Include="graphics\model\vertexdata.h" />

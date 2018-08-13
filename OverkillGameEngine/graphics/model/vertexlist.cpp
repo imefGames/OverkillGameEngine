@@ -28,49 +28,6 @@ namespace OK
         }
     }
 
-    EResult VertexList::LoadVertexList(const RenderingContext& renderingContext, const JSONNode& vertexListNode)
-    {
-        const JSONNode* vertexDataNode = vertexListNode["VertexList"];
-        const JSONNode* indexDataNode = vertexListNode["IndexList"];
-
-        Array<VertexData> vertexData;
-        vertexData.Reserve(vertexDataNode->GetSubNodeCount());
-        for (const JSONNode& vertexNode : *vertexDataNode)
-        {
-            VertexData& newVertexData{ vertexData.Grow() };
-            OK::f32 x{ vertexNode.GetValueAs<OK::f32>("x") };
-            OK::f32 y{ vertexNode.GetValueAs<OK::f32>("y") };
-            OK::f32 z{ vertexNode.GetValueAs<OK::f32>("z") };
-            newVertexData.m_Position = OK::Vec4{ x, y, z };
-
-            OK::f32 r{ vertexNode.GetValueAs<OK::f32>("r") };
-            OK::f32 g{ vertexNode.GetValueAs<OK::f32>("g") };
-            OK::f32 b{ vertexNode.GetValueAs<OK::f32>("b") };
-            OK::f32 a{ vertexNode.GetValueAs<OK::f32>("a") };
-            newVertexData.m_Color = OK::Vec4{ r, g, b, a };
-
-            OK::f32 u{ vertexNode.GetValueAs<OK::f32>("u") };
-            OK::f32 v{ vertexNode.GetValueAs<OK::f32>("v") };
-            newVertexData.m_TextureCoords = OK::Vec4{ u, v };
-
-            OK::f32 nx{ vertexNode.GetValueAs<OK::f32>("nx") };
-            OK::f32 ny{ vertexNode.GetValueAs<OK::f32>("ny") };
-            OK::f32 nz{ vertexNode.GetValueAs<OK::f32>("nz") };
-            newVertexData.m_Normal = OK::Vec4{ nx, ny, nz };
-        }
-        SetVertexList(renderingContext, vertexData);
-
-        Array<OK::u32> indexData;
-        indexData.Reserve(indexDataNode->GetSubNodeCount());
-        for (const JSONNode& indexNode : *indexDataNode)
-        {
-            indexData.Add(indexNode.GetValueAs<OK::u32>("index"));
-        }
-        SetIndexList(renderingContext, indexData);
-
-        return EResult::Success;
-    }
-
     void VertexList::SetVertexList(const RenderingContext& renderingContext, const Array<VertexData>& vertexData)
     {
         D3D11_BUFFER_DESC vertexBufferDesc;

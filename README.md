@@ -16,10 +16,10 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* [FEATURE]  Implement obj model loader
-* [FEATURE]  Implement ambient lighting
-* [FEATURE]  Implement specular lighting
-* [FEATURE]  Handle mouse input
+* [BUGFIX] Fix weird normals for cube model
+* [FEATURE] Implement ambient lighting
+* [FEATURE] Implement specular lighting
+* [FEATURE] Handle mouse input
 * [REFACTOR] Make generic asset library
 * [REFACTOR] Cache component tuple list in systems
 
