@@ -5,7 +5,7 @@
 
 namespace OK
 {
-    class TransformComponent : public Component<TransformComponent>
+    class TransformComponent : public Component<TransformComponent>, public AllocationPolicy<AlignedAllocation<alignof(OK::Vec4)>>
     {
     public:
         OK::Vec4& GetPosition() { return m_Position; }

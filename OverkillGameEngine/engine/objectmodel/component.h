@@ -30,26 +30,6 @@ namespace OK
         static void UnregisterComponentFactory();
         static ComponentFactoryID GetFactoryID() { return ms_FactoryID; };
 
-        static void* operator new(size_t size)
-        {
-            return _aligned_malloc(size, alignof(ComponentType));
-        }
-
-        static void* operator new[](size_t size)
-        {
-            return _aligned_malloc(size, alignof(ComponentType));
-        }
-
-        static void operator delete(void* pointer)
-        {
-            _aligned_free(pointer);
-        }
-
-        static void operator delete[](void* pointer)
-        {
-            _aligned_free(pointer);
-        }
-
     private:
         static ComponentFactoryID ms_FactoryID;
     };

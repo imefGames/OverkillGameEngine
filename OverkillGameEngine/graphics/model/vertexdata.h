@@ -4,16 +4,11 @@
 
 namespace OK
 {
-    struct alignas(16) VertexData
+    struct alignas(alignof(OK::Vec4)) VertexData : public AllocationPolicy<AlignedAllocation<alignof(OK::Vec4)>>
     {
         OK::Vec4 m_Position;
         OK::Vec4 m_Color;
         OK::Vec4 m_TextureCoords;
         OK::Vec4 m_Normal;
-
-        static void* operator new(size_t size);
-        static void* operator new[](size_t size);
-        static void operator delete(void* pointer);
-        static void operator delete[](void* pointer);
     };
 }

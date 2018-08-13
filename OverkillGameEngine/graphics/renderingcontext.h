@@ -9,7 +9,7 @@
 
 namespace OK
 {
-    struct RenderingContext
+    struct RenderingContext : public AllocationPolicy<AlignedAllocation<alignof(OK::Vec4)>>
     {
         ID3D11DeviceContext* m_DeviceContext = nullptr;
         ID3D11Device* m_Device = nullptr;
@@ -19,10 +19,5 @@ namespace OK
 
         OK::Vec4 m_LightColor{ 1.0f , 1.0f , 1.0f , 1.0f };
         OK::Vec4 m_LightDirection{ 0.0f, 0.0f, -1.0f};
-
-        static void* operator new(size_t size);
-        static void* operator new[](size_t size);
-        static void operator delete(void* pointer);
-        static void operator delete[](void* pointer);
     };
 }

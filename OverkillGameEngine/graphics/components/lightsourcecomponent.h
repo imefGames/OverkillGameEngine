@@ -5,7 +5,7 @@
 
 namespace OK
 {
-    class LightSourceComponent : public Component<LightSourceComponent>
+    class LightSourceComponent : public Component<LightSourceComponent>, public AllocationPolicy<AlignedAllocation<alignof(OK::Vec4)>>
     {
     public:
         OK::Vec4& GetDiffuseColor() { return m_DiffuseColor; }

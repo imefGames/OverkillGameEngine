@@ -131,6 +131,12 @@
     <ClCompile Include="graphics\shaders\lightshader.cpp">
       <Filter>graphics\shaders</Filter>
     </ClCompile>
+    <ClCompile Include="core\allocation\allocationpolicy.cpp">
+      <Filter>core\allocation</Filter>
+    </ClCompile>
+    <ClCompile Include="core\allocation\alignedallocation.cpp">
+      <Filter>core\allocation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -186,6 +192,9 @@
     </Filter>
     <Filter Include="graphics\d3d">
       <UniqueIdentifier>{e2fcfd69-5691-476c-879e-5694d365377b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\allocation">
+      <UniqueIdentifier>{b87166b1-d927-46ef-8025-d4001d789f07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +369,12 @@
     </ClInclude>
     <ClInclude Include="graphics\shaders\lightshader.h">
       <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="core\allocation\allocationpolicy.h">
+      <Filter>core\allocation</Filter>
+    </ClInclude>
+    <ClInclude Include="core\allocation\alignedallocation.h">
+      <Filter>core\allocation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

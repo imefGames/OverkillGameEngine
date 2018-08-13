@@ -139,6 +139,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="core\algorithms\algorithms_memory.cpp" />
+    <ClCompile Include="core\allocation\alignedallocation.cpp" />
+    <ClCompile Include="core\allocation\allocationpolicy.cpp" />
     <ClCompile Include="core\io\filereader.cpp" />
     <ClCompile Include="core\io\parsers\json\jsonnode.cpp" />
     <ClCompile Include="core\io\parsers\json\jsonparser.cpp" />
@@ -188,6 +190,8 @@
     <ClInclude Include="core\algorithms\algorithms_memory.h" />
     <ClInclude Include="core\algorithms\algorithms_searching.h" />
     <ClInclude Include="core\allocation.h" />
+    <ClInclude Include="core\allocation\alignedallocation.h" />
+    <ClInclude Include="core\allocation\allocationpolicy.h" />
     <ClInclude Include="core\asserts.h" />
     <ClInclude Include="core\containers\array.h" />
     <ClInclude Include="core\containers\basecontainer.h" />
