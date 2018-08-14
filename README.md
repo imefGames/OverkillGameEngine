@@ -16,7 +16,6 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* [BUGFIX] Fix weird normals for cube model
 * [FEATURE] Implement ambient lighting
 * [FEATURE] Implement specular lighting
 * [FEATURE] Handle mouse input
