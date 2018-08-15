@@ -79,7 +79,8 @@ namespace OK
     {
         if (lightComponent != nullptr)
         {
-            m_RenderingContext->m_LightColor = lightComponent->GetDiffuseColor();
+            m_RenderingContext->m_AmbientLightColor = lightComponent->GetAmbientColor();
+            m_RenderingContext->m_DiffuseLightColor = lightComponent->GetDiffuseColor();
         }
         if (lightTransform != nullptr)
         {

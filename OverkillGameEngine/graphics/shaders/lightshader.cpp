@@ -148,7 +148,8 @@ namespace OK
         okAssert(SUCCEEDED(result), "Failed to lock the light constant buffer.");
 
         dataPtr2 = (LightBufferData*)mappedResource.pData;
-        dataPtr2->m_DiffuseColor = renderingContext.m_LightColor;
+        dataPtr2->m_AmbientColor = renderingContext.m_AmbientLightColor;
+        dataPtr2->m_DiffuseColor = renderingContext.m_DiffuseLightColor;
         dataPtr2->m_LightDirection = renderingContext.m_LightDirection;
 
         renderingContext.m_DeviceContext->Unmap(m_LightBuffer, 0);

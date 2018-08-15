@@ -15,6 +15,7 @@ namespace OK
     public:
         struct LightBufferData
         {
+            OK::Vec4 m_AmbientColor;
             OK::Vec4 m_DiffuseColor;
             OK::Vec4 m_LightDirection;
         };

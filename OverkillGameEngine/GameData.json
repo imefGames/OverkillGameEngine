@@ -75,6 +75,12 @@
                             },
                             {
                                 "Name": "LightSource",
+
+                                "acr": 0.15,
+                                "acg": 0.15,
+                                "acb": 0.15,
+                                "aca": 0.15,
+
                                 "dcr": 1,
                                 "dcg": 1,
                                 "dcb": 1,

@@ -16,7 +16,6 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* [FEATURE] Implement ambient lighting
 * [FEATURE] Implement specular lighting
 * [FEATURE] Handle mouse input
 * [REFACTOR] Make generic asset library
