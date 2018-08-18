@@ -372,6 +372,7 @@ namespace OK
 
             D3DXMATRIX viewMatrix;
             D3DXMatrixLookAtLH(&renderingContext.m_ViewMatrix, &position, &lookAt, &up);
+            renderingContext.m_CameraPosition = cameraPosition;
         }
 
         renderingContext.m_ProjectionMatrix = m_projectionMatrix;

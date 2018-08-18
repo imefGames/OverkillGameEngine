@@ -16,15 +16,18 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* [FEATURE] Implement specular lighting
 * [FEATURE] Handle mouse input
+* [FEATURE] Implement 2D rendering (ex: for HUD)
+* [FEATURE] Implement specular lighting
+* [FEATURE] Implement sound playing
+* [FEATURE] Implement frustum culling
+* [FEATURE] Add operators to String/StringView classes
 * [REFACTOR] Make generic asset library
 * [REFACTOR] Cache component tuple list in systems
-
-Current Bugs/Issues
--------------------
-* The JSon parser fails when encountering empty arrays or objects.
-* String/StringView classes are still a pain to use. It'd be nice to handle more operators.
+* [BUGFIX] The JSon parser fails when encountering empty arrays or objects
+* [BUGFIX] Arrays seem to fail to copy content when resizing
+* [BUGFIX] Comparing StringView to a char* isn't always done properly (ex: Shader Library)
+* [QUALITY] Add Unit tests for classes in the Core folder
 
 Beyond v1
 ---------

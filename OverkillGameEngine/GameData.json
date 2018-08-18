@@ -84,7 +84,13 @@
                                 "dcr": 1,
                                 "dcg": 1,
                                 "dcb": 1,
-                                "dca": 1
+                                "dca": 1,
+
+                                "scr": 1,
+                                "scg": 1,
+                                "scb": 1,
+                                "sca": 1,
+                                "scp": 32
                             }
                         ]
                     },
@@ -105,12 +111,12 @@
 								"sy": 1,
 								"sz": 1
 							},
-							{
+                            {
                                 "Name": "Model",
                                 "ModelName": "Cube",
                                 "ShaderName": "Light",
                                 "TextureName": "Test"
-							}
+                            }
 						]
 					},
 					{
@@ -130,12 +136,12 @@
 								"sy": 1,
 								"sz": 1
 							},
-							{
+                            {
                                 "Name": "Model",
                                 "ModelName": "Cube",
-                                "ShaderName": "Color",
+                                "ShaderName": "SpecularLight",
                                 "TextureName": "Test"
-							}
+                            }
 						]
 					}
                 ]

@@ -3,6 +3,7 @@
 
 #include <graphics\shaders\colorshader.h>
 #include <graphics\shaders\lightshader.h>
+#include <graphics\shaders\lightspecularshader.h>
 #include <graphics\shaders\textureshader.h>
 
 namespace OK
@@ -20,6 +21,7 @@ namespace OK
     {
         RegisterShader<ColorShader>(renderingContext, "Color", "graphics/shaders/color.vs", "graphics/shaders/color.ps");
         RegisterShader<LightShader>(renderingContext, "Light", "graphics/shaders/light.vs", "graphics/shaders/light.ps");
+        RegisterShader<LightSpecularShader>(renderingContext, "SpecularLight", "graphics/shaders/lightspecular.vs", "graphics/shaders/lightspecular.ps");
         RegisterShader<TextureShader>(renderingContext, "Texture", "graphics/shaders/texture.vs", "graphics/shaders/texture.ps");
     }
 

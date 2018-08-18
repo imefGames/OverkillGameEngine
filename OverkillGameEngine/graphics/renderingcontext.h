@@ -17,8 +17,12 @@ namespace OK
         D3DXMATRIX m_WorldMatrix;
         D3DXMATRIX m_ViewMatrix;
 
+        OK::Vec4 m_CameraPosition;
+
         OK::Vec4 m_AmbientLightColor{ 1.0f , 1.0f , 1.0f , 1.0f };
         OK::Vec4 m_DiffuseLightColor{ 1.0f , 1.0f , 1.0f , 1.0f };
+        OK::Vec4 m_SpecularLightColor{ 1.0f , 1.0f , 1.0f , 1.0f };
         OK::Vec4 m_LightDirection{ 0.0f, 0.0f, -1.0f};
+        OK::f32 m_SpecularLightPower;
     };
 }

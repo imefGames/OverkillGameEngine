@@ -81,6 +81,8 @@ namespace OK
         {
             m_RenderingContext->m_AmbientLightColor = lightComponent->GetAmbientColor();
             m_RenderingContext->m_DiffuseLightColor = lightComponent->GetDiffuseColor();
+            m_RenderingContext->m_SpecularLightColor = lightComponent->GetSpecularColor();
+            m_RenderingContext->m_SpecularLightPower = lightComponent->GetSpecularPower();
         }
         if (lightTransform != nullptr)
         {

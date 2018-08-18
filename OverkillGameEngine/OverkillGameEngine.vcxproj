@@ -179,6 +179,7 @@
     <ClCompile Include="graphics\renderingcontext.cpp" />
     <ClCompile Include="graphics\shaders\colorshader.cpp" />
     <ClCompile Include="graphics\shaders\lightshader.cpp" />
+    <ClCompile Include="graphics\shaders\lightspecularshader.cpp" />
     <ClCompile Include="graphics\shaders\shader.cpp" />
     <ClCompile Include="graphics\shaders\shaderlibrary.cpp" />
     <ClCompile Include="graphics\shaders\textureshader.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="graphics\renderingcontext.h" />
     <ClInclude Include="graphics\shaders\colorshader.h" />
     <ClInclude Include="graphics\shaders\lightshader.h" />
+    <ClInclude Include="graphics\shaders\lightspecularshader.h" />
     <ClInclude Include="graphics\shaders\shader.h" />
     <ClInclude Include="graphics\shaders\shaderlibrary.h" />
     <ClInclude Include="graphics\shaders\textureshader.h" />

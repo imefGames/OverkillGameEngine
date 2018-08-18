@@ -18,6 +18,13 @@ namespace OK
         OK::f32 dcb{ componentNode.GetValueAs<OK::f32>("dcb") };
         OK::f32 dca{ componentNode.GetValueAs<OK::f32>("dca") };
         m_DiffuseColor = Vec4{ dcr, dcg, dcb, dca };
+
+        OK::f32 scr{ componentNode.GetValueAs<OK::f32>("scr") };
+        OK::f32 scg{ componentNode.GetValueAs<OK::f32>("scg") };
+        OK::f32 scb{ componentNode.GetValueAs<OK::f32>("scb") };
+        OK::f32 sca{ componentNode.GetValueAs<OK::f32>("sca") };
+        m_SpecularColor = Vec4{ scr, scg, scb, sca };
+        m_SpecularPower = componentNode.GetValueAs<OK::f32>("scp");
         return EResult::Success;
     }
 }
