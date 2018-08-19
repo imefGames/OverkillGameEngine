@@ -4,10 +4,12 @@
 #include <core\io\parsers\json\jsonnode.h>
 #include <engine\objectmodel\componentfactory.h>
 
+#include <engine\components\recttransformcomponent.h>
 #include <engine\components\transformcomponent.h>
 #include <graphics\components\cameracomponent.h>
 #include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
+#include <graphics\components\spritecomponent.h>
 #include <graphics\model\modellibrarycomponent.h>
 #include <graphics\texture\texturelibrarycomponent.h>
 
@@ -71,10 +73,12 @@ namespace OK
 
     void ComponentHolder::RegisterComponentFactories()
     {
+        m_Factories.Add(new ComponentFactory<RectTransformComponent>(m_Factories.GetSize(), "RectTransform"));
         m_Factories.Add(new ComponentFactory<TransformComponent>(m_Factories.GetSize(), "Transform"));
         m_Factories.Add(new ComponentFactory<CameraComponent>(m_Factories.GetSize(), "Camera"));
         m_Factories.Add(new ComponentFactory<LightSourceComponent>(m_Factories.GetSize(), "LightSource"));
         m_Factories.Add(new ComponentFactory<ModelComponent>(m_Factories.GetSize(), "Model"));
+        m_Factories.Add(new ComponentFactory<SpriteComponent>(m_Factories.GetSize(), "Sprite"));
         m_Factories.Add(new ComponentFactory<ModelLibraryComponent>(m_Factories.GetSize(), "ModelLibrary"));
         m_Factories.Add(new ComponentFactory<TextureLibraryComponent>(m_Factories.GetSize(), "TextureLibrary"));
     }

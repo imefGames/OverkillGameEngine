@@ -20,6 +20,8 @@ namespace OK
             VertexList* m_Model = nullptr;
         };
 
+        void RegisterSpriteModel(const RenderingContext& renderingContext);
+
         Array<ModelLibraryEntry> m_Models;
     };
 }

@@ -146,6 +146,7 @@
     <ClCompile Include="core\io\parsers\json\jsonparser.cpp" />
     <ClCompile Include="core\math\vectors.cpp" />
     <ClCompile Include="core\string.cpp" />
+    <ClCompile Include="engine\components\recttransformcomponent.cpp" />
     <ClCompile Include="engine\components\transformcomponent.cpp" />
     <ClCompile Include="engine\gameengine.cpp" />
     <ClCompile Include="engine\gameloop.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="graphics\components\cameracomponent.cpp" />
     <ClCompile Include="graphics\components\lightsourcecomponent.cpp" />
     <ClCompile Include="graphics\components\modelcomponent.cpp" />
+    <ClCompile Include="graphics\components\spritecomponent.cpp" />
     <ClCompile Include="graphics\d3d\d3dcontext.cpp" />
     <ClCompile Include="graphics\graphicssystem.cpp" />
     <ClCompile Include="graphics\graphicswrapper.cpp" />
@@ -210,6 +212,7 @@
     <ClInclude Include="core\string.h" />
     <ClInclude Include="core\traits.h" />
     <ClInclude Include="core\types.h" />
+    <ClInclude Include="engine\components\recttransformcomponent.h" />
     <ClInclude Include="engine\components\transformcomponent.h" />
     <ClInclude Include="engine\gameengine.h" />
     <ClInclude Include="engine\gameloop.h" />
@@ -231,6 +234,7 @@
     <ClInclude Include="graphics\components\cameracomponent.h" />
     <ClInclude Include="graphics\components\lightsourcecomponent.h" />
     <ClInclude Include="graphics\components\modelcomponent.h" />
+    <ClInclude Include="graphics\components\spritecomponent.h" />
     <ClInclude Include="graphics\d3d\d3dcontext.h" />
     <ClInclude Include="graphics\graphicssystem.h" />
     <ClInclude Include="graphics\graphicswrapper.h" />

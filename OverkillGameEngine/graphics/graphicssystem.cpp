@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include <graphics\graphicssystem.h>
 
+#include <engine\components\recttransformcomponent.h>
 #include <engine\components\transformcomponent.h>
 #include <engine\objectmodel\componentutils.h>
 #include <graphics\camerasystem.h>
@@ -8,6 +9,7 @@
 #include <graphics\graphicswrapper.h>
 #include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
+#include <graphics\components\spritecomponent.h>
 
 namespace OK
 {
@@ -41,6 +43,7 @@ namespace OK
             m_GraphicsWrapper->SetLight(lightComponent, lightTransform);
         }
 
+        //3D Model pass
         const Array<ComponentHolderID>& activeHolderIDs{ GetActiveComponentHolders() };
         for (ComponentHolderID holderID : activeHolderIDs)
         {
@@ -51,6 +54,19 @@ namespace OK
                 m_GraphicsWrapper->RenderModel(model, transform);
             }
         }
+
+        //2D Model pass
+        m_GraphicsWrapper->Begin2DRenderingPass();
+        for (ComponentHolderID holderID : activeHolderIDs)
+        {
+            SpriteComponent* sprite{ nullptr };
+            RectTransformComponent* transform{ nullptr };
+            if (ComponentUtils::FindComponents(holderID, sprite, transform) == EResult::Success)
+            {
+                m_GraphicsWrapper->RenderSprite(sprite, transform);
+            }
+        }
+        m_GraphicsWrapper->End2DRenderingPass();
 
         m_GraphicsWrapper->EndScene();
     }

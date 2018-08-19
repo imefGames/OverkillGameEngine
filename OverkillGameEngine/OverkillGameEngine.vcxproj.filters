@@ -146,6 +146,12 @@
     <ClCompile Include="graphics\shaders\lightspecularshader.cpp">
       <Filter>graphics\shaders</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\components\spritecomponent.cpp">
+      <Filter>graphics\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\components\recttransformcomponent.cpp">
+      <Filter>engine\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
@@ -393,6 +399,12 @@
     </ClInclude>
     <ClInclude Include="graphics\shaders\lightspecularshader.h">
       <Filter>graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\components\spritecomponent.h">
+      <Filter>graphics\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\components\recttransformcomponent.h">
+      <Filter>engine\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

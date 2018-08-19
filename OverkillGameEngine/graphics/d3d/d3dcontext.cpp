@@ -1,6 +1,7 @@
 #include <stdafx.h>
 #include <graphics\d3d\d3dcontext.h>
 
+#include <engine\components\recttransformcomponent.h>
 #include <engine\components\transformcomponent.h>
 #include <graphics\renderingcontext.h>
 #include <graphics\components\modelcomponent.h>
@@ -19,6 +20,7 @@ namespace OK
         , m_depthStencilState{ nullptr }
         , m_depthStencilView{ nullptr }
         , m_rasterState{ nullptr }
+        , m_DepthDisabledStencilState{ nullptr }
     {
     }
 
@@ -43,6 +45,7 @@ namespace OK
 	    D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
 	    D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
 	    D3D11_RASTERIZER_DESC rasterDesc;
+        D3D11_DEPTH_STENCIL_DESC depthDisabledStencilDesc;
 	    D3D11_VIEWPORT viewport;
         OK::f32 fieldOfView, screenAspect;
 
@@ -260,59 +263,84 @@ namespace OK
         D3DXMatrixIdentity(&m_worldMatrix);
 	    D3DXMatrixOrthoLH(&m_orthoMatrix, static_cast<OK::f32>(screenWidth), static_cast<OK::f32>(screenHeight), screenNear, screenDepth);
 
+
+        ZeroMemory(&depthDisabledStencilDesc, sizeof(depthDisabledStencilDesc));
+        depthDisabledStencilDesc.DepthEnable = false;
+        depthDisabledStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+        depthDisabledStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+        depthDisabledStencilDesc.StencilEnable = true;
+        depthDisabledStencilDesc.StencilReadMask = 0xFF;
+        depthDisabledStencilDesc.StencilWriteMask = 0xFF;
+        depthDisabledStencilDesc.FrontFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+        depthDisabledStencilDesc.FrontFace.StencilDepthFailOp = D3D11_STENCIL_OP_INCR;
+        depthDisabledStencilDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+        depthDisabledStencilDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+        depthDisabledStencilDesc.BackFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+        depthDisabledStencilDesc.BackFace.StencilDepthFailOp = D3D11_STENCIL_OP_DECR;
+        depthDisabledStencilDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+        depthDisabledStencilDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+        result = m_device->CreateDepthStencilState(&depthDisabledStencilDesc, &m_DepthDisabledStencilState);
+        okAssert(SUCCEEDED(result), "Failed to create depth Stencil State.");
+
         return true;
     }
 
     void D3DContext::Shutdown()
     {
-	    if(m_swapChain)
+	    if(m_swapChain != nullptr)
 	    {
 		    m_swapChain->SetFullscreenState(false, NULL);
 	    }
 
-	    if(m_rasterState)
+        if (m_DepthDisabledStencilState != nullptr)
+        {
+            m_DepthDisabledStencilState->Release();
+            m_DepthDisabledStencilState = nullptr;
+        }
+
+	    if(m_rasterState != nullptr)
 	    {
 		    m_rasterState->Release();
 		    m_rasterState = nullptr;
 	    }
 
-	    if(m_depthStencilView)
+	    if(m_depthStencilView != nullptr)
 	    {
 		    m_depthStencilView->Release();
 		    m_depthStencilView = nullptr;
 	    }
 
-	    if(m_depthStencilState)
+	    if(m_depthStencilState != nullptr)
 	    {
 		    m_depthStencilState->Release();
 		    m_depthStencilState = nullptr;
 	    }
 
-	    if(m_depthStencilBuffer)
+	    if(m_depthStencilBuffer != nullptr)
 	    {
 		    m_depthStencilBuffer->Release();
 		    m_depthStencilBuffer = nullptr;
 	    }
 
-	    if(m_renderTargetView)
+	    if(m_renderTargetView != nullptr)
 	    {
 		    m_renderTargetView->Release();
 		    m_renderTargetView = nullptr;
 	    }
 
-	    if(m_deviceContext)
+	    if(m_deviceContext != nullptr)
 	    {
 		    m_deviceContext->Release();
 		    m_deviceContext = nullptr;
 	    }
 
-	    if(m_device)
+	    if(m_device != nullptr)
 	    {
 		    m_device->Release();
 		    m_device = nullptr;
 	    }
 
-	    if(m_swapChain)
+	    if(m_swapChain != nullptr)
 	    {
 		    m_swapChain->Release();
 		    m_swapChain = nullptr;
@@ -401,6 +429,24 @@ namespace OK
         renderingContext.m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     }
 
+    void D3DContext::PrepareSpriteRendering(RenderingContext& renderingContext, VertexList& vertexList, const RectTransformComponent* spriteTransform)
+    {
+        const OK::Vec4& spritePosition{ spriteTransform->GetPosition() };
+        const OK::Vec4& spriteSize{ spriteTransform->GetSize() };
+
+        D3DXVECTOR3 position{ spritePosition.GetX(), spritePosition.GetY(), spritePosition.GetZ() };
+        D3DXVECTOR3 scale{ spriteSize.GetX(), spriteSize.GetY(), spriteSize.GetZ() };
+        D3DXMatrixTransformation(&renderingContext.m_WorldMatrix, nullptr, nullptr, &scale, nullptr, nullptr, &position);
+
+        OK::u32 stride{ sizeof(VertexData) };
+        OK::u32 offset{ 0 };
+
+        ID3D11Buffer * const vertexBuffer = vertexList.GetVertexBuffer();
+        renderingContext.m_DeviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+        renderingContext.m_DeviceContext->IASetIndexBuffer(vertexList.GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
+        renderingContext.m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    }
+
     void D3DContext::GetProjectionMatrix(D3DXMATRIX& projectionMatrix)
     {
 	    projectionMatrix = m_projectionMatrix;
@@ -421,5 +467,15 @@ namespace OK
 	    strcpy_s(reinterpret_cast<char*>(cardName), 128, reinterpret_cast<char*>(m_videoCardDescription));
 	    memory = m_videoCardMemory;
 	    return;
+    }
+    
+    void D3DContext::TurnZBufferOn()
+    {
+        m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
+    }
+
+    void D3DContext::TurnZBufferOff()
+    {
+        m_deviceContext->OMSetDepthStencilState(m_DepthDisabledStencilState, 1);
     }
 }

@@ -18,6 +18,7 @@
 namespace OK
 {
     class ModelComponent;
+    class RectTransformComponent;
     class TransformComponent;
     struct RenderingContext;
     struct VertexList;
@@ -39,12 +40,16 @@ namespace OK
 
         void ComputeRenderingContext(RenderingContext& renderingContext, const TransformComponent* cameraTransform);
         void PrepareModelRendering(RenderingContext& renderingContext, VertexList& vertexList, const TransformComponent* modelTransform);
+        void PrepareSpriteRendering(RenderingContext& renderingContext, VertexList& vertexList, const RectTransformComponent* spriteTransform);
 
         void GetProjectionMatrix(D3DXMATRIX&);
         void GetWorldMatrix(D3DXMATRIX&);
         void GetOrthoMatrix(D3DXMATRIX&);
 
         void GetVideoCardInfo(OK::char8*, OK::s32&);
+
+        void TurnZBufferOn();
+        void TurnZBufferOff();
 
     private:
         OK::Bool m_vsync_enabled;
@@ -58,6 +63,7 @@ namespace OK
         ID3D11DepthStencilState* m_depthStencilState;
         ID3D11DepthStencilView* m_depthStencilView;
         ID3D11RasterizerState* m_rasterState;
+        ID3D11DepthStencilState* m_DepthDisabledStencilState;
         D3DXMATRIX m_projectionMatrix;
         D3DXMATRIX m_worldMatrix;
         D3DXMATRIX m_orthoMatrix;

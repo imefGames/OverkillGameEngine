@@ -15,7 +15,9 @@ namespace OK
         Array<OK::u32> indexData;
 
         const JSONNode* modelListNode = modelLibraryNode["ModelList"];
-        m_Models.Reserve(modelListNode->GetSubNodeCount());
+        m_Models.Clear();
+        m_Models.Reserve(modelListNode->GetSubNodeCount() + 1);
+        RegisterSpriteModel(renderingContext);
         for (const JSONNode& modelNode : *modelListNode)
         {
             ModelLibraryEntry& newModel{ m_Models.Grow() };
@@ -57,5 +59,29 @@ namespace OK
         };
         auto foundIt = OK::FindIf(m_Models.begin(), m_Models.end(), findByName);
         return(foundIt != m_Models.end() ? foundIt->m_Model : nullptr);
+    }
+
+    void ModelLibrary::RegisterSpriteModel(const RenderingContext& renderingContext)
+    {
+        ModelLibraryEntry& newModel{ m_Models.Grow() };
+        newModel.m_Name = String("Sprite");
+
+        Array<VertexData> vertexData;
+        vertexData.Add(VertexData{ OK::Vec4{ -0.5f, -0.5f }, OK::Vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, OK::Vec4{ 0.0f, 0.0f }, OK::Vec4{0.0f, 0.0f, -1.0f} });
+        vertexData.Add(VertexData{ OK::Vec4{  0.5f,  0.5f }, OK::Vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, OK::Vec4{ 1.0f, 1.0f }, OK::Vec4{0.0f, 0.0f, -1.0f} });
+        vertexData.Add(VertexData{ OK::Vec4{ -0.5f,  0.5f }, OK::Vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, OK::Vec4{ 0.0f, 1.0f }, OK::Vec4{0.0f, 0.0f, -1.0f} });
+        vertexData.Add(VertexData{ OK::Vec4{  0.5f, -0.5f }, OK::Vec4{ 1.0f, 1.0f, 1.0f, 1.0f }, OK::Vec4{ 1.0f, 0.0f }, OK::Vec4{0.0f, 0.0f, -1.0f} });
+
+        Array<OK::u32> indexData;
+        indexData.Add(0);
+        indexData.Add(2);
+        indexData.Add(1);
+        indexData.Add(0);
+        indexData.Add(1);
+        indexData.Add(3);
+
+        newModel.m_Model = new VertexList;
+        newModel.m_Model->SetVertexList(renderingContext, vertexData);
+        newModel.m_Model->SetIndexList(renderingContext, indexData);
     }
 }

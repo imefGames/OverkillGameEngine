@@ -5,6 +5,7 @@
 #include <engine\window\gamewindowdata.h>
 #include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
+#include <graphics\components\spritecomponent.h>
 #include <graphics\d3d\d3dcontext.h>
 #include <graphics\model\vertexlist.h>
 #include <graphics\shaders\shader.h>
@@ -121,5 +122,33 @@ namespace OK
                 foundShader->RunShader(*m_RenderingContext, renderData);
             }
         }
+    }
+
+    void GraphicsWrapper::RenderSprite(const SpriteComponent* sprite, const RectTransformComponent* transform)
+    {
+        VertexList* foundModel{ m_ModelLibrary.FindModel("Sprite") };
+        if (foundModel != nullptr)
+        {
+            m_D3DContext->PrepareSpriteRendering(*m_RenderingContext, *foundModel, transform);
+            Shader* foundShader{ m_ShaderLibrary.FindShader(sprite->GetShaderName().begin()) };
+            if (foundShader != nullptr)
+            {
+                ShaderRenderData renderData;
+                renderData.m_IndexCount = foundModel->GetIndexCount();
+                renderData.m_Texture = m_TextureLibrary.FindTexture(sprite->GetTextureName().begin());
+                foundShader->RunShader(*m_RenderingContext, renderData);
+            }
+        }
+    }
+
+    void GraphicsWrapper::Begin2DRenderingPass()
+    {
+        m_D3DContext->GetOrthoMatrix(m_RenderingContext->m_ProjectionMatrix);
+        m_D3DContext->TurnZBufferOff();
+    }
+
+    void GraphicsWrapper::End2DRenderingPass()
+    {
+        m_D3DContext->TurnZBufferOn();
     }
 }

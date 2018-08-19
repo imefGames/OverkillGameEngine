@@ -17,7 +17,6 @@ Planned features for v1
 Current Objectives
 ------------------
 * [FEATURE] Handle mouse input
-* [FEATURE] Implement 2D rendering (ex: for HUD)
 * [FEATURE] Implement specular lighting
 * [FEATURE] Implement sound playing
 * [FEATURE] Implement frustum culling

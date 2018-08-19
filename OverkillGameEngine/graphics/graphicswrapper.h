@@ -12,6 +12,8 @@ namespace OK
     class JSONNode;
     class LightSourceComponent;
     class ModelComponent;
+    class RectTransformComponent;
+    class SpriteComponent;
     class TransformComponent;
     struct GameWindowData;
 
@@ -31,6 +33,10 @@ namespace OK
         EResult RegisterModels(const JSONNode& modelListNode);
         EResult RegisterTextures(const JSONNode& textureNode);
         void RenderModel(const ModelComponent* model, const TransformComponent* transform);
+        void RenderSprite(const SpriteComponent* sprite, const RectTransformComponent* transform);
+
+        void Begin2DRenderingPass();
+        void End2DRenderingPass();
 
     private:
         static const bool K_FULL_SCREEN;

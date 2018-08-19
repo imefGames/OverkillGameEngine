@@ -114,7 +114,7 @@
                             {
                                 "Name": "Model",
                                 "ModelName": "Cube",
-                                "ShaderName": "Light",
+                                "ShaderName": "SpecularLight",
                                 "TextureName": "Test"
                             }
 						]
@@ -122,24 +122,17 @@
 					{
 						"Components":
 						[
-							{
-								"Name": "Transform",
-                                "x": 2,
-								"y": 0,
-                                "z": 0,
-                                
-                                "rx": 0,
-								"ry": 0,
-                                "rz": 0,
-
-                                "sx": 1,
-								"sy": 1,
-								"sz": 1
-							},
                             {
-                                "Name": "Model",
-                                "ModelName": "Cube",
-                                "ShaderName": "SpecularLight",
+                                "Name": "RectTransform",
+                                "x": 160,
+                                "y": 0,
+
+                                "sx": 64,
+                                "sy": 64
+                            },
+                            {
+                                "Name": "Sprite",
+                                "ShaderName": "Texture",
                                 "TextureName": "Test"
                             }
 						]
