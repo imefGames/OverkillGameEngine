@@ -135,10 +135,22 @@ namespace OK
         RMenu           = VK_RMENU,
     };
 
-    enum class EKeyboardInputEvent
+    enum class EMouseButton
+    {
+        LeftButton,
+        MiddleButton,
+        RightButton,
+
+        Count,
+        None
+    };
+
+    enum class EKeyboardMouseInputEvent
     {
         None,
         KeyUp,
         KeyDown,
+        MouseButtonUp,
+        MouseButtonDown,
     };
 }

@@ -16,7 +16,6 @@ Planned features for v1
 
 Current Objectives
 ------------------
-* [FEATURE] Handle mouse input
 * [FEATURE] Implement fonts
 * [FEATURE] Implement sound playing
 * [FEATURE] Implement frustum culling

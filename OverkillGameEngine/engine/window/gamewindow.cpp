@@ -9,8 +9,11 @@
 namespace OK
 {
     OK::Bool g_PressedQuit{ false };
-    EKeyboardInputEvent g_KeyboardEvent{ EKeyboardInputEvent::None };
+    EKeyboardMouseInputEvent g_KeyboardEvent{ EKeyboardMouseInputEvent::None };
+    EMouseButton g_MouseButtonCode{ EMouseButton::None };
     OK::u32 g_KeyboardKeyCode{ 0 };
+    OK::u32 g_MousePositionX{ 0 };
+    OK::u32 g_MousePositionY{ 0 };
 
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -69,7 +72,8 @@ namespace OK
 
     void GameWindow::PollEvents(GameWindowEventData& eventData)
     {
-        g_KeyboardEvent = EKeyboardInputEvent::None;
+        g_KeyboardEvent = EKeyboardMouseInputEvent::None;
+        g_MouseButtonCode = EMouseButton::None;
         g_KeyboardKeyCode = 0;
         g_PressedQuit = false;
 
@@ -83,6 +87,9 @@ namespace OK
         eventData.m_QuitGame = g_PressedQuit;
         eventData.m_KeyboardEvent = g_KeyboardEvent;
         eventData.m_KeyboardKeyCode = g_KeyboardKeyCode;
+        eventData.m_MouseButtonCode = g_MouseButtonCode;
+        eventData.m_MousePositionX = g_MousePositionX;
+        eventData.m_MousePositionY = g_MousePositionY;
     }
 
     LRESULT CALLBACK WndProc(HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam)
@@ -92,15 +99,65 @@ namespace OK
         {
             case WM_KEYDOWN:
             {
-                g_KeyboardEvent = EKeyboardInputEvent::KeyDown;
+                g_KeyboardEvent = EKeyboardMouseInputEvent::KeyDown;
                 g_KeyboardKeyCode = static_cast<OK::u32>(wParam);
                 break;
             }
 
             case WM_KEYUP:
             {
-                g_KeyboardEvent = EKeyboardInputEvent::KeyUp;
+                g_KeyboardEvent = EKeyboardMouseInputEvent::KeyUp;
                 g_KeyboardKeyCode = static_cast<OK::u32>(wParam);
+                break;
+            }
+
+            case WM_LBUTTONDOWN:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonDown;
+                g_MouseButtonCode = EMouseButton::LeftButton;
+                break;
+            }
+
+            case WM_LBUTTONUP:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonUp;
+                g_MouseButtonCode = EMouseButton::LeftButton;
+                break;
+            }
+
+            case WM_RBUTTONDOWN:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonDown;
+                g_MouseButtonCode = EMouseButton::RightButton;
+                break;
+            }
+
+            case WM_RBUTTONUP:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonUp;
+                g_MouseButtonCode = EMouseButton::RightButton;
+                break;
+            }
+
+            case WM_MBUTTONDOWN:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonDown;
+                g_MouseButtonCode = EMouseButton::MiddleButton;
+                break;
+            }
+
+            case WM_MBUTTONUP:
+            {
+                g_KeyboardEvent = EKeyboardMouseInputEvent::MouseButtonUp;
+                g_MouseButtonCode = EMouseButton::MiddleButton;
+                break;
+            }
+
+            case WM_MOUSEMOVE:
+            {
+                POINTS mousePosition = MAKEPOINTS(lParam);
+                g_MousePositionX = static_cast<OK::u32>(mousePosition.x);
+                g_MousePositionY = static_cast<OK::u32>(mousePosition.y);
                 break;
             }
 
