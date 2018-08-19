@@ -17,7 +17,7 @@ Planned features for v1
 Current Objectives
 ------------------
 * [FEATURE] Handle mouse input
-* [FEATURE] Implement specular lighting
+* [FEATURE] Implement fonts
 * [FEATURE] Implement sound playing
 * [FEATURE] Implement frustum culling
 * [FEATURE] Add operators to String/StringView classes
