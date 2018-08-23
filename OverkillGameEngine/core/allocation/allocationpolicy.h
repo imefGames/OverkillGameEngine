@@ -7,7 +7,9 @@ namespace OK
     {
     public:
         static void* operator new(size_t size);
+        static void* operator new(size_t s, void* ptr);
         static void* operator new[](size_t size);
+        static void* operator new[](size_t s, void* ptr);
         static void operator delete(void* pointer);
         static void operator delete[](void* pointer);
     };
@@ -19,9 +21,21 @@ namespace OK
     }
 
     template <typename Policy>
+    void* AllocationPolicy<Policy>::operator new(size_t s, void* ptr)
+    {
+        return ptr;
+    }
+
+    template <typename Policy>
     void* AllocationPolicy<Policy>::operator new[](size_t size)
     {
         return Policy::AllocateArray(size);
+    }
+
+    template <typename Policy>
+    void* AllocationPolicy<Policy>::operator new[](size_t s, void* ptr)
+    {
+        return ptr;
     }
 
     template <typename Policy>

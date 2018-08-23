@@ -28,6 +28,10 @@ namespace OK
         T* GetRawData();
         const T* GetRawData() const;
 
+        void CopyContent(const T* source, T* destination, OK::u32 itemCount);
+        void InitElement(T& element, const T& value);
+        void ShutdownElement(T& element);
+
         OK::u32 m_Size;
         OK::u32 m_MaxSize;
 
@@ -49,7 +53,7 @@ namespace OK
         , m_Size{ other.m_Size }
         , m_MaxSize{ other.m_Size }
     {
-        OK::MemCopy(other.m_Data, m_Data, other.m_Size * sizeof(T));
+        CopyContent(other.m_Data, m_Data, other.m_Size);
     }
 
     template<typename T>
@@ -75,7 +79,7 @@ namespace OK
         m_Data = new T[other.m_Size];
         m_Size = other.m_Size;
         m_MaxSize = other.m_Size;
-        OK::MemCopy(other.m_Data, m_Data, other.m_Size * sizeof(T));
+        CopyContent(other.m_Data, m_Data, other.m_Size);
         return (*this);
     }
 
@@ -113,7 +117,7 @@ namespace OK
             T* newData = new T[reservedSize];
             if (m_Data != nullptr)
             {
-                OK::MemCopy(m_Data, newData, m_Size * sizeof(T));
+                CopyContent(m_Data, newData, m_Size);
                 okSafeDeleteArray(m_Data);
             }
             m_Data = newData;
@@ -131,6 +135,10 @@ namespace OK
     template<typename T>
     void BaseContainer<T>::Clear()
     {
+        for (OK::u32 i = 0; i < m_Size; ++i)
+        {
+            ShutdownElement(m_Data[i]);
+        }
         m_Size = 0;
         m_MaxSize = 0;
     }
@@ -164,4 +172,30 @@ namespace OK
     {
         return m_Data;
     }
+
+    template<typename T>
+    void BaseContainer<T>::CopyContent(const T* source, T* destination, OK::u32 itemCount)
+    {
+        // TODO: use OK::MemCopy for trivial types
+        for (OK::u32 i = 0; i < m_Size; ++i)
+        {
+            InitElement(destination[i], source[i]);
+        }
+    }
+
+#pragma warning( push )
+#pragma warning( disable : 4291)
+
+    template<typename T>
+    void BaseContainer<T>::InitElement(T& element, const T& value)
+    {
+        new(&element) T(value);
+    }
+
+    template<typename T>
+    void BaseContainer<T>::ShutdownElement(T& element)
+    {
+        element.~T();
+    }
+#pragma warning( pop ) 
 }
