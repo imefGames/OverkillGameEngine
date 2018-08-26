@@ -4,8 +4,8 @@
 #include <engine\components\recttransformcomponent.h>
 #include <engine\components\transformcomponent.h>
 #include <engine\objectmodel\componentutils.h>
-#include <graphics\camerasystem.h>
-#include <graphics\lightsystem.h>
+#include <graphics\subsystems\camerasubsystem.h>
+#include <graphics\subsystems\lightsubsystem.h>
 #include <graphics\graphicswrapper.h>
 #include <graphics\components\lightsourcecomponent.h>
 #include <graphics\components\modelcomponent.h>
@@ -20,22 +20,31 @@ namespace OK
 
     void GraphicsSystem::Init()
     {
+        UniverseSystem::Init();
+
         m_GraphicsWrapper = GraphicsWrapper::Get();
+
+        RegisterSubSystem<CameraSubSystem>();
+        RegisterSubSystem<LightSubSystem>();
     }
 
     void GraphicsSystem::Shutdown()
     {
         m_GraphicsWrapper = nullptr;
+
+        UniverseSystem::Shutdown();
     }
 
     void GraphicsSystem::Update(OK::f32 dt)
     {
-        ComponentHolderID cameraHolderID{ CameraSystem::GetActiveCameraComponentHolderID() };
+        UniverseSystem::Update(dt);
+
+        ComponentHolderID cameraHolderID{ CameraSubSystem::GetActiveCameraComponentHolderID() };
         TransformComponent* cameraTransform{ nullptr };
         ComponentUtils::FindComponents(cameraHolderID, cameraTransform);
         m_GraphicsWrapper->BeginScene(cameraTransform);
 
-        ComponentHolderID lightHolderID{ LightSystem::GetActiveLightomponentHolderID() };
+        ComponentHolderID lightHolderID{ LightSubSystem::GetActiveLightomponentHolderID() };
         LightSourceComponent* lightComponent{ nullptr };
         TransformComponent* lightTransform{ nullptr };
         if (ComponentUtils::FindComponents(lightHolderID, lightComponent, lightTransform) == EResult::Success)

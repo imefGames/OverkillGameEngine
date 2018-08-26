@@ -1,13 +1,13 @@
 #pragma once
 
-#include <engine\objectmodel\universesystem.h>
+#include <engine\objectmodel\subsystem.h>
 
 namespace OK
 {
-    class LightSystem : public UniverseSystem
+    class LightSubSystem : public SubSystem
     {
     public:
-        LightSystem();
+        LightSubSystem(System* owner);
 
         static ComponentHolderID GetActiveLightomponentHolderID() { return ms_LightComponentHolderID; }
 

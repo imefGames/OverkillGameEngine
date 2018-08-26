@@ -156,6 +156,7 @@
     <ClCompile Include="engine\objectmodel\componentfactory.cpp" />
     <ClCompile Include="engine\objectmodel\componentholder.cpp" />
     <ClCompile Include="engine\objectmodel\componentutils.cpp" />
+    <ClCompile Include="engine\objectmodel\subsystem.cpp" />
     <ClCompile Include="engine\objectmodel\system.cpp" />
     <ClCompile Include="engine\objectmodel\universe.cpp" />
     <ClCompile Include="engine\objectmodel\universesystem.cpp" />
@@ -164,7 +165,6 @@
     <ClCompile Include="engine\window\gamewindow.cpp" />
     <ClCompile Include="engine\window\gamewindowdata.cpp" />
     <ClCompile Include="engine\window\gamewindoweventdata.cpp" />
-    <ClCompile Include="graphics\camerasystem.cpp" />
     <ClCompile Include="graphics\components\cameracomponent.cpp" />
     <ClCompile Include="graphics\components\lightsourcecomponent.cpp" />
     <ClCompile Include="graphics\components\modelcomponent.cpp" />
@@ -172,7 +172,6 @@
     <ClCompile Include="graphics\d3d\d3dcontext.cpp" />
     <ClCompile Include="graphics\graphicssystem.cpp" />
     <ClCompile Include="graphics\graphicswrapper.cpp" />
-    <ClCompile Include="graphics\lightsystem.cpp" />
     <ClCompile Include="graphics\model\loaders\modelloaderobj.cpp" />
     <ClCompile Include="graphics\model\modellibrary.cpp" />
     <ClCompile Include="graphics\model\modellibrarycomponent.cpp" />
@@ -185,6 +184,8 @@
     <ClCompile Include="graphics\shaders\shader.cpp" />
     <ClCompile Include="graphics\shaders\shaderlibrary.cpp" />
     <ClCompile Include="graphics\shaders\textureshader.cpp" />
+    <ClCompile Include="graphics\subsystems\camerasubsystem.cpp" />
+    <ClCompile Include="graphics\subsystems\lightsubsystem.cpp" />
     <ClCompile Include="graphics\texture\texture.cpp" />
     <ClCompile Include="graphics\texture\texturelibrary.cpp" />
     <ClCompile Include="graphics\texture\texturelibrarycomponent.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="engine\objectmodel\componentfactory.h" />
     <ClInclude Include="engine\objectmodel\componentholder.h" />
     <ClInclude Include="engine\objectmodel\componentutils.h" />
+    <ClInclude Include="engine\objectmodel\subsystem.h" />
     <ClInclude Include="engine\objectmodel\system.h" />
     <ClInclude Include="engine\objectmodel\universe.h" />
     <ClInclude Include="engine\objectmodel\universesystem.h" />
@@ -230,7 +232,6 @@
     <ClInclude Include="engine\window\gamewindow.h" />
     <ClInclude Include="engine\window\gamewindowdata.h" />
     <ClInclude Include="engine\window\gamewindoweventdata.h" />
-    <ClInclude Include="graphics\camerasystem.h" />
     <ClInclude Include="graphics\components\cameracomponent.h" />
     <ClInclude Include="graphics\components\lightsourcecomponent.h" />
     <ClInclude Include="graphics\components\modelcomponent.h" />
@@ -238,7 +239,6 @@
     <ClInclude Include="graphics\d3d\d3dcontext.h" />
     <ClInclude Include="graphics\graphicssystem.h" />
     <ClInclude Include="graphics\graphicswrapper.h" />
-    <ClInclude Include="graphics\lightsystem.h" />
     <ClInclude Include="graphics\model\loaders\modelloaderobj.h" />
     <ClInclude Include="graphics\model\modellibrary.h" />
     <ClInclude Include="graphics\model\modellibrarycomponent.h" />
@@ -251,6 +251,8 @@
     <ClInclude Include="graphics\shaders\shader.h" />
     <ClInclude Include="graphics\shaders\shaderlibrary.h" />
     <ClInclude Include="graphics\shaders\textureshader.h" />
+    <ClInclude Include="graphics\subsystems\camerasubsystem.h" />
+    <ClInclude Include="graphics\subsystems\lightsubsystem.h" />
     <ClInclude Include="graphics\texture\texture.h" />
     <ClInclude Include="graphics\texture\texturelibrary.h" />
     <ClInclude Include="graphics\texture\texturelibrarycomponent.h" />

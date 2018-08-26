@@ -1,18 +1,19 @@
 #include <stdafx.h>
-#include <graphics\lightsystem.h>
+#include <graphics\subsystems\lightsubsystem.h>
 
 #include <engine\objectmodel\componentutils.h>
 #include <graphics\components\lightsourcecomponent.h>
 
 namespace OK
 {
-    ComponentHolderID LightSystem::ms_LightComponentHolderID = K_INVALID_COMPONENT_HOLDER;
+    ComponentHolderID LightSubSystem::ms_LightComponentHolderID = K_INVALID_COMPONENT_HOLDER;
 
-    LightSystem::LightSystem()
+    LightSubSystem::LightSubSystem(System* owner)
+        : SubSystem{ owner }
     {
     }
 
-    void LightSystem::Update(OK::f32 dt)
+    void LightSubSystem::Update(OK::f32 dt)
     {
         ms_LightComponentHolderID = K_INVALID_COMPONENT_HOLDER;
         const Array<ComponentHolderID>& activeHolderIDs{ GetActiveComponentHolders() };

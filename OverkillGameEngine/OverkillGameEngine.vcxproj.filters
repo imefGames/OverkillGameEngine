@@ -77,9 +77,6 @@
     <ClCompile Include="engine\objectmodel\componentutils.cpp">
       <Filter>engine\objectmodel</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\camerasystem.cpp">
-      <Filter>graphics</Filter>
-    </ClCompile>
     <ClCompile Include="graphics\renderingcontext.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
@@ -125,9 +122,6 @@
     <ClCompile Include="graphics\components\lightsourcecomponent.cpp">
       <Filter>graphics\components</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\lightsystem.cpp">
-      <Filter>graphics</Filter>
-    </ClCompile>
     <ClCompile Include="graphics\shaders\lightshader.cpp">
       <Filter>graphics\shaders</Filter>
     </ClCompile>
@@ -151,6 +145,15 @@
     </ClCompile>
     <ClCompile Include="engine\components\recttransformcomponent.cpp">
       <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\objectmodel\subsystem.cpp">
+      <Filter>engine\objectmodel</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\subsystems\camerasubsystem.cpp">
+      <Filter>graphics\subsystems</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\subsystems\lightsubsystem.cpp">
+      <Filter>graphics\subsystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +216,9 @@
     </Filter>
     <Filter Include="graphics\model\loaders">
       <UniqueIdentifier>{e262f0af-cb70-4858-9937-cd9a8bef8914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\subsystems">
+      <UniqueIdentifier>{5b0108ae-1140-48ec-95e7-c3181d3dac3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -334,9 +340,6 @@
     <ClInclude Include="engine\objectmodel\componentutils.h">
       <Filter>engine\objectmodel</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\camerasystem.h">
-      <Filter>graphics</Filter>
-    </ClInclude>
     <ClInclude Include="graphics\renderingcontext.h">
       <Filter>graphics</Filter>
     </ClInclude>
@@ -382,9 +385,6 @@
     <ClInclude Include="graphics\components\lightsourcecomponent.h">
       <Filter>graphics\components</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\lightsystem.h">
-      <Filter>graphics</Filter>
-    </ClInclude>
     <ClInclude Include="graphics\shaders\lightshader.h">
       <Filter>graphics\shaders</Filter>
     </ClInclude>
@@ -405,6 +405,15 @@
     </ClInclude>
     <ClInclude Include="engine\components\recttransformcomponent.h">
       <Filter>engine\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\objectmodel\subsystem.h">
+      <Filter>engine\objectmodel</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\subsystems\camerasubsystem.h">
+      <Filter>graphics\subsystems</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\subsystems\lightsubsystem.h">
+      <Filter>graphics\subsystems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

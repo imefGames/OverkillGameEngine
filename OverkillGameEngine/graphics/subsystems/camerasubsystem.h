@@ -1,13 +1,13 @@
 #pragma once
 
-#include <engine\objectmodel\universesystem.h>
+#include <engine\objectmodel\subsystem.h>
 
 namespace OK
 {
-    class CameraSystem : public UniverseSystem
+    class CameraSubSystem : public SubSystem
     {
     public:
-        CameraSystem();
+        CameraSubSystem(System* owner);
 
         static ComponentHolderID GetActiveCameraComponentHolderID() { return ms_CameraComponentHolderID; }
 

@@ -1,18 +1,19 @@
 #include <stdafx.h>
-#include <graphics\camerasystem.h>
+#include <graphics\subsystems\camerasubsystem.h>
 
 #include <engine\objectmodel\componentutils.h>
 #include <graphics\components\cameracomponent.h>
 
 namespace OK
 {
-    ComponentHolderID CameraSystem::ms_CameraComponentHolderID = K_INVALID_COMPONENT_HOLDER;
+    ComponentHolderID CameraSubSystem::ms_CameraComponentHolderID = K_INVALID_COMPONENT_HOLDER;
 
-    CameraSystem::CameraSystem()
+    CameraSubSystem::CameraSubSystem(System* owner)
+        : SubSystem{ owner }
     {
     }
 
-    void CameraSystem::Update(OK::f32 dt)
+    void CameraSubSystem::Update(OK::f32 dt)
     {
         ms_CameraComponentHolderID = K_INVALID_COMPONENT_HOLDER;
         const Array<ComponentHolderID>& activeHolderIDs{ GetActiveComponentHolders() };

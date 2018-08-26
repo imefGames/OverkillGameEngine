@@ -9,6 +9,7 @@ namespace OK
 {
     class GameLoop;
     class JSONNode;
+    class System;
     class World;
     class UniverseSystem;
 
@@ -34,6 +35,6 @@ namespace OK
         Array<ComponentHolderID> m_ActiveComponentHolderIDs;
 
         friend OK::GameLoop;
-        friend OK::UniverseSystem;
+        friend OK::System;
     };
 }
